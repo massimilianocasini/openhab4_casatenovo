@@ -4,3 +4,4 @@ services/weather.cfg.old
 things/pushover.things
 things/telegram.things
 things/openweathermap.things
+things/solaredge.things

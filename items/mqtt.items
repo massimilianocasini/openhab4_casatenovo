@@ -1,7 +1,7 @@
 // Prodino
 String  Prodino0_optoIn0 "Stato Antifurto [%s]" <alarm>         (gAlarmSystem, gMapDb)      ["Lock", "Status"]      {channel="mqtt:topic:mosquitto:prodino:optoIn0"}
 String  Prodino0_optoIn1 "Allarme [%s]"         <alarm>         (gAlarmSystem)      ["Lock", "Alarm"]       {channel="mqtt:topic:mosquitto:prodino:optoIn1"}
-String  Prodino0_optoIn2 "Mancanza rete 220V [%s]" 	            (gAlarmSystem)      ["Lock", "Status"]       {channel="mqtt:topic:mosquitto:prodino:optoIn2"}
+String  Prodino0_optoIn2 "Stato 220V [%s]" 	            (gAlarmSystem)      ["Lock", "Status"]       {channel="mqtt:topic:mosquitto:prodino:optoIn2"}
 String  Prodino0_optoIn3 "Anomalia [%s]"  	                    (gAlarmSystem, gMapDb)      ["Lock", "Status"]       {channel="mqtt:topic:mosquitto:prodino:optoIn3"}
 //Number prodino0_out1 "Key gAntifurto"    <switch>  {mqtt=">[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:ON:rel-0-1], >[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:OFF:rel-0-0], <[myUnsecureBroker:/KMP/ProDinoWiFi/nInfo:state:MAP(prodino.map):optoIn-0.*]"}
 Switch  Prodino0_ReleOut1  "Chiave" <switch> (gAlarmSystem, gMapDb) ["Switch"] {channel="mqtt:topic:mosquitto:prodino:ReleOut1", expire="1s,command=OFF"}
