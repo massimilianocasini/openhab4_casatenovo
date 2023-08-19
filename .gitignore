@@ -5,3 +5,12 @@ things/pushover.things
 things/telegram.things
 things/openweathermap.things
 things/solaredge.things
+things/pushover.*
+things/telegram.*
+things/openweathermap.*
+things/solaredge.*
+pushover.*
+telegram.*
+openweathermap.*
+solaredge.*
+weather.*
