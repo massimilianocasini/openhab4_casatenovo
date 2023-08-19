@@ -1,0 +1,1 @@
+Bridge modbus:tcp:bridge [ host="192.168.188.6", port=502, id=1, enableDiscovery=true]

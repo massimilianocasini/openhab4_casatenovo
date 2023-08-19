@@ -1,0 +1,53 @@
+Switch DaikinACUnit_Power_Studio "ON/OFF Condizionatore Studio" <switch> (gOfficeCondizionamento, gSwCondPower) ["Control"] {synonyms="Condizionatore Studio", ga="Switch", channel="daikin:ac_unit:Studio:power"}
+Number:Temperature DaikinACUnit_SetPoint_Studio "SetPoint Condizionatore Studio" <temperature> (gOfficeCondizionamento, gEqCondSetPoint) ["Setpoint", "Temperature"] {channel="daikin:ac_unit:Studio:settemp", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item" [step=1, min=20, max=29, raised=true, visible="=items['DaikinACUnit_Power_Studio'].state === 'ON'"]}
+String DaikinACUnit_Mode_Studio "Modalità Condizionatore Studio" <settings> (gOfficeCondizionamento, gEqCondMode) ["Control"] { channel="daikin:ac_unit:Studio:mode" }
+String DaikinACUnit_Fan_Studio "Velocità ventilazione Condizionatore Studio" <fan> (gOfficeCondizionamento) ["Control"] { channel="daikin:ac_unit:Studio:fanspeed",listWidget="oh-label-item" [visible="=items['DaikinACUnit_Power_Studio'].state === 'ON'"] }
+String DaikinACUnit_Fan_Movement_Studio "Swing ventilazione Condizionatore Studio" <fan> (gOfficeCondizionamento) ["Control"] { channel="daikin:ac_unit:Studio:fandir",listWidget="oh-label-item" [visible="=items['DaikinACUnit_Power_Studio'].state === 'ON'"] }
+Number:Temperature DaikinACUnit_IndoorTemperature_Studio "Temp. Interna Condizionatore Studio" <temperature> (gOfficeCondizionamento)  {channel="daikin:ac_unit:Studio:indoortemp"}
+Number:Temperature DaikinACUnit_OutdoorTemperature_Studio "Temp. Esterna" <temperature> (gOfficeCondizionamento)  { channel="daikin:ac_unit:Studio:outdoortemp" }
+Number DaikinACUnit_CompressorFrequency_Studio "Frequenza compressore" { channel="daikin:ac_unit:Studio:cmpfrequency"}
+//Number DaikinACUnit_SpecialMode_Studio "Modo speciale" (gAll, gCond, gCondStudio) { channel="daikin:ac_unit:Studio:specialmode"}
+Number:Energy DaikinACUnit_TodayEnergyCooling_Studio "Energia consumata oggi in modalità freddo Studio" <energy> (gOfficeCondizionamento, gOfficeSensor, gInfluxdb) ["Control"] {channel="daikin:ac_unit:Studio:energycoolingtoday"}
+Number:Energy DaikinACUnit_TodayEnergyHeating_Studio "Energia consumata oggi in modalità caldo Studio" <energy> (gOfficeCondizionamento, gOfficeSensor, gInfluxdb) ["Control"] {channel="daikin:ac_unit:Studio:energyheatingtoday"}
+Switch DaikinACUnit_ac_timer_on_off_Studio "Timer ON/OFF spegnimento condizionamento Studio"
+Number DaikinACUnit_ac_timer_Studio "Timer contatore condizionamento Studio"
+
+Switch DaikinACUnit_Power_Soggiorno "ON/OFF Condizionatore Soggiorno" <switch> (gLivingroomCondizionamento, gSwCondPower) ["Control"] { ga="Switch" [roomHint="Soggiorno"], channel="daikin:ac_unit:Soggiorno:power" }
+Number:Temperature DaikinACUnit_SetPoint_Soggiorno "SetPoint Condizionatore Soggiorno" <temperature> (gLivingroomCondizionamento, gEqCondSetPoint) ["Setpoint", "Temperature"] { channel="daikin:ac_unit:Soggiorno:settemp",  stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item" [step=1, min=20, max=29, raised=true, visible="= items['DaikinACUnit_Power_Soggiorno'].state === 'ON'"]}
+String DaikinACUnit_Mode_Soggiorno "Modalità Condizionatore Soggiorno" <settings> (gLivingroomCondizionamento, gEqCondMode) ["Control"] { channel="daikin:ac_unit:Soggiorno:mode" }
+String DaikinACUnit_Fan_Soggiorno "Velocità ventilazione Condizionatore Soggiorno" <fan> (gLivingroomCondizionamento) ["Control"] { channel="daikin:ac_unit:Soggiorno:fanspeed",listWidget="oh-label-item" [visible="=items['DaikinACUnit_Power_Soggiorno'].state === 'ON'"]}
+String DaikinACUnit_Fan_Movement_Soggiorno "Swing ventilazione Condizionatore Soggiorno" (gLivingroomCondizionamento) ["Control"] { channel="daikin:ac_unit:Soggiorno:fandir",listWidget="oh-label-item" [visible="=items['DaikinACUnit_Power_Soggiorno'].state === 'ON'"] }
+Number:Temperature    DaikinACUnit_IndoorTemperature_Soggiorno "Temp. Interna Condizionatore Soggiorno" <temperature> (gLivingroomCondizionamento)  {channel="daikin:ac_unit:Soggiorno:indoortemp"}
+Number:Temperature DaikinACUnit_OutdoorTemperature_Soggiorno "Temp. Esterna" <temperature> { channel="daikin:ac_unit:Soggiorno:outdoortemp" }
+Number DaikinACUnit_CompressorFrequency_Soggiorno "Frequenza compressore" { channel="daikin:ac_unit:Soggiorno:cmpfrequency"}
+Number:Energy DaikinACUnit_TodayEnergyCooling_Soggiorno "Energia consumata oggi in modalità freddo Soggiorno" <energy> (gLivingroomCondizionamento, gLivingroomSensor, gInfluxdb) ["Control"] {channel="daikin:ac_unit:Soggiorno:energycoolingtoday"}
+Number:Energy DaikinACUnit_TodayEnergyHeating_Soggiorno "Energia consumata oggi in modalità caldo Soggiorno" <energy> (gLivingroomCondizionamento, gLivingroomSensor, gInfluxdb) ["Control"] {channel="daikin:ac_unit:Soggiorno:energyheatingtoday"}
+Switch DaikinACUnit_ac_timer_on_off_Soggiorno "Timer ON/OFF spegnimento condizionamento Soggiorno"
+Number DaikinACUnit_ac_timer_Soggiorno "Timer contatore condizionamento Soggiorno"
+
+
+Switch DaikinACUnit_Power_Cameretta "ON/OFF Condizionatore Cameretta" <switch> (gBedroom2Condizionamento, gSwCondPower) ["Control"] { ga="Switch" [roomHint="Cameretta"], channel="daikin:ac_unit:Cameretta:power" }
+Number:Temperature DaikinACUnit_SetPoint_Cameretta "SetPoint Condizionatore Cameretta" <temperature>  (gBedroom2Condizionamento, gEqCondSetPoint) ["Setpoint", "Temperature"]{ channel="daikin:ac_unit:Cameretta:settemp", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item" [step=1, min=20, max=29, raised=true, visible="=items['DaikinACUnit_Power_Cameretta'].state === 'ON'"]}
+String DaikinACUnit_Mode_Cameretta "Modalità Condizionatore Cameretta" <settings> (gBedroom2Condizionamento, gEqCondMode) ["Control"] { channel="daikin:ac_unit:Cameretta:mode" }
+String DaikinACUnit_Fan_Cameretta "Velocità ventilazione Condizionatore Cameretta" <fan> (gBedroom2Condizionamento) ["Control"] { channel="daikin:ac_unit:Cameretta:fanspeed" ,listWidget="oh-label-item" [visible="=items['DaikinACUnit_Power_Cameretta'].state === 'ON'"]}
+String DaikinACUnit_Fan_Movement_Cameretta "Swing ventilazione Condizionatore Cameretta" (gBedroom2Condizionamento) ["Control"] { channel="daikin:ac_unit:Cameretta:fandir",listWidget="oh-label-item" [visible="=items['DaikinACUnit_Power_Cameretta'].state === 'ON'"]}
+Number:Temperature DaikinACUnit_IndoorTemperature_Cameretta "Temp. Interna Condizionatore Cameretta"  <temperature>  (gBedroom2Condizionamento)   {channel="daikin:ac_unit:Cameretta:indoortemp"}
+Number:Temperature DaikinACUnit_OutdoorTemperature_Cameretta "Temp. Esterna"  <temperature>  { channel="daikin:ac_unit:Cameretta:outdoortemp" }
+Number DaikinACUnit_CompressorFrequency_Cameretta "Frequenza compressore" { channel="daikin:ac_unit:Cameretta:cmpfrequency"}
+Number:Energy DaikinACUnit_TodayEnergyCooling_Cameretta "Energia consumata oggi in modalità freddo Cameretta" <energy> (gBedroom2Condizionamento, gBedroom2Sensor, gInfluxdb) ["Control"] {channel="daikin:ac_unit:Cameretta:energycoolingtoday"}
+Number:Energy DaikinACUnit_TodayEnergyHeating_Cameretta "Energia consumata oggi in modalità caldo Cameretta" <energy> (gBedroom2Condizionamento, gBedroom2Sensor, gInfluxdb) ["Control"] {channel="daikin:ac_unit:Cameretta:energyheatingtoday"}
+Switch DaikinACUnit_ac_timer_on_off_Cameretta "Timer ON/OFF spegnimento condizionamento Cameretta"
+Number DaikinACUnit_ac_timer_Cameretta "Timer contatore condizionamento Cameretta"
+
+Switch DaikinACUnit_Power_Letto "ON/OFF Condizionatore Camera da Letto" <switch> (gBedroom1Condizionamento, gSwCondPower)  ["Control"] { ga="Switch" [roomHint="Letto"], channel="daikin:ac_unit:Letto:power" }
+Number:Temperature DaikinACUnit_SetPoint_Letto "SetPoint Condizionatore Camera da Letto"  <temperature> (gBedroom1Condizionamento, gEqCondSetPoint) ["Setpoint", "Temperature"] { channel="daikin:ac_unit:Letto:settemp", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item" [step=1, min=20, max=29, raised=true, visible="=items['DaikinACUnit_Power_Letto'].state === 'ON'"]}
+String DaikinACUnit_Mode_Letto "Modalità Condizionatore Camera da Letto" <settings> (gBedroom1Condizionamento, gEqCondMode) ["Control"] { channel="daikin:ac_unit:Letto:mode" }
+String DaikinACUnit_Fan_Letto "Velocità Condizionatore Camera da Letto" <fan> (gBedroom1Condizionamento) ["Control"] { channel="daikin:ac_unit:Letto:fanspeed",listWidget="oh-label-item" [visible="=items['DaikinACUnit_Power_Letto'].state === 'ON'"]}
+String DaikinACUnit_Fan_Movement_Letto "Swing Condizionatore Camera da Letto" <fan>  (gBedroom1Condizionamento) ["Control"] { channel="daikin:ac_unit:Letto:fandir",listWidget="oh-label-item" [visible="=items['DaikinACUnit_Power_Letto'].state === 'ON'"]}
+Number:Temperature DaikinACUnit_IndoorTemperature_Letto "Temp. Interna Condizionatore Letto"  <temperature>  (gBedroom1Condizionamento)    {channel="daikin:ac_unit:Letto:indoortemp"}
+Number:Temperature DaikinACUnit_OutdoorTemperature_Letto "Temp. Esterna"  <temperature>  { channel="daikin:ac_unit:Letto:outdoortemp" }
+Number DaikinACUnit_CompressorFrequency_Letto "Frequenza compressore" { channel="daikin:ac_unit:Letto:cmpfrequency"}
+Number:Energy DaikinACUnit_TodayEnergyCooling_Letto "Energia consumata oggi in modalità freddo Letto" <energy> (gBedroom1Condizionamento, gBedroom1Sensor, gInfluxdb) ["Control"] {channel="daikin:ac_unit:Letto:energycoolingtoday"}
+Number:Energy DaikinACUnit_TodayEnergyHeating_Letto "Energia consumata oggi in modalità caldo Letto" <energy> (gBedroom1Condizionamento, gBedroom1Sensor, gInfluxdb) ["Control"] {channel="daikin:ac_unit:Letto:energyheatingtoday"}
+Switch DaikinACUnit_ac_timer_on_off_Letto "Timer ON/OFF spegnimento condizionamento Letto"
+Number DaikinACUnit_ac_timer_Letto "Timer contatore condizionamento Letto"

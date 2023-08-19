@@ -1,0 +1,100 @@
+Group gInfluxdb
+Group gInfluxdb1
+Group:Number:AVG gAvgTemperatura "Temperatura media interna [%.1f °C]" <temperature> (gGroundFloor)
+Group gAstroRadation "Astro" 
+Group gWeather "Che tempo che fa" ["WeatherService"]
+Group gMapDb
+Group gSystemInfo
+Group gWaterSensors
+Group gGroundFloorSpeaker "Sonoro" ["Speaker"]
+Group gNetworkAppliance "Dispositivi di rete" ["NetworkAppliance"]
+
+Group gBattery "Batterie" 
+Group gCleaningRobot "Roomba" ["CleaningRobot"]
+
+Group:Number:AVG gAvgUmidita "Umidità media interna [%.0f %%]" <humidity> (gGroundFloor)
+
+Group:Number:AVG gAvgPressione "Pressione media [%.1f mbar]" (gGroundFloor) 
+Group:Switch:OR(ON,OFF) gSwCondPower "Power condizionatori [%d]" <switch>
+Group:String:EQUALITY gEqCondMode "Modo Lavoro ALL" <settings> (gMapDb)
+Group:Number:EQUALITY gEqCondSetPoint "SetPoint All [%.1f °C]" <temperature> (gMapDb)
+Number EqCondSetPoint "SetPoint ALL [%.1f °C]" <temperature> (gGroundFloor, gMapDb) 
+Group:Number:AVG gAvgCondTemp "Temperatura media Daikin [%.1f °C]" <temperature>
+Group:Switch:OR(ON,OFF)   gPresence     "gPresence" <icon_presence>
+//Group:Number EQUALITY gBlinds "Chiudi/Apri Tapperelle" <rollershutter>
+
+Group gBuilding "Building" ["Building"]
+    Group gIndoor "Indoor" (gBuilding) ["Indoor"] 
+
+        Group gGroundFloor "Piano terra" (gIndoor) ["GroundFloor"]
+        
+        Group gCorridor "Corridoio" (gGroundFloor) ["Corridor"]
+            Group gCorridorSensor "Sensori Corridoio" (gCorridor) ["Sensor"]
+            Group gCorridorLight "Luce Corridoio" <lightbulb> (gCorridor)  ["Lightbulb"]
+            Group gCorridorMotionDetector "IR Corridoio" (gCorridor) ["MotionDetector"]
+            Group gCorridorBattery "Livello batterie Corridio" (gCorridor) ["Battery"]
+            Group gCorridorCaldaia "Stato caldaia" (gCorridor) ["HVAC"]
+        
+        Group gCorridor2 "Ingresso" (gGroundFloor) ["Corridor"]
+            Group:Dimmer:EQUALITY gIkeaEqualityCorridorB "Ingresso Intesità [%d %%]" <light> (gCorridor2) ["Lightbulb"]
+            Group:Number:EQUALITY gIkeaEqualityCorridorCT "Ingresso Temperatura [%.0f K]" <light> (gCorridor2) ["Lightbulb"]
+        
+        Group gBedroom1 "Camera da letto" <bedroom> (gGroundFloor) ["Bedroom"]
+            Group gBedroom1Condizionamento "Controllo condizionamento Camera da Letto" (gBedroom1) ["HVAC"]
+            Group gBedroom1Sensor "Sensori Camera da Letto"  (gBedroom1) ["Sensor"]
+            Group gBedroom1Battery "Livello batterie Camera da Letto" (gBedroom1) ["Battery"]
+            Group gBedroom1Blind "Tapparelle" (gBedroom1) ["Blinds"]
+
+        Group gBedroom2 "Cameretta" (gGroundFloor) ["Bedroom"] { synonyms="Oli's Room" }
+            Group gBedroom2Sensor "Sensori Cameretta"  (gBedroom2) ["Sensor"]
+            Group gBedroom2Condizionamento "Controllo condizionamento Cameretta" <climate> (gBedroom2) ["HVAC"]
+            Group gBedroom2Light "Luce Cameretta" <lightbulb> (gBedroom2) ["Lightbulb"]
+            Group gBedroom2MotionDetector "IR Cameretta" (gBedroom2) ["MotionDetector"]
+            Group gBedroom2Battery "Livello batterie Cameretta" (gBedroom2) ["Battery"]
+            Group gBedroom2Speaker "Speaker Cameretta" (gBedroom2) ["Speaker"]
+
+        Group gOffice "Studio" (gGroundFloor) ["Office"]
+            Group gOfficeSensor "Sensori Studio"  (gOffice) ["Sensor"]
+            Group gOfficeCondizionamento "Controllo condizionamento Studio" <climate> (gOffice) ["HVAC"]
+            Group gOfficeMotionDetector "IR Studio" (gOffice) ["MotionDetector"]
+            Group gOfficeBattery "Livello batterie Studio" (gOffice) ["Battery"]
+            Group gOfficeSpeaker "Speaker Studio" (gOffice) ["Speaker"]
+            Group gOfficeBlind "Tapparelle" (gOffice) ["Blinds"]
+        
+        Group gBagnoVasca "Bagno" (gGroundFloor) ["Bathroom"]
+        
+        Group gBagnoDoccia "Bagno doccia" (gGroundFloor) ["Bathroom"]
+        
+        Group gLivingroom "Soggiorno" (gGroundFloor) ["LivingRoom"]
+            Group gLivingroomSensor "Sensori Soggiorno"  (gLivingroom) ["Sensor"]
+            Group gLivingroomPowerOutlet "Prese Soggiorno" (gLivingroom)  ["PowerOutlet"]
+            Group gLivingroomCondizionamento "Controllo condizionamento Soggiorno"  <climate> (gLivingroom) ["HVAC"]
+            Group gLivingroomBattery "Livello batterie Soggiorno" (gLivingroom) ["Battery"]
+            Group gAlarmSystem "Antintrusione"(gLivingroom) ["AlarmSystem"]
+            Group gQuadroElettrico "Quadro Elettrico" (gLivingroom) ["Sensor"]
+       
+        Group gKitchen "Cucina" (gGroundFloor) ["Kitchen"]
+            Group gKitchenSpeaker "Speaker Cucina" (gKitchen) ["Speaker"]
+            Group gKitchenSensor "Sensori Cucina" (gKitchen) ["Sensor"]
+            Group gKitchenBattery "Livello batterie Cucina" (gKitchen) ["Battery"]
+            Group gKitchenPowerOutlet "Prese Cucina" (gKitchen)  ["PowerOutlet"]
+    Group gScale "Scale" (gIndoor) ["Corridor"]
+        Group gScaleSensor "Sensori Scale"  (gScale) ["Sensor"]
+        Group gScaleBattery "Livelllo batterie Scale" (gScale) ["Battery"]
+    Group gGarage "Garage" (gIndoor) ["Garage"]
+        //Group gGarageOutlet "Prese Garage" (gGarage) ["PowerOutlet"]
+        Group gGarageLight "Luce Garage" <lightbulb> (gGarage) ["Lightbulb"]
+        Group gGarageSensor "Sensori Garage" (gGarage) ["Sensor"]
+        Group gGarageGarageDoor "Serranda Garage" (gGarage) ["GarageDoor"]
+        Group gGarageMotionDetector "IR Garage" (gGarage) ["MotionDetector"]
+        Group gGarageBattery "Livello batterie Garage" (gGarage) ["Battery"]
+        Group gValve    "Elettrovalvola" (gGarage) ["Valve"]
+        Group gInverter "Inverter" (gGarage) ["Inverter"]
+        Group gMeter "Meter"(gGarage) ["Inverter"]
+    Group gPortone "Portone" (gIndoor) ["Entry"]
+        Group gPortoneLight "Luce Portone" <lightbulb> (gPortone) ["Lightbulb"]
+        Group gPortoneLock "Apriportoni" <keyring> (gPortone) ["Lock"]
+
+    Group gOutdoor "Outdoor" (gBuilding) ["Outdoor"]
+        Group gGarden "Giardino" (gOutdoor) ["Garden"]
+        Group gGardenBlind "Pergotenda" (gGarden) ["Blinds"]

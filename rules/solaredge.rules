@@ -1,0 +1,88 @@
+var Timer myTimer = null
+//var Timer2 MyTimer2 = null
+
+rule "Calcolo potenza teorica disponibile"
+when 
+    Item Total_Radiation changed
+then
+    val powerMaxTeoricAvailable = (Total_Radiation.state as Number).floatValue
+    //var v_powermaxavailable = v_i_ac_power_post * 1.6 * 14 //Calcolo potenza teorica disponibile
+    Power_Teoric_Available.postUpdate(powerMaxTeoricAvailable*1.6*14*0.1926/1000)  //Calcolo Irradazione diretta * 1,6 mq (singolo pannello) * 14 numero pannelli * 0,1926 ( modulo conversione efficienza 19,26%)
+end
+
+// rule "Potenza richiesta negativa se da rete, positiva se da FV, zero se autoconsumo"
+// when
+//     Item I_AC_Power_Value changed or //Produzione
+//     Item M_Total_Real_Power_Value changed 
+// then
+//    val v_i_ac_power_value = (I_AC_Power_Value.state as Number).floatValue
+//    val v_m_total_real_power_value = (M_Total_Real_Power_Value.state as Number).floatValue
+//    val v_m_total_real_power_valueabs = Math::abs((M_Total_Real_Power_Value.state as Number).floatValue)
+
+//    // var v_powerUpdate = ((I_AC_Power_Value.state as Number).floatValue) - (Math::abs((M_Total_Real_Power_Value.state as Number).floatValue))
+//    M_Total_Real_Power_Value_abs.postUpdate(v_m_total_real_power_valueabs)
+//    Power_Used.postUpdate(v_i_ac_power_value-v_m_total_real_power_value)
+//     logInfo("Calcolo potenza assorbita", "Power_Used Valore: " + v_powerUpdate )
+//     Power_Used.postUpdate(v_powerUpdate)
+    
+// end
+
+rule "Calcolo potenza assorbita"
+// Calcolo facendo la differenza tra produzione e immessa/prelevata. Il valore di M_Total_real_Power è positivo se la potenza è immessa mentre è negativo se prelevata.
+when
+    Item I_AC_Power_Value changed or //Produzione KW
+    Item M_Total_Real_Power_Value changed //Potenza immessa se positiva, negativa se prelevata KW
+then
+    val v_i_ac_power_value = (I_AC_Power_Value.state as Number).floatValue
+    val v_m_total_real_power_value = (M_Total_Real_Power_Value.state as Number).floatValue
+    val v_m_total_real_power_valueabs = Math::abs((M_Total_Real_Power_Value.state as Number).floatValue)
+    M_Total_Real_Power_Value_abs.postUpdate(v_m_total_real_power_valueabs)
+    Power_Used.postUpdate(v_i_ac_power_value-v_m_total_real_power_value)
+end
+
+
+
+rule "Calcolo potenza assorbita da rete e immessa in rete con avviso di superamento soglia massima di prelievo"
+when
+    Item M_Total_Real_Power_Value changed
+then
+    val realPower = M_Total_Real_Power_Value.state as Number //Assorbimento, se negativo assorbimento da rete
+    if  (realPower < 0) {
+                      //  val realPowerAbs = Math::abs(realPower)
+                        val realPowerAbs = Math::abs((M_Total_Real_Power_Value.state as Number).floatValue)
+                        PotenzaAssorbitaDaRete.postUpdate(realPowerAbs)
+                        PotenzaImmessaInRete.postUpdate(0)
+                        if (realPowerAbs > 4.5) {
+                                if (myTimer !== null) { //se il timer è partito non fai nulla 
+                                                      logInfo("rules solaredge", "Timer allarme assorbimento rescheduled " + realPowerAbs)
+                                                      // myTimer.reschedule(now.plusMinutes(1))
+                                }
+                                else { //se il timer non è partito lo fai partire
+                                                      myTimer = createTimer(now.plusMinutes(3), [ |
+                                                        logInfo("rules solaredge", "Timer invio allarme assorbimento " + realPowerAbs)
+                                                        Sonos_Volume.sendCommand(100)
+                                                        playSound("sonos:Beam:RINCON_542A1BD8C3C601400","AllarmeAssorbimento.mp3")
+                                                      //  myTimer2 = createTimer(now.plusSeconds(3), [ |
+                                                      //      Sonos_Volume.sendCommand(60)
+                                                      //      playSound("sonos:Beam:RINCON_542A1BD8C3C601400","AllarmeAssorbimento.mp3")
+                                                      //      myTimer2 = null
+                                                       //     logInfo("rules solaredge", "Timer2 invio allarme assorbimento " + realPowerAbs)
+                                                      //  ] )
+                                                        myTimer = null
+                                                      ] )
+                                                      logInfo("rules solaredge", "Timer allarme assorbimento created " + realPowerAbs)
+                                }
+                        } 
+                        else {
+                                if (myTimer !== null) {
+                                                       logInfo("rules solaredge", "Timer allarme assorbimento canceled " + realPowerAbs)
+                                                        myTimer?.cancel()
+                                                        myTimer = null
+                                } 
+                        }
+    } 
+    else {
+                                                        PotenzaAssorbitaDaRete.postUpdate(0)
+                                                        PotenzaImmessaInRete.postUpdate(realPower)
+    }
+end

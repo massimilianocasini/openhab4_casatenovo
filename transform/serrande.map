@@ -1,0 +1,6 @@
+OFF=Chiusa
+ON=Aperta
+Triggered=Aperta
+Untriggered=Chiusa
+-=No input
+NULL=No input

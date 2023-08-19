@@ -1,0 +1,13 @@
+Rollershutter TapparellaLetto     "Tapparella Letto"     (gBedroom1Blind)  ["Blinds"]                             {channel="shelly:shelly25-roller:349454797cb1:roller#control"}
+Number:Power TapparellaLettoPower "Tapparella Letto Potenza"  (gBedroom1Blind)  ["Blinds", "Power"]               {channel="shelly:shelly25-roller:349454797cb1:meter#currentWatts"}
+Number TapparellaLettoSignal "Tapparella Letto Segnale" (gBedroom1Blind)  ["Blinds", "Status"]                    {channel="shelly:shelly25-roller:349454797cb1:device#wifiSignal"}
+Dimmer TapparellaLettoPosition "Tapparella Letto Posizione" (gBedroom1Blind)  ["Blinds", "Status"]                {channel="shelly:shelly25-roller:349454797cb1:roller#rollerpos"}
+String TapparellaLettoStatus "Tapparella Letto Stato" (gBedroom1Blind)  ["Blinds"]                                {channel="shelly:shelly25-roller:349454797cb1:roller#state"}
+Number:Energy TapparellaLettoEnergy "Tapparella Letto Energia" (gBedroom1Blind)  ["Blinds"]                       {channel="shelly:shelly25-roller:349454797cb1:meter#totalKWH"}
+
+Rollershutter TapparellaStudio     "Tapparella Studio"     (gOfficeBlind)  ["Blinds", "OpenLevel"]                {channel="shelly:shelly25-roller:349454797751:roller#control"}
+Number:Power TapparellaStudioPower "Tapparella Studio Potenza"  (gOfficeBlind)  ["Blinds", "Power"]               {channel="shelly:shelly25-roller:349454797751:meter#currentWatts"}
+Number TapparellaStudioSignal "Tapparella Studio Segnale" (gOfficeBlind)  ["Blinds", "Status"]                    {channel="shelly:shelly25-roller:349454797751:device#wifiSignal"}
+Dimmer TapparellaStudioPosition "Tapparella Studio Posizione" (gOfficeBlind)  ["Blinds", "Status"]                {channel="shelly:shelly25-roller:349454797751:roller#rollerpos"}
+String TapparellaStudioStatus "Tapparella Studio Stato" (gOfficeBlind)  ["Blinds"]                                {channel="shelly:shelly25-roller:349454797751:roller#state"}
+Number:Energy TapparellaStudioEnergy "Tapparella Studio Energia" (gOfficeBlind)  ["Blinds"]                       {channel="shelly:shelly25-roller:349454797751:meter#totalKWH"}

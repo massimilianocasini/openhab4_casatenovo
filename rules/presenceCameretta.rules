@@ -1,0 +1,21 @@
+var Timer occupancyTimer = null
+val int timeoutMinutes = 30 // choose an appropriate value
+
+rule "Spegni luce se non rilevi presenza"
+when
+    Item FGBS001_012_SensorBinary1 received update ON or
+    Item FGS221_010_SwitchBinary1 received update ON
+then
+    if(occupancyTimer === null) {
+        logInfo("PresenceCameretta", "StartTimer")
+        occupancyTimer = createTimer(now.plusMinutes(timeoutMinutes ), [|
+            FGBS001_012_SensorBinary1.sendCommand(OFF)
+            FGS221_010_SwitchBinary1.sendCommand(OFF)
+            occupancyTimer = null
+            logInfo("PresenceCameretta", "StopTimer")
+        ])
+    }
+    else {
+        occupancyTimer.reschedule(now.plusMinutes(timeoutMinutes ))
+    }
+end

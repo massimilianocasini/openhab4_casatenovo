@@ -1,0 +1,184 @@
+rule "zwave:device:77c679d29e:node2"
+when Thing "zwave:device:77c679d29e:node2" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node2"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK")  {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end
+
+rule "zwave:device:77c679d29e:node3"
+when Thing "zwave:device:77c679d29e:node3" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node3"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK") {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end
+
+rule "zwave:device:77c679d29e:node4"
+when Thing "zwave:device:77c679d29e:node4" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node4"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK") {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end
+
+rule "zwave:device:77c679d29e:node6"
+when Thing "zwave:device:77c679d29e:node6" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node6"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK") {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end
+
+rule "zwave:device:77c679d29e:node7"
+when Thing "zwave:device:77c679d29e:node7" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node7"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK") {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end
+
+
+
+rule "zwave:device:77c679d29e:node8"
+when Thing "zwave:device:77c679d29e:node8" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node8"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK") {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end
+
+
+rule "zwave:device:77c679d29e:node10"
+when Thing "zwave:device:77c679d29e:node10" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node10"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK") {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end
+
+rule "zwave:device:77c679d29e:node11"
+when Thing "zwave:device:77c679d29e:node11" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node11"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK") {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end
+
+rule "zwave:device:77c679d29e:node12"
+when Thing "zwave:device:77c679d29e:node12" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node12"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK") {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end
+
+rule "zwave:device:77c679d29e:node13"
+when Thing "zwave:device:77c679d29e:node13" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node13"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK") {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end
+
+rule "zwave:device:77c679d29e:node14"
+when Thing "zwave:device:77c679d29e:node14" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node14"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK") {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end
+
+rule "zwave:device:77c679d29e:node15"
+when Thing "zwave:device:77c679d29e:node15" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node15"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK") {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end
+
+rule "zwave:device:77c679d29e:node16"
+when Thing "zwave:device:77c679d29e:node16" changed
+// to “OFFLINE (COMMUNICATION_ERROR)“
+then
+val String thingUID = "zwave:device:77c679d29e:node16"
+var thingStatusInfo = getThingStatusInfo(thingUID)
+// && (thingStatusInfo.getStatus().toString() == "ONLINE")) {
+    if (thingStatusInfo !== "ONLINE" && Prodino0_optoIn2.state == "220VOK") {
+        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+        telegramAction.sendTelegram(thingUID + " " + thingStatusInfo.getStatus().toString())
+        logError("", "Thing status: " + thingUID + " " + thingStatusInfo.getStatus().toString() )
+    } return
+end

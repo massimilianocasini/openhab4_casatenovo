@@ -1,0 +1,21 @@
+Group          gIP
+
+Switch         GoogleIP             "Device"                          <qualityofservice>                   {channel="network:pingdevice:GoogleIP:online"}
+Number:Time    GoogleIPlt           "8.8.8.8"                         <qualityofservice>    (gInfluxdb)    {channel="network:pingdevice:GoogleIP:latency"}
+DateTime       GoogleIPls           "LastSeen [%1$tH:%1$tM:%1$tS]"    <time>                               {channel="network:pingdevice:GoogleIP:lastseen"}
+
+Switch         CondSalottoIP        "CondSalottoIP [%s]"              <qualityofservice>    (gIP, gNetworkAppliance)      ["NetworkAppliance", "Status"]    {channel="network:pingdevice:CondSalottoIP:online", stateDescription="" [options="ON=ONLINE, OFF=OFFLINE"]}
+Switch         CondCamerettaIP      "CondStudioIP [%s]"               <qualityofservice>    (gIP, gNetworkAppliance)      ["NetworkAppliance", "Status" ]    {channel="network:pingdevice:CondCamerettaIP:online", stateDescription="" [options="ON=ONLINE, OFF=OFFLINE"]}
+Switch         CondLettoIP          "CondLettoIP [%s]"                <qualityofservice>    (gIP, gNetworkAppliance)      ["NetworkAppliance", "Status" ]    {channel="network:pingdevice:CondLettoIP:online", stateDescription="" [options="ON=ONLINE, OFF=OFFLINE"]}
+Switch         CondStudioIP         "CondLettoIP [%s]"                <qualityofservice>    (gIP, gNetworkAppliance)      ["NetworkAppliance", "Status" ]    {channel="network:pingdevice:CondStudioIP:online", stateDescription="" [options="ON=ONLINE, OFF=OFFLINE"]}
+Switch         Repeater1750E        "repeater1750E Garage [%s]"       <qualityofservice>    (gIP, gNetworkAppliance)      ["NetworkAppliance", "Status" ]    {channel="network:pingdevice:repeater1750E:online", stateDescription="" [options="ON=ONLINE, OFF=OFFLINE"]}
+Switch         Repeater1160         "repeater1160 Corridoio [%s]"     <qualityofservice>    (gIP, gNetworkAppliance)      ["NetworkAppliance", "Status" ]    {channel="network:pingdevice:repeater1160:online", stateDescription="" [options="ON=ONLINE, OFF=OFFLINE"]}
+Switch         Prodino              "Prodino [%s]"                    <qualityofservice>    (gIP, gNetworkAppliance)      ["NetworkAppliance", "Status" ]    {channel="network:pingdevice:Prodino:online", stateDescription="" [options="ON=ONLINE, OFF=OFFLINE"]}
+Switch         SolarEdgeInverter    "Inverter [%s]"                   <qualityofservice>    (gIP, gNetworkAppliance)      ["NetworkAppliance", "Status" ]    {channel="network:pingdevice:solaredgeinverter:online", stateDescription="" [options="ON=ONLINE, OFF=OFFLINE"]}
+Switch         Cm3PanelNetwork      "CM3Panel Network [%s]"           <qualityofservice>    (gIP, gNetworkAppliance)      ["NetworkAppliance", "Status" ]    {channel="network:pingdevice:cm3panel:online", stateDescription="" [options="ON=ONLINE, OFF=OFFLINE"]}
+Switch         TasmotaAcqua         "Elettrovalvola Acqua [%s]"       <qualityofservice>    (gIP, gNetworkAppliance)      ["NetworkAppliance", "Status" ]    {channel="network:pingdevice:tasmota_acqua:online", stateDescription="" [options="ON=ONLINE, OFF=OFFLINE"]}
+Switch         Nginx_443            "Servizio Openhab misipino.duckdns.org:443"   <qualityofservice>    (gIP, gNetworkAppliance)  ["NetworkAppliance", "Status" ]    {channel="network:servicedevice:nginx_443:online", stateDescription="" [options="ON=ONLINE, OFF=OFFLINE"]}
+
+Switch         Alice                "Presenza Alice"   <qualityofservice>    (gIP, Gpresence, gNetworkAppliance)  ["Presence", "Status"]    {channel="network:pingdevice:alice:online", stateDescription="" [options="ON=Presente, OFF=Assente"]}
+Switch         Graziella            "Presenza Graziella"   <qualityofservice>    (gIP, Gpresence, gNetworkAppliance)  ["Presence", "Status"]    {channel="network:pingdevice:graziella:online", stateDescription="" [options="ON=Presente, OFF=Assente"]}
+Switch         Massimiliano         "Presenza Massimiliano"   <qualityofservice>    (gIP, Gpresence, gNetworkAppliance)  ["Presence", "Status"]    {channel="network:pingdevice:massimiliano:online", stateDescription="" [options="ON=Presente, OFF=Assente"]}

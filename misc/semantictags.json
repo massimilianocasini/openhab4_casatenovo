@@ -1,0 +1,1287 @@
+[
+  {
+    "uid": "Equipment",
+    "name": "Equipment",
+    "label": "",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_AlarmSystem",
+    "name": "AlarmSystem",
+    "label": "Sistema Di Allarme",
+    "description": "",
+    "synonyms": [
+      "Sistemi Di Allarme"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Battery",
+    "name": "Battery",
+    "label": "Batteria",
+    "description": "",
+    "synonyms": [
+      "Batterie"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Blinds",
+    "name": "Blinds",
+    "label": "Griglie",
+    "description": "",
+    "synonyms": [
+      "Tapparella",
+      "Tapparelle",
+      "Tapparella a Rullo",
+      "Tapparelle a Rullo",
+      "Imposta",
+      "Imposte"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Boiler",
+    "name": "Boiler",
+    "label": "Caldaia",
+    "description": "",
+    "synonyms": [
+      "Caldaie"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Camera",
+    "name": "Camera",
+    "label": "Telecamera",
+    "description": "",
+    "synonyms": [
+      "Telecamere"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Car",
+    "name": "Car",
+    "label": "Auto",
+    "description": "",
+    "synonyms": [
+      "Automobili"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_CleaningRobot",
+    "name": "CleaningRobot",
+    "label": "Robot Pulizia",
+    "description": "",
+    "synonyms": [
+      "Robot Pulizie",
+      "Robot Aspirapolvere",
+      "Robot Aspirapolvere"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Door",
+    "name": "Door",
+    "label": "Porta",
+    "description": "",
+    "synonyms": [
+      "Porte"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Door_BackDoor",
+    "name": "BackDoor",
+    "label": "Porta sul Retro",
+    "description": "",
+    "synonyms": [
+      "Porte sul Retro"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Door_CellarDoor",
+    "name": "CellarDoor",
+    "label": "Porta della Cantina",
+    "description": "",
+    "synonyms": [
+      "Porte della Cantina"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Door_FrontDoor",
+    "name": "FrontDoor",
+    "label": "Porta Ingresso",
+    "description": "",
+    "synonyms": [
+      "Porte Ingresso",
+      "PortaIngresso",
+      "PorteIngresso"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Door_GarageDoor",
+    "name": "GarageDoor",
+    "label": "Porta Garage",
+    "description": "",
+    "synonyms": [
+      "Porte Garage"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Door_Gate",
+    "name": "Gate",
+    "label": "Cancello",
+    "description": "",
+    "synonyms": [
+      "Cancelli"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Door_InnerDoor",
+    "name": "InnerDoor",
+    "label": "Porta Interna",
+    "description": "",
+    "synonyms": [
+      "Porte Interne"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Door_SideDoor",
+    "name": "SideDoor",
+    "label": "Porta Laterali",
+    "description": "",
+    "synonyms": [
+      "Porte Laterali"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Doorbell",
+    "name": "Doorbell",
+    "label": "Campanello",
+    "description": "",
+    "synonyms": [
+      "Campanelli"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Fan",
+    "name": "Fan",
+    "label": "Ventilatore",
+    "description": "",
+    "synonyms": [
+      "Ventilatori"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Fan_CeilingFan",
+    "name": "CeilingFan",
+    "label": "Ventilatore A Soffitto",
+    "description": "",
+    "synonyms": [
+      "Ventilatori A Soffitto"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Fan_KitchenHood",
+    "name": "KitchenHood",
+    "label": "Cappa della Cucina",
+    "description": "",
+    "synonyms": [
+      "Cappe della Cucina"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_HVAC",
+    "name": "HVAC",
+    "label": "HVAC",
+    "description": "",
+    "synonyms": [
+      "Riscaldamento",
+      "Ventilazione",
+      "Aria Condizionata",
+      "A/C",
+      "A/Cs",
+      "AC"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Inverter",
+    "name": "Inverter",
+    "label": "Inverter",
+    "description": "",
+    "synonyms": [
+      "Inverter"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_LawnMower",
+    "name": "LawnMower",
+    "label": "Tagliaerba",
+    "description": "",
+    "synonyms": [
+      "Tagliaerbe"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Lightbulb",
+    "name": "Lightbulb",
+    "label": "Lampadina",
+    "description": "",
+    "synonyms": [
+      "Lampadine",
+      "Lampadina",
+      "Lampadine",
+      "Lampada",
+      "Lampade",
+      "Luci",
+      "Illuminazione"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Lightbulb_LightStripe",
+    "name": "LightStripe",
+    "label": "Striscia Luce",
+    "description": "",
+    "synonyms": [
+      "Strisce Luce"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Lock",
+    "name": "Lock",
+    "label": "Serratura",
+    "description": "",
+    "synonyms": [
+      "Serrature"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_NetworkAppliance",
+    "name": "NetworkAppliance",
+    "label": "Dispositivo di rete",
+    "description": "",
+    "synonyms": [
+      "Dispositivi di rete"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_PowerOutlet",
+    "name": "PowerOutlet",
+    "label": "Presa Elettrica",
+    "description": "",
+    "synonyms": [
+      "Prese Elettriche",
+      "Presa",
+      "Prese"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Projector",
+    "name": "Projector",
+    "label": "Proiettore",
+    "description": "",
+    "synonyms": [
+      "Proiettori",
+      "Proiettore",
+      "Proiettori"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Pump",
+    "name": "Pump",
+    "label": "Pompa",
+    "description": "",
+    "synonyms": [
+      "Pompe"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_RadiatorControl",
+    "name": "RadiatorControl",
+    "label": "Controllo Termosifone",
+    "description": "",
+    "synonyms": [
+      "Controllo Termosifoni",
+      "Termosifone",
+      "Termosifoni"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Receiver",
+    "name": "Receiver",
+    "label": "Ricevitore",
+    "description": "",
+    "synonyms": [
+      "Ricevitori",
+      "Ricevitore Audio",
+      "Ricevitori Audio",
+      "Ricevitore AV",
+      "Ricevitori AV"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_RemoteControl",
+    "name": "RemoteControl",
+    "label": "Telecomando",
+    "description": "",
+    "synonyms": [
+      "Telecomandi"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Screen",
+    "name": "Screen",
+    "label": "Schermo",
+    "description": "",
+    "synonyms": [
+      "Schermi"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Screen_Television",
+    "name": "Television",
+    "label": "Televisione",
+    "description": "",
+    "synonyms": [
+      "Televisioni",
+      "TV",
+      "TV"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Sensor",
+    "name": "Sensor",
+    "label": "Sensore",
+    "description": "",
+    "synonyms": [
+      "Sensori"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Sensor_MotionDetector",
+    "name": "MotionDetector",
+    "label": "Rilevatore di movimento",
+    "description": "",
+    "synonyms": [
+      "Rilevatori di movimento",
+      "Sensore di movimento",
+      "Sensori di movimento"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Sensor_SmokeDetector",
+    "name": "SmokeDetector",
+    "label": "Rilevatore Di Fumo",
+    "description": "",
+    "synonyms": [
+      "Rilevatori Di Fumo"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Siren",
+    "name": "Siren",
+    "label": "Siren",
+    "description": "",
+    "synonyms": [
+      "Sirens"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Smartphone",
+    "name": "Smartphone",
+    "label": "Smartphone",
+    "description": "",
+    "synonyms": [
+      "Smartphone",
+      "Telefono",
+      "Telefoni"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Speaker",
+    "name": "Speaker",
+    "label": "Altoparlante",
+    "description": "",
+    "synonyms": [
+      "Altoparlanti"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Valve",
+    "name": "Valve",
+    "label": "Valvola",
+    "description": "",
+    "synonyms": [
+      "Valvole"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_VoiceAssistant",
+    "name": "VoiceAssistant",
+    "label": "Assistente Vocale",
+    "description": "",
+    "synonyms": [
+      "Assistenti Vocali"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_WallSwitch",
+    "name": "WallSwitch",
+    "label": "Interruttore",
+    "description": "",
+    "synonyms": [
+      "Interruttori"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_WebService",
+    "name": "WebService",
+    "label": "Web Service",
+    "description": "",
+    "synonyms": [
+      "Web Service"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_WebService_WeatherService",
+    "name": "WeatherService",
+    "label": "Servizio Meteo",
+    "description": "",
+    "synonyms": [
+      "Servizi Meteo"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_WhiteGood",
+    "name": "WhiteGood",
+    "label": "Elettrodomestico",
+    "description": "",
+    "synonyms": [
+      "Elettrodomestici"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_WhiteGood_Dishwasher",
+    "name": "Dishwasher",
+    "label": "Lavastoviglie",
+    "description": "",
+    "synonyms": [
+      "Lavastoviglie"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_WhiteGood_Dryer",
+    "name": "Dryer",
+    "label": "Asciugatrice",
+    "description": "",
+    "synonyms": [
+      "Asciugatrici"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_WhiteGood_Freezer",
+    "name": "Freezer",
+    "label": "Congelatore",
+    "description": "",
+    "synonyms": [
+      "Congelatori"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_WhiteGood_Oven",
+    "name": "Oven",
+    "label": "Forno",
+    "description": "",
+    "synonyms": [
+      "Forni"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_WhiteGood_Refrigerator",
+    "name": "Refrigerator",
+    "label": "Frigorifero",
+    "description": "",
+    "synonyms": [
+      "Frigoriferi"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_WhiteGood_WashingMachine",
+    "name": "WashingMachine",
+    "label": "Lavatrice",
+    "description": "",
+    "synonyms": [
+      "Lavatrici"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Equipment_Window",
+    "name": "Window",
+    "label": "Finestra",
+    "description": "",
+    "synonyms": [
+      "Finestre"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location",
+    "name": "Location",
+    "label": "",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor",
+    "name": "Indoor",
+    "label": "Interno",
+    "description": "Anything that is inside a closed building",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Apartment",
+    "name": "Apartment",
+    "label": "Appartamento",
+    "description": "",
+    "synonyms": [
+      "Appartamenti"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Building",
+    "name": "Building",
+    "label": "Edificio",
+    "description": "",
+    "synonyms": [
+      "Edifici"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Building_Garage",
+    "name": "Garage",
+    "label": "Garage",
+    "description": "",
+    "synonyms": [
+      "Garage"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Building_House",
+    "name": "House",
+    "label": "Casa",
+    "description": "",
+    "synonyms": [
+      "Case"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Building_Shed",
+    "name": "Shed",
+    "label": "Capannone",
+    "description": "",
+    "synonyms": [
+      "Capannoni"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Building_SummerHouse",
+    "name": "SummerHouse",
+    "label": "Casa Estiva",
+    "description": "",
+    "synonyms": [
+      "Case Estive",
+      "Seconda Casa",
+      "Seconde Case"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Corridor",
+    "name": "Corridor",
+    "label": "Corridoio",
+    "description": "",
+    "synonyms": [
+      "Corridoi",
+      "Disimpegno",
+      "Disimpegni"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Floor",
+    "name": "Floor",
+    "label": "Piano",
+    "description": "",
+    "synonyms": [
+      "Piani"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Floor_Attic",
+    "name": "Attic",
+    "label": "Attico",
+    "description": "",
+    "synonyms": [
+      "Attici"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Floor_Basement",
+    "name": "Basement",
+    "label": "Seminterrato",
+    "description": "",
+    "synonyms": [
+      "Seminterrati"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Floor_FirstFloor",
+    "name": "FirstFloor",
+    "label": "Primo Piano",
+    "description": "",
+    "synonyms": [
+      "Primi Piani",
+      "Di Sopra"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Floor_GroundFloor",
+    "name": "GroundFloor",
+    "label": "Piano Terra",
+    "description": "",
+    "synonyms": [
+      "Piani Terra",
+      "Di Sotto"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Floor_SecondFloor",
+    "name": "SecondFloor",
+    "label": "Secondo Piano",
+    "description": "",
+    "synonyms": [
+      "Secondi Piani"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Floor_ThirdFloor",
+    "name": "ThirdFloor",
+    "label": "Terzo Piano",
+    "description": "",
+    "synonyms": [
+      "Terzi Piani"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room",
+    "name": "Room",
+    "label": "Stanza",
+    "description": "",
+    "synonyms": [
+      "Stanze"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_Bathroom",
+    "name": "Bathroom",
+    "label": "Bagno",
+    "description": "",
+    "synonyms": [
+      "Bagni",
+      "Bagno",
+      "Bagni",
+      "Bagno per Signore",
+      "Bagni per Signore"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_Bedroom",
+    "name": "Bedroom",
+    "label": "Camera da Letto",
+    "description": "",
+    "synonyms": [
+      "Camere da Letto"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_BoilerRoom",
+    "name": "BoilerRoom",
+    "label": "Stanza Caldaia",
+    "description": "",
+    "synonyms": [
+      "Stanze Caldaia"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_Cellar",
+    "name": "Cellar",
+    "label": "Cantina",
+    "description": "",
+    "synonyms": [
+      "Cantine"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_DiningRoom",
+    "name": "DiningRoom",
+    "label": "Sala Da Pranzo",
+    "description": "",
+    "synonyms": [
+      "Sale Da Pranzo"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_Entry",
+    "name": "Entry",
+    "label": "Entrata",
+    "description": "",
+    "synonyms": [
+      "Entrate",
+      "Anticamera",
+      "Anticamere"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_FamilyRoom",
+    "name": "FamilyRoom",
+    "label": "Soggiorno",
+    "description": "",
+    "synonyms": [
+      "Soggiorni"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_GuestRoom",
+    "name": "GuestRoom",
+    "label": "Stanza degli Ospiti",
+    "description": "",
+    "synonyms": [
+      "Stanze degli Ospiti"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_Kitchen",
+    "name": "Kitchen",
+    "label": "Cucina",
+    "description": "",
+    "synonyms": [
+      "Cucine"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_LaundryRoom",
+    "name": "LaundryRoom",
+    "label": "Lavanderia",
+    "description": "",
+    "synonyms": [
+      "Lavanderie"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_LivingRoom",
+    "name": "LivingRoom",
+    "label": "Soggiorno",
+    "description": "",
+    "synonyms": [
+      "Soggiorni"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_Office",
+    "name": "Office",
+    "label": "Ufficio",
+    "description": "",
+    "synonyms": [
+      "Uffici"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Indoor_Room_Veranda",
+    "name": "Veranda",
+    "label": "Veranda",
+    "description": "",
+    "synonyms": [
+      "Verande"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Outdoor",
+    "name": "Outdoor",
+    "label": "Esterno",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Location_Outdoor_Carport",
+    "name": "Carport",
+    "label": "Rimessa",
+    "description": "",
+    "synonyms": [
+      "Rimesse"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Outdoor_Driveway",
+    "name": "Driveway",
+    "label": "Vialetto",
+    "description": "",
+    "synonyms": [
+      "Vialetti"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Outdoor_Garden",
+    "name": "Garden",
+    "label": "Giardino",
+    "description": "",
+    "synonyms": [
+      "Giardini"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Outdoor_Patio",
+    "name": "Patio",
+    "label": "Patio",
+    "description": "",
+    "synonyms": [
+      "Patii"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Outdoor_Porch",
+    "name": "Porch",
+    "label": "Porticato",
+    "description": "",
+    "synonyms": [
+      "Porticati"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Location_Outdoor_Terrace",
+    "name": "Terrace",
+    "label": "Terrazzo",
+    "description": "",
+    "synonyms": [
+      "Terrazzi",
+      "Balcone",
+      "Balconi"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Point",
+    "name": "Point",
+    "label": "",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Point_Alarm",
+    "name": "Alarm",
+    "label": "Allarme",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Point_Control",
+    "name": "Control",
+    "label": "Controllo",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Point_Control_Switch",
+    "name": "Switch",
+    "label": "Interruttore",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Point_Measurement",
+    "name": "Measurement",
+    "label": "Misurazione",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Point_Setpoint",
+    "name": "Setpoint",
+    "label": "Valore Impostato",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Point_Status",
+    "name": "Status",
+    "label": "Stato",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Point_Status_LowBattery",
+    "name": "LowBattery",
+    "label": "Batteria Scarica",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Point_Status_OpenLevel",
+    "name": "OpenLevel",
+    "label": "LivelloAperto",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Point_Status_OpenState",
+    "name": "OpenState",
+    "label": "StatoAperto",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Point_Status_Tampered",
+    "name": "Tampered",
+    "label": "Manomesso",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Point_Status_Tilt",
+    "name": "Tilt",
+    "label": "Inclinazione",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property",
+    "name": "Property",
+    "label": "",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_CO",
+    "name": "CO",
+    "label": "CO",
+    "description": "",
+    "synonyms": [
+      "Monossido di Carbonio"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Property_CO2",
+    "name": "CO2",
+    "label": "CO2",
+    "description": "",
+    "synonyms": [
+      "Diossido di Carbonio"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Property_ColorTemperature",
+    "name": "ColorTemperature",
+    "label": "Temperatura Colore",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Current",
+    "name": "Current",
+    "label": "Corrente",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Duration",
+    "name": "Duration",
+    "label": "Durata",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Energy",
+    "name": "Energy",
+    "label": "Energia",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Frequency",
+    "name": "Frequency",
+    "label": "Frequenza",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Gas",
+    "name": "Gas",
+    "label": "Gas",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Humidity",
+    "name": "Humidity",
+    "label": "Umidità",
+    "description": "",
+    "synonyms": [
+      "Umidità"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Property_Level",
+    "name": "Level",
+    "label": "Livello",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Light",
+    "name": "Light",
+    "label": "Luce",
+    "description": "",
+    "synonyms": [
+      "Luci",
+      "Illuminazione"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Property_Noise",
+    "name": "Noise",
+    "label": "Rumore",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Oil",
+    "name": "Oil",
+    "label": "Olio",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Opening",
+    "name": "Opening",
+    "label": "Apertura",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Power",
+    "name": "Power",
+    "label": "Potenza",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Presence",
+    "name": "Presence",
+    "label": "Presenza",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Pressure",
+    "name": "Pressure",
+    "label": "Pressione",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Rain",
+    "name": "Rain",
+    "label": "Pioggia",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Smoke",
+    "name": "Smoke",
+    "label": "Fumo",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_SoundVolume",
+    "name": "SoundVolume",
+    "label": "Volume Suono",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Temperature",
+    "name": "Temperature",
+    "label": "Temperatura",
+    "description": "",
+    "synonyms": [
+      "Temperature"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Property_Timestamp",
+    "name": "Timestamp",
+    "label": "Data e ora",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Ultraviolet",
+    "name": "Ultraviolet",
+    "label": "Ultravioletto",
+    "description": "",
+    "synonyms": [
+      "UV"
+    ],
+    "editable": false
+  },
+  {
+    "uid": "Property_Vibration",
+    "name": "Vibration",
+    "label": "Vibrazione",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Voltage",
+    "name": "Voltage",
+    "label": "Tensione",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Water",
+    "name": "Water",
+    "label": "Acqua",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  },
+  {
+    "uid": "Property_Wind",
+    "name": "Wind",
+    "label": "Vento",
+    "description": "",
+    "synonyms": [],
+    "editable": false
+  }
+]

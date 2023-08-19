@@ -1,0 +1,15 @@
+Number Scena "Scena" { synonyms="Condizionatore", ga="Scene" }
+//Number Modalita
+
+//Gestione Riscaldamento
+Number Riscaldamento_Modo    "Modo riscaldamento"    <temperature>  (gMapDb)  	//Riscaldamento automatico o manuale
+Number Riscaldamento_Man_SP "SetPoint manuale [%.1f °C]" <temperature>  (gMapDb) //SetPoint manuale riscaldamento
+Number Riscaldamento_Auto_SP "SetPoint Auto [%.1f °C]" <temperature> (gMapDb)
+
+// gestione presenza
+Group:Switch:AND(OFF,ON) gPresence_Sensors <presence> // all presence sensors belong to this group
+Switch Presence "Someone is Present" <presence> // master presence switch, represents to the rest of OH where someone is home
+Switch Presence_Timer { expire="15m,command=OFF" } // anti-flapping timer
+Switch Presence_Auto <switch>  //Presenza automatica o manuale
+
+Switch VoglioDormire <switch>

@@ -1,0 +1,28 @@
+// rule "Test termostato"
+// when
+//     Time cron "0 0/1 * 1/1 * ? *"
+// then 
+//         Aqara1M.postUpdate("heat")
+//         Aqara1S.postUpdate(Riscaldamento_Auto_SP.state)
+//         Aqara2M.postUpdate("heat")
+//         Aqara2S.postUpdate(Riscaldamento_Auto_SP.state)
+//         Lumi1M.postUpdate("heat")
+//         Lumi1S.postUpdate(Riscaldamento_Auto_SP.state)
+// end
+
+// rule "Update item AVGTemperature"
+// when
+//      Member of gAvgTemperatura changed
+// then
+//         AvgTemperature.postUpdate(gAvgTemperatura.state)
+// end
+
+// rule "Update item AVGUmidità"
+// when
+//      Member of gAvgUmidita changed
+// then
+//         AvgUmidita.postUpdate(gAvgUmidita.state)
+// end
+
+
+

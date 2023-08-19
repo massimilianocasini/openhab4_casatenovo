@@ -1,0 +1,8 @@
+String Roomba_Command { channel="irobot:roomba:my_roomba:command" }
+String Roomba_Cycle "Missione attuale" (gCleaningRobot) ["Status"] { channel="irobot:roomba:my_roomba:cycle" }
+String Roomba_Phase "Stato della missione" <movecontrol>  (gCleaningRobot) ["Status"] { channel="irobot:roomba:my_roomba:phase" }
+Number Roomba_Battery "Livello batteria iroomba [%s %%]" <batterylevel>  (gCleaningRobot, gBattery) ["Status"] { channel="irobot:roomba:my_roomba:battery" }
+String Roomba_Bin "Stato cestino iroomba" (gCleaningRobot) ["Status"] { channel="irobot:roomba:my_roomba:bin" }
+String Roomba_Error <error> (gCleaningRobot) ["Status"] { channel="irobot:roomba:my_roomba:error" }
+Number Roomba_Rssi <qualityofservice> (gCleaningRobot) { channel="irobot:roomba:my_roomba:rssi" }
+Number Roomba_snr <qualityofservice> (gCleaningRobot) { channel="irobot:roomba:my_roomba:snr" } 

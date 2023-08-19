@@ -1,0 +1,54 @@
+rule "Speedtest"
+when
+    Time cron "0 0/15 * * * ?" or
+    Item SpeedtestRerun changed from OFF to ON
+
+then
+    val Number calc = 125000 // Converting from bits to Mbits
+    logInfo("speedtest", "–> Misurazione in corso ...")
+    SpeedtestRunning.postUpdate("Misurazione in corso ...")
+
+    // execute the script, you may have to change the path depending on your system
+    // Please use -f json and not -f json-pretty
+    var speedtestCliOutput = executeCommandLine(Duration.ofSeconds(120),"sudo","-u","openhabian","/usr/bin/speedtest","--accept-gdpr","-s", "3243", "-f","json")
+    logInfo("speedtest", "--> speedtest output:\n" + speedtestCliOutput)
+    SpeedtestRunning.postUpdate("Analisi dei risultati ...")
+    // starts off with a fairly simple error check, should be enough to catch all problems I can think of
+    if (speedtestCliOutput.startsWith("{\"type\":\"result\",")) {
+ 
+        var ping = Float::parseFloat(transform("JSONPATH", "$.ping.latency", speedtestCliOutput))
+        SpeedtestResultPing.postUpdate(ping)
+
+        var jitter = Float::parseFloat(transform("JSONPATH", "$.ping.jitter", speedtestCliOutput))
+        SpeedtestResultJitter.postUpdate(jitter)
+        
+        var float down = Float::parseFloat(transform("JSONPATH", "$.download.bandwidth", speedtestCliOutput))
+        down = (down / calc)
+        SpeedtestResultDown.postUpdate(down)
+        
+        var float up = Float::parseFloat(transform("JSONPATH", "$.upload.bandwidth", speedtestCliOutput))
+        up = (up / calc)
+        SpeedtestResultUp.postUpdate(up)
+        
+        var String url = transform("JSONPATH", "$.result.url", speedtestCliOutput)
+        val img = url + ".png"
+        SpeedtestResultImage.postUpdate(img)
+        SpeedtestSummary.postUpdate(String::format("ᐁ  %.1f Mbit/s  ᐃ %.1f Mbit/s (%.0f ms)", down, up, ping))
+        SpeedtestRunning.postUpdate("-")
+        // update timestamp for last execution
+        
+        val DateTimeType ResultDate = DateTimeType.valueOf(transform("JSONPATH", "$.timestamp", speedtestCliOutput))
+        SpeedtestResultDate.postUpdate(ResultDate)
+    }
+    else {
+            SpeedtestResultPing.postUpdate(0)
+            SpeedtestResultJitter.postUpdate(0)
+            SpeedtestResultDown.postUpdate(0)
+            SpeedtestResultUp.postUpdate(0)
+            SpeedtestSummary.postUpdate("(unknown)")
+            SpeedtestRunning.postUpdate("Error")
+            logError("speedtest", "--> speedtest failed. Output:\n" + speedtestCliOutput)
+    }
+SpeedtestRerun.postUpdate(OFF)
+SpeedtestRunning.postUpdate("Misurazione terminata.")
+end

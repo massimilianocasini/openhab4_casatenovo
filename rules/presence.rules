@@ -1,0 +1,107 @@
+var int flag = 1
+
+// rule "Presenza accendi albero"
+// when
+//     Item gPresence_Sensors changed
+// then
+//     if(Presence_Timer.state == ON && gPresence_Sensors.state == Presence.state ) {
+//       //  logInfo("presence", "Timer is running but group and proxy are the same, cancelling timer")
+//         Presence_Timer.postUpdate(OFF)
+//     }
+//     else if(gPresence_Sensors.state == Presence.state) {
+//       //  logInfo("presence", "No timer and both group and proxy are the same, nothing to do")
+//         return;
+//     }
+
+//     if(gPresence_Sensors.state == OFF && Presence_Auto.state==ON) {
+//         logInfo("presence", "Non vedo più nessuno, setto anti-flapping timer")
+//         Presence_Timer.sendCommand(ON)
+//     }
+//     else if(gPresence_Sensors.state == ON && Presence_Auto.state == ON) {
+//         logInfo("presence", "Ho visto qualcuno, setto presence to ON")
+//         Presence.sendCommand(ON)
+//        // SwitchBinary1_AlberoNatale_Salotto_ZW22.sendCommand(ON) //Albero
+//        // sendTelegram("bot1", "Albero ON")
+//     }
+    
+// end
+
+// rule "Timer di presenza terminato, non c'è nessuno"
+// when
+//         Item Presence_Timer received command OFF
+// then
+//         logInfo("presence", "Tutti sono usciti, setto la presenza a OFF")
+//         Presence.sendCommand(OFF)
+//      //   StudioLuce.sendCommand(OFF)
+//        //SwitchBinary1_AlberoNatale_Salotto_ZW22.sendCommand(OFF) //Albero
+//   //  sendTelegram("bot1", "Albero OFF")
+// end
+
+// rule "Presenza rilevata - presence ON"
+// when
+//         Item Presence changed
+// then
+//         if (Presence.state==ON && Presence_Auto.state==ON){
+//         // SwitchBinary1_AlberoNatale_Salotto_ZW22.sendCommand(ON) //Albero
+//      //   StudioLuce.sendCommand(ON)
+//         }
+// end
+
+// rule "Azzera variabili quando disabilito il presence"
+// when
+//         Item Presence_Auto changed
+// then
+//         Presence_Timer.sendCommand(OFF)
+//         Presence.sendCommand(OFF)
+//         gPresence_Sensors.sendCommand(OFF)
+// end
+
+// rule "Accendi luce ingresso "
+// when
+        
+//         Item FGBS222_013_Input2 changed
+// then
+//         val IkeaIngressoB_state = IkeaIngressoB.state as Number
+//         val FGD211_003_SwitchDimmer_state = FGD211_003_SwitchDimmer.state as Number 
+//         if (IkeaIngressoB_state==0 && FGBS222_013_Input2.state==ON && FGD211_003_SwitchDimmer_state==0) {
+//             IkeaIngressoB.sendCommand(15)
+//            // IkeaLed1B.sendCommand(15)
+//            // IkeaLed2B.sendCommand(15)
+//          }
+//          else if (IkeaIngressoB_state==15 && FGBS222_013_Input2.state==OFF) {
+//              Thread::sleep(20000)
+//              IkeaIngressoB.sendCommand(0)
+//         //     IkeaLed1B.sendCommand(0)
+//          //    IkeaLed2B.sendCommand(0)
+//          }
+// end
+
+rule "Accendi luce corridoio"
+when
+        
+        Item FGBS222_013_Input2 changed
+then
+       // val FGD211_003_SwitchDimmer_state = FGD211_003_SwitchDimmer.state as Number
+        if (FGD211_003_SwitchDimmer.state==0 && FGBS222_013_Input2.state==ON && now.getHour > 12 && SunElevation.state < 10) {
+            flag = 1
+            FGD211_003_SwitchDimmer.sendCommand(15)
+         }
+        if (FGD211_003_SwitchDimmer.state==0 && FGBS222_013_Input2.state==ON && now.getHour > 12 && SunElevation.state < -30) {
+            flag = 2
+            FGD211_003_SwitchDimmer.sendCommand(45)
+         }
+        if (FGD211_003_SwitchDimmer.state==15 && FGBS222_013_Input2.state==OFF && flag==1) {
+             flag = 0
+             Thread::sleep(20000)
+             if (FGD211_003_SwitchDimmer.state==15) {
+             FGD211_003_SwitchDimmer.sendCommand(0)
+             }
+        }
+        if (FGD211_003_SwitchDimmer.state==45 && FGBS222_013_Input2.state==OFF && flag==2) {
+             flag = 0
+             Thread::sleep(50000)
+             if (FGD211_003_SwitchDimmer.state==45) {
+             FGD211_003_SwitchDimmer.sendCommand(0)
+             }
+         }
+end

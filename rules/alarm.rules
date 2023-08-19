@@ -1,0 +1,94 @@
+rule "Antifurto cambio stato swicth case"
+when 
+    Item Prodino0_optoIn0 changed
+then
+val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+
+switch(Prodino0_optoIn0.state) {
+  case  "INSERITO" : {
+    telegramActions.sendTelegram("Antifurto INSerito!")
+    logInfo("Alarm.rules", "INSERITO")
+    if (DaikinACUnit_Mode_Studio.state == "HEAT" && DaikinACUnit_Power_Studio.state == ON) {
+        DaikinACUnit_Power_Studio.sendCommand(OFF)
+        telegramActions.sendTelegram("Condizionatore Studio spento")
+    }
+    if (DaikinACUnit_Mode_Soggiorno.state == "HEAT" && DaikinACUnit_Power_Soggiorno.state == ON) {
+        DaikinACUnit_Power_Soggiorno.sendCommand(OFF)
+        telegramActions.sendTelegram("Condizionatore Soggiorno spento")
+    }
+    if (DaikinACUnit_Mode_Cameretta.state == "HEAT" && DaikinACUnit_Power_Cameretta.state == ON) {
+        DaikinACUnit_Power_Cameretta.sendCommand(OFF)
+        telegramActions.sendTelegram("Condizionatore Cameretta spento")
+    }
+    if (DaikinACUnit_Mode_Letto.state == "HEAT" && DaikinACUnit_Power_Letto.state == ON) {
+        DaikinACUnit_Power_Letto.sendCommand(OFF)
+        telegramActions.sendTelegram("Condizionatore Letto spento")
+    }
+    if (TapparellaLettoPosition.state > 0) {
+        TapparellaLettoPosition.sendCommand(0)
+    }
+    if (TapparellaStudioPosition.state > 0) {
+        TapparellaStudioPosition.sendCommand(0)
+    }
+  }
+  case "DISINSERITO": {
+    telegramActions.sendTelegram("Antifurto DIsInserito!")
+    logInfo("Alarm.rules", "INSERITO")
+    if (SunElevation.state > -3 && now.getHour > 8) {
+        TapparellaLettoPosition.sendCommand(100)
+        TapparellaStudioPosition.sendCommand(100)
+    }
+  }
+}
+end
+
+rule "Allarme antifurto"
+when
+    Item Prodino0_optoIn1 changed
+then
+  val pushoverActions = getActions("pushover", "pushover:pushover-account:account")
+  val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+  if(Prodino0_optoIn1.state == "ALLARME") {
+    var receipt = pushoverActions.sendPriorityMessage("Allarme antifurto", "openhab3", 2)
+    telegramActions.sendTelegram("Allarme antifurto")
+    // wait for your cancel condition
+      if( receipt !== null ) {
+        pushoverActions.cancelPriorityMessage(receipt)
+        receipt = null
+      }
+  }
+  else if (Prodino0_optoIn1.state == "RIPOSO") {
+    pushoverActions.sendMessage("FINE Allarme antifurto", "openhab3")
+    telegramActions.sendTelegram("FINE Allarme antifurto")
+    // wait for your cancel condition
+    if( receipt !== null ) {
+      pushoverActions.cancelPriorityMessage(receipt)
+      receipt = null
+    }
+  }
+end
+rule "Mancanza rete"
+when
+    Item Prodino0_optoIn2 changed
+then
+  val pushoverActions = getActions("pushover", "pushover:pushover-account:account")
+  val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+  if(Prodino0_optoIn2.state == "220VOK") {
+    var receipt = pushoverActions.sendPriorityMessage("Ripristino 220V", "openhab3", 2)
+    telegramActions.sendTelegram("Ripristino 220V")
+    // wait for your cancel condition
+    if( receipt !== null ) {
+      pushoverActions.cancelPriorityMessage(receipt)
+      receipt = null
+        }
+  }
+  else if (Prodino0_optoIn2.state == "NO220V") {
+    var receipt = pushoverActions.sendPriorityMessage("Mancanza 220V", "openhab3", 2)
+    telegramActions.sendTelegram("Mancanza 220V")
+    // wait for your cancel condition
+    if( receipt !== null ) {
+      pushoverActions.cancelPriorityMessage(receipt)
+      receipt = null
+        }
+  }
+end

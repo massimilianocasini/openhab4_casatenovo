@@ -1,0 +1,9 @@
+rule "Test invio"
+when 
+	Item Test changed to ON
+then
+	//Sonos_Volume.sendCommand(85)
+	//playSound("sonos:Beam:RINCON_542A1BD8C3C601400","doorbell.mp3")
+	//MiniStudioVolume.sendCommand(50)
+	//playSound("chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f","doorbell.mp3")
+end

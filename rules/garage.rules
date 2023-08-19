@@ -1,0 +1,42 @@
+rule "Invia messaggio a BOT quando si apre/chiude la serranda"
+when
+    Item FGBS001_007_SensorBinary1 changed
+then
+    if(FGBS001_007_SensorBinary1.state == ON) {
+    val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+    val lgwebosActions = getActions("lgwebos","lgwebos:WebOSTV:d19b82c8-a123-40fe-c940-70169a605dc6")
+    telegramActions.sendTelegram("Garage Serranda Aperta")
+    lgwebosActions.showToast("Garage Serranda Aperta")
+  //  Sonos_Volume.sendCommand(30)
+//	playSound("sonos:Beam:RINCON_542A1BD8C3C601400","doorbell.mp3") 
+    MiniStudioVolume.sendCommand(30)
+    MiniKitchenVolume.sendCommand(30)
+    playSound("chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f", "doorbell.mp3")
+    playSound("chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec", "doorbell.mp3")
+}
+  //  playSound("chromecast:audiogroup:e62520b9-9160-4e00-bc71-ea1683e24e54","doorbell.mp3")
+else {
+    val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+    val lgwebosActions = getActions("lgwebos","lgwebos:WebOSTV:d19b82c8-a123-40fe-c940-70169a605dc6")
+    telegramActions.sendTelegram("Garage Serranda Chiusa")
+    lgwebosActions.showToast("Garage Serranda Chiusa")  
+    }
+end
+
+rule "test"
+when
+Item Test changed
+then
+if (Test.state == ON) {
+    MiniStudioVolume.sendCommand(30)
+    MiniKitchenVolume.sendCommand(30)
+    playSound("chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f", "doorbell.mp3")
+    playSound("chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec", "doorbell.mp3")
+}
+else {
+    MiniStudioVolume.sendCommand(30)
+    MiniKitchenVolume.sendCommand(30)
+    playSound("chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f", "doorbell.mp3")
+    playSound("chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec", "doorbell.mp3")
+}
+end

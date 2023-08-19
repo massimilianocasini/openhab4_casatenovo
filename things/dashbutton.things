@@ -1,0 +1,1 @@
+Thing amazondashbutton:dashbutton:finish "My Dash Button" @ "Living" [ macAddress="34:d2:70:af:18:10", pcapNetworkInterfaceName="eth0", packetInterval=5000 ]

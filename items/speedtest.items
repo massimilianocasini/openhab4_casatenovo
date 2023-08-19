@@ -1,0 +1,30 @@
+Group gSpeedtest <speedtest>
+Group gSpeedChart
+String SpeedtestCharts
+
+// String      SpeedtestSummary        "Speedtest [%s]"                                            <speedtest_summary>   (gSpeedtest)
+// Number      SpeedtestResultPing     "Ping [%.3f ms]"                                            <speedtest_ping>      (gSpeedtest, gSpeedChart)
+// Number      SpeedtestResultJitter   "Jitter [%.3f ms]"                                          <speedtest_ping>      (gSpeedtest, gSpeedChart)  
+// Number      SpeedtestResultDown     "Download [%.2f Mbit/s]"                                    <speedtest_download>  (gSpeedtest, gSpeedChart)
+// Number      SpeedtestResultUp       "Upload [%.2f Mbit/s]"                                      <speedtest_upload>    (gSpeedtest, gSpeedChart)
+// String      SpeedtestRunning        "Speedtest running ... [%s]"                                <speedtest_run>       (gSpeedtest)
+// Switch      SpeedtestRerun          "Manuale"                                                   <speedtest_reload>    (gSpeedtest)
+// DateTime    SpeedtestResultDate     "Last Run [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"                 <speedtest_date>      (gSpeedtest)
+// String      SpeedtestResultError    "Error Message [%s]"                                        <speedtest_error>     (gSpeedtest)
+
+// String      SpeedtestResultImage    "Immagine"
+
+String              	    Speedtest_Server  	            "Server"                (gSpeedtest)                  { channel="speedtest:speedtest:myspeedtest:server" }
+Number:Time              	Speedtest_Ping_Jitter         	"Ping Jitter"     <speedtest_ping>      (gSpeedtest, gSpeedChart)     { channel="speedtest:speedtest:myspeedtest:pingJitter" }
+Number:Time              	Speedtest_Ping_Latency	        "Ping Latency"    <speedtest_ping> 	(gSpeedtest, gSpeedChart)     { channel="speedtest:speedtest:myspeedtest:pingLatency" }
+Number:DataTransferRate     Speedtest_Download_Bandwith	    "Download Bandwith"   <speedtest_download>  (gSpeedtest, gSpeedChart)     { channel="speedtest:speedtest:myspeedtest:downloadBandwidth" }
+Number:DataAmount           Speedtest_Download_Bytes	    "Download Bytes"      <speedtest_download>	(gSpeedtest, gSpeedChart)     { channel="speedtest:speedtest:myspeedtest:downloadBytes" }
+Number:Time              	Speedtest_Download_Elapsed	    "Download Elapsed"      (gSpeedtest, gSpeedChart)     { channel="speedtest:speedtest:myspeedtest:downloadElapsed" }
+Number:DataTransferRate     Speedtest_Upload_Bandwith	    "Upload Bandwith"     <speedtest_upload>  	(gSpeedtest, gSpeedChart)     { channel="speedtest:speedtest:myspeedtest:uploadBandwidth" }
+Number:DataAmount           Speedtest_Upload_Bytes	        "Upload Bytes"      	<speedtest_upload> (gSpeedtest, gSpeedChart)     { channel="speedtest:speedtest:myspeedtest:uploadBytes" }
+Number:Time              	Speedtest_Upload_Elapsed        "Upload Elapsed"      	(gSpeedtest, gSpeedChart)     { channel="speedtest:speedtest:myspeedtest:uploadElapsed" }
+String              	    Speedtest_ISP         	        "ISP"      	            { channel="speedtest:speedtest:myspeedtest:isp" }
+String              	    Speedtest_Interface_InternalIP  "Internal IP Address"   { channel="speedtest:speedtest:myspeedtest:interfaceInternalIp" }
+String              	    Speedtest_Interface_ExternalIP  "External IP Address"	{ channel="speedtest:speedtest:myspeedtest:interfaceExternalIp" }
+String              	    Speedtest_ResultURL    	        "Result URL"	        { channel="speedtest:speedtest:myspeedtest:resultUrl" }
+Switch              	    Speedtest_TriggerTest    	    "Trigger Test"	        { channel="speedtest:speedtest:myspeedtest:triggerTest" }

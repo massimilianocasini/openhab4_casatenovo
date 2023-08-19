@@ -1,0 +1,58 @@
+//https://www.freeformatter.com/cron-expression-generator-quartz.html
+//Seconds	Minutes	    Hours	Day Of Month	Month	Day Of Week	            Year
+//  0	        30	      1	        ?	          *	    MON,TUE,WED,THU,FRI	    *
+
+rule "invia a telegram lo stato caldaia ON"
+when
+    Item FGS221_002_SwitchBinary2 changed from OFF to ON
+then
+    FGS221_002_SwitchBinary2_N.postUpdate(1)
+    var riscaldamentomodo = Riscaldamento_Modo.state
+    var tempint = Lumi4T.state as Number
+    var setpointauto = Riscaldamento_Auto_SP.state
+    var setpointmanu = Riscaldamento_Man_SP.state
+    val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+    val lgwebosActions = getActions("lgwebos","lgwebos:WebOSTV:d19b82c8-a123-40fe-c940-70169a605dc6")
+    telegramActions.sendTelegram("Modo: " + riscaldamentomodo + " Termosifoni ON Temp Attuale: " + tempint + " SetPointAuto:" + setpointauto + " SetPointManu:" + setpointmanu )
+    lgwebosActions.showToast("Caldaia ON")
+end 
+
+rule "invia a telegram lo stato caldaia OFF"
+when
+    Item FGS221_002_SwitchBinary2 changed from ON to OFF
+then
+    FGS221_002_SwitchBinary2_N.postUpdate(0)
+    var riscaldamentomodo = Riscaldamento_Modo.state
+    var tempint = Lumi4T.state as Number
+    var setpointauto = Riscaldamento_Auto_SP.state
+    var setpointmanu = Riscaldamento_Man_SP.state
+    val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+    val lgwebosActions = getActions("lgwebos","lgwebos:WebOSTV:d19b82c8-a123-40fe-c940-70169a605dc6")
+    telegramActions.sendTelegram("Modo: " + riscaldamentomodo + " Termosifoni OFF Temp Attuale: " + tempint + " SetPointAuto:" + setpointauto + " SetPointManu:  " + setpointmanu )
+    lgwebosActions.showToast("Caldaia OFF")
+end 
+
+rule "Manda in automatico (1) il cronotermostato alle 00:00"
+when 
+Time cron "0 00 00 ? * * *"
+then
+      Riscaldamento_Modo.sendCommand(1)
+
+end
+
+
+
+
+// rule "Set temperatura default condizionamento"
+// when
+//   Item DaikinACUnit_Mode_Studio changed to Cold or
+//   Item DaikinACUnit_Mode_Soggiorno changed to Cold or
+//   Item DaikinACUnit_Mode_Cameretta changed to Cold or
+//   Item DaikinACUnit_Mode_Letto changed to Cold
+
+// then
+//     DaikinACUnit_SetPoint_Studio.sendCommand(27)
+//     DaikinACUnit_SetPoint_Soggiorno.sendCommand(27)
+//     DaikinACUnit_SetPoint_Cameretta.sendCommand(27)
+//     DaikinACUnit_SetPoint_Letto.sendCommand(27)
+// end

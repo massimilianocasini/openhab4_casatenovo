@@ -1,0 +1,3 @@
+String garageCamMjpeg {channel="ipcamera:generic:a58f9a2282:mjpegUrl"}
+String garageCamHls {channel="ipcamera:generic:3e80d95c1f:hlsUrl"}
+String soggiornoCam {channel="ipcamera:generic:3e80d95c1f:mjpegUrl"}

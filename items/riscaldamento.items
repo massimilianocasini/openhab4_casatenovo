@@ -1,0 +1,6 @@
+//Gestione Riscaldamento
+String Riscaldamento_Modo    "Modo riscaldamento"    <temperature>  (gMapDb, gCorridoio) 	//Riscaldamento automatico o manuale
+Number Riscaldamento_Man_SP "SetPoint Manuale [%.1f °C]" <temperature>  (gMapDb, gCorridoio)  //SetPoint manuale riscaldamento
+Number Riscaldamento_Auto_SP "SetPoint Auto [%.1f °C]" <temperature> (gMapDb, gCorridoio)
+
+DateTime RiscaldamentoStart

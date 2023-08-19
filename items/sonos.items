@@ -1,0 +1,2 @@
+Dimmer Sonos_Volume       "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Beam:RINCON_542A1BD8C3C601400:volume"}
+String Sonos_NotificationSound       "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Beam:RINCON_542A1BD8C3C601400:notificationsound"} 

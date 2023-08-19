@@ -1,0 +1,9 @@
+Strategies {
+    default = everyChange, restoreOnStartup
+}
+Items {
+  *: strategy = everyChange, restoreOnStartup
+  gAvgUmidita: strategy = everyChange, restoreOnStartup
+  gAvgTemperatura: strategy = everyChange, restoreOnStartup
+  Lumi1T: strategy = everyMinute, everyChange, restoreOnStartup
+}

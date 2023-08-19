@@ -1,0 +1,6 @@
+OPEN=Connesso
+CLOSED=Non connesso
+NULL=unknown
+ON=Presente
+OFF= Assente
+-=unknown

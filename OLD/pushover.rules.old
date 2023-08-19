@@ -1,0 +1,20 @@
+
+// rule "Sensore acqua"
+// when
+//     Member of gWaterSensors changed 
+// then
+//     val actions = getActions("pushover", "pushover:pushover-account:account")
+//     val host = triggeringItem
+//     if (host.state==ON) {
+//     //    actions.sendMessage("Rilevato allagamento dal sensore "+ host.name , "openHAB3") normal messagge
+//         var receipt = actions.sendPriorityMessage("Rilevato allagamento dal sensore "+ host.name, "openhab3", 2)
+//     // wait for your cancel condition
+//         if( receipt !== null ) {
+//             actions.cancelPriorityMessage(receipt)
+//             receipt = null
+//         }
+//     }
+//     else if (host.state==OFF) {
+//         actions.sendMessage("Allagamento risolto "+ host.name , "openHAB3")
+//     }
+// end
