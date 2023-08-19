@@ -1,0 +1,6 @@
+.DS_Store
+services/pushover.cfg
+services/weather.cfg.old
+things/pushover.things
+things/telegram.things
+things/openweathermap.things
