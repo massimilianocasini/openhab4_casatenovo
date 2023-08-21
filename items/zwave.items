@@ -7,7 +7,7 @@ Number FGS221_002_SwitchBinary2_N "Item virtuale stato caldaia" (gInfluxdb)
 
 
 //FGD211 Universal Dimmer 500W, Corridoio
-Dimmer FGD211_003_SwitchDimmer "Luce Corridoio [%d %%]" <light> (gCorridorLight) ["Switch", "Light"] {ga="Light" [roomHint="Corridoio"], channel="zwave:device:77c679d29e:node3:switch_dimmer"}
+Dimmer FGD211_003_SwitchDimmer "Luce Corridoio [%d %%]" <light> (gCorridorLight) ["Control", "Light"] {ga="Light" [roomHint="Corridoio"], channel="zwave:device:77c679d29e:node3:switch_dimmer"}
 
 //FGS222 Double relay Switch 2x1.5kW, Portone
 Switch FGS222_004_SwitchBinary "Binary"  {channel="zwave:device:77c679d29e:node4:switch_binary"}
@@ -16,23 +16,23 @@ Switch FGS222_004_SwitchBinary2 "Apriporta portone e cancelletto" <door> (gPorto
 
 //FGS222 Double relay Switch 2x1.5kW, Garage
 Switch FGS222_006_SwitchBinary "" {channel="zwave:device:77c679d29e:node6:switch_binary"}
-Switch FGS222_006_SwitchBinary1 "Apri/Chiudi Serranda Garage" <blinds> (gGarageGarageDoor) ["Switch"]  { ga="Switch" [roomHint="Garage"], channel="zwave:device:77c679d29e:node6:switch_binary1"} 
+Switch FGS222_006_SwitchBinary1 "Apri/Chiudi Serranda Garage" <blinds> (gGarageLock) ["Switch"]  { ga="Switch" [roomHint="Garage"], channel="zwave:device:77c679d29e:node6:switch_binary1"} 
 Switch FGS222_006_SwitchBinary2 "Luce Garage" <light> (gGarageLight) ["Switch", "Light"]  { ga="Light" [roomHint="Garage"], channel="zwave:device:77c679d29e:node6:switch_binary2", expire="3600s,command=OFF"}
 
 
 //FGBS001 Universal Binary Sensor, Garage 
 Number  FGBS001_007_SceneNumber "Scene" {channel="zwave:device:77c679d29e:node7:scene_number"}
-Switch  FGBS001_007_SensorBinary1 "Stato Serranda Garage[MAP(serrande.map):%s]"  <blinds> (gGarageGarageDoor) ["OpenState", "Opening"] {channel="zwave:device:77c679d29e:node7:sensor_binary1", stateDescription="" [options="OFF=Chiusa, ON=Aperta"]}
+Switch  FGBS001_007_SensorBinary1 "Stato Serranda Garage[MAP(serrande.map):%s]"  <blinds> (gGarageDoor) ["OpenState", "Opening"] {channel="zwave:device:77c679d29e:node7:sensor_binary1", stateDescription="" [options="OFF=Chiusa, ON=Aperta"]}
 Switch  FGBS001_007_AlarmGeneral1 "Alarm1" {channel="zwave:device:77c679d29e:node7:alarm_general1"}
 Switch  FGBS001_007_SensorBinary2  "IR Garage [MAP(ir.map):%s]" <motion> (gGarageMotionDetector) ["Status"] {channel="zwave:device:77c679d29e:node7:sensor_binary2"}
 Switch  FGBS001_007_AlarmGeneral2 "Alarm2" {channel="zwave:device:77c679d29e:node7:alarm_general2"}
 //Number:Temperature  FGBS001_007_SensorTemperature3_DS1820  "Temperatura Universal Bynary Garage[%.1f °C]" <temperature> (gGarageSensor, gInfluxdb) ["Measurement", "Temperature"] {channel="zwave:device:77c679d29e:node7:sensor_temperature3"} 
 
 //FGMS001 Motion Sensor, Studio
-Number:Temperature FGMS001_008_Temp "Temperatura Studio [%.1f °C]" <temperature> (gOfficeSensor, gAvgTemperatura) ["Measurement", "Temperature"] {channel="zwave:device:77c679d29e:node8:sensor_temperature"}
-Number:Illuminance FGMS001_008_Lum "Luminosità Studio [%.1f Lx]" <rgb> (gOfficeSensor) ["Measurement", "Light"] {channel="zwave:device:77c679d29e:node8:sensor_luminance"}
-Switch FGMS001_008_All "IR Studio [MAP(ir.map):%s]" <motion> (gOfficeMotionDetector) ["Status"] {channel="zwave:device:77c679d29e:node8:alarm_motion"}
-Number FGMS001_008_Batt "Livello batteria Motion Studio [%s %%]" <battery> (gOfficeBattery, gBattery) ["Status"] {channel="zwave:device:77c679d29e:node8:battery-level"}
+Number:Temperature FGMS001_008_Temp "Temperatura Studio [%.1f °C]" <temperature> (gFibaro1, gAvgTemperatura) ["Measurement", "Temperature"] {channel="zwave:device:77c679d29e:node8:sensor_temperature"}
+Number:Illuminance FGMS001_008_Lum "Luminosità Studio [%.1f Lx]" <rgb> (gFibaro1) ["Measurement", "Light"] {channel="zwave:device:77c679d29e:node8:sensor_luminance"}
+Switch FGMS001_008_All "IR Studio [MAP(ir.map):%s]" <motion> (gFibaro2) ["Status"] {channel="zwave:device:77c679d29e:node8:alarm_motion"}
+Number FGMS001_008_Batt "Livello batteria Motion Studio [%s %%]" <battery> (gFibaro1, gBattery) ["Status", "Energy"] {channel="zwave:device:77c679d29e:node8:battery-level"}
 
 // // //FGWP102 Metered Wall Plug Switch
 // Number:Energy FGWP102_009_MeterKwh "Energia consumata presa Fibaro[%.1f KWh]" <energy> (gKitchenSensor, gInfluxdb) ["Measurement", "Energy"] {channel="zwave:device:77c679d29e:node9:meter_kwh"}
@@ -75,11 +75,11 @@ Number:Energy FGR223_014_MeterKwh  "Energia consumata"  {channel="zwave:device:7
 //WPS104 Energy Driven Switch C, Scaldabagno
 Switch WPS104_015_SwitchBinary "Switch esterno"  {channel="zwave:device:77c679d29e:node15:switch_binary"}
 Number WPS104_015_SensorPower  "Sensore di potenza [%.0f]" <energy> {channel="zwave:device:77c679d29e:node15:sensor_power"}
-Number:ElectricPotential WPS104_015_MeterVoltage "Tensione rete [%.1f V]" <energy> (gQuadroElettrico,gInfluxdb) {channel="zwave:device:77c679d29e:node15:meter_voltage"}
-Number WPS104_015_MeterPowerFactor "Sfasamento rete [%.0f φ]" <energy> (gQuadroElettrico,gInfluxdb) {channel="zwave:device:77c679d29e:node15:meter_powerfactor"}
-Number:ElectricCurrent WPS104_015_MeterCurrent "Corrente assorbita [%.1f A]" <energy> (gQuadroElettrico,gInfluxdb) {channel="zwave:device:77c679d29e:node15:meter_current"}
-Number:Power WPS104_015_MeterWatts "Assorbita [%.0f W]" <fan> (gQuadroElettrico, gInfluxdb) {channel="zwave:device:77c679d29e:node15:meter_watts"}
-Number:Energy WPS104_015_MeterKwh "Energia consumata [%.1f kWh]" <fan> (gQuadroElettrico,gInfluxdb) {channel="zwave:device:77c679d29e:node15:meter_kwh"}
+Number:ElectricPotential WPS104_015_MeterVoltage "Tensione rete [%.1f V]" <energy> (gQuadroElettrico,gInfluxdb) ["Measurement", "Voltage"] {channel="zwave:device:77c679d29e:node15:meter_voltage"}
+Number WPS104_015_MeterPowerFactor "Sfasamento rete [%.0f φ]" <energy> (gQuadroElettrico,gInfluxdb) ["Measurement"] {channel="zwave:device:77c679d29e:node15:meter_powerfactor"}
+Number:ElectricCurrent WPS104_015_MeterCurrent "Corrente assorbita [%.1f A]" <energy> (gQuadroElettrico,gInfluxdb) ["Measurement", "Current"] {channel="zwave:device:77c679d29e:node15:meter_current"}
+Number:Power WPS104_015_MeterWatts "Potenza richiesta scaldabagno [%.0f W]" <fan> (gQuadroElettrico, gInfluxdb) ["Measurement", "Power"] {channel="zwave:device:77c679d29e:node15:meter_watts"}
+Number:Energy WPS104_015_MeterKwh "Energia consumata [%.1f kWh]" <fan> (gQuadroElettrico,gInfluxdb) ["Measurement", "Energy"] {channel="zwave:device:77c679d29e:node15:meter_kwh"}
 String WPS104_015_tensione_potenza "Temp Aussen [%s]"
 Switch  WPS104_015_ResetMeter "Reset contatori" (gQuadroElettrico) {channel="zwave:device:77c679d29e:node15:meter_reset"}
 

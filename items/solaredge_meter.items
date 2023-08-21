@@ -2,21 +2,21 @@ Number:ElectricCurrent M_AC_Total_Current_Value "Corrente prelevata da rete [%.0
 Number:ElectricPotential M_Average_Line_To_Neutral_AC_Voltage "Tensione L-N [%.0f %unit%]" <energy> (gMeter) ["Measurement", "Voltage"] {unit="V",channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-average-voltage-to-n"}
 Number:ElectricPotential M_Average_Line_To_Line_AC_Voltage "Tensione L-L [%.0f %unit%]" <energy> (gMeter) ["Measurement", "Voltage"] {unit="V", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-average-voltage-to-next"}
 Number:Frequency M_AC_Frequency_Value "Frequenza [%.1f %unit%]" (gMeter, gInfluxdb1) ["Measurement", "Frequency"] {unit="Hz", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-frequency"}
-Number:Power M_Total_Real_Power_Value "Potenza totale reale [%.1f kW]" <poweroutlet_eu> (gMeter, gInfluxdb) ["Measurement", "Power"] {unit="kW", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-real-power"}
-Number:Power M_Total_Apparent_Power_Value "Potenza totale apparente [%.0f kW]" (gMeter) ["Measurement", "Power"] {unit="kW", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-apparent-power"}
-Number:Power M_Total_Reactive_Power_Value "Potenza totale reattiva [%.0f kW]" (gMeter) ["Measurement", "Power"] {unit="kW", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-reactive-power"}
-Number:Dimensionless M_Average_AC_Power_Factor "Fattore di potenza [%.0f]" (gMeter) ["Measurement"] {channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-average-power-factor"}
-Number:Energy M_Total_Real_Energy_Exported "Energia esportata reale [%.0f MWh]" (gMeter, gInfluxdb) ["Measurement", "Energy"] {unit="MWh", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-exported-real-energy"}
-Number:Energy M_Total_Real_Energy_Imported "Energia importata reale [%.0f MWh]" (gMeter, gInfluxdb) ["Measurement", "Energy"] {unit="MWh", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-imported-real-energy"}
+Number:Power M_Total_Real_Power_Value "Potenza totale immessa(+)/prelevata(-) [%.1f kW]" <poweroutlet_eu> (gMeter, gInfluxdb) ["Measurement", "Power"] {unit="kW", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-real-power"}
+Number:Power M_Total_Apparent_Power_Value "Potenza richiesta [%.1f kW]" (gMeter) ["Measurement", "Power"] {unit="kW", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-apparent-power"}
+Number:Power M_Total_Reactive_Power_Value "Potenza totale reattiva [%.0f kW]"  {unit="kW", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-reactive-power"}
+Number:Dimensionless M_Average_AC_Power_Factor "Fattore di potenza [%.0f]" {channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-average-power-factor"}
+Number:Energy M_Total_Real_Energy_Exported "Energia esportata reale [%.0f MWh]" (gInfluxdb)  {unit="MWh", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-exported-real-energy"}
+Number:Energy M_Total_Real_Energy_Imported "Energia importata reale [%.0f MWh]" (gInfluxdb)  {unit="MWh", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-imported-real-energy"}
 //Number:Energy M_Total_Apparent_Energy_Exported "Energia esportata apparente [%.2f]" (gMeter) ["Measurement", "Energy"]  {channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-exported-apparent-energy"}
 //Number:Energy M_Total_Apparent_Energy_Imported "Energia importata apparente [%.2f]" (gMeter) ["Measurement", "Energy"]  {channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-imported-apparent-energy"}
 //Number:Energy M_Total_Reactive_Energy_Imported_Quadrant_1 "Energia importata reattiva Q1 [%.2f]" (gMeter) ["Measurement", "Energy"]  {channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-imported-reactive-energy-q1"}
 // Potenza assorbita, positiva se autoconsumo, negativa se prelevata da rete
-Number:Power M_AC_Real_Power_Value_Fase_A "Potenza reale fase A [%.1f kW]" (gMeter) ["Measurement", "Power"]  {unit="kW", channel="modbus:meter-wye-phase:bridge:40188:acPhaseA#ac-real-power"}
+Number:Power M_AC_Real_Power_Value_Fase_A "Potenza reale fase A [%.1f kW]"   {unit="kW", channel="modbus:meter-wye-phase:bridge:40188:acPhaseA#ac-real-power"}
 //Number:Power M_AC_Real_Power_Value_Fase_B "Potenza reale fase B [%.2f]"(gMeter) ["Power"]  {channel="modbus:meter-wye-phase:bridge:40188:acPhaseB#ac-real-power"}
 //Number:Power M_AC_Real_Power_Value_Fase_C "Potenza reale fase C [%.2f]" (gMeter) ["Power"] {channel="modbus:meter-wye-phase:bridge:40188:acPhaseC#ac-real-power"}
 
-Number:Power M_Total_Real_Power_Value_abs "Assorbimento [%.1f kW]" <softener> (gMeter) ["Measurement", "Power"] {unit="kW"}
+Number:Power M_Total_Real_Power_Value_abs "Assorbimento [%.1f kW]" <softener>   {unit="kW"}
 
 Number:Power Power_Used "Potenza richiesta [%.1f kW]" <poweroutlet_eu> (gInverter, gInfluxdb) ["Measurement", "Power"] {unit="kW"}
 //Number:Power Power_Used_abs "Potenza richiesta [%.1f kW]" <poweroutlet_eu> (gInverter, gInfluxdb) ["Power"]
