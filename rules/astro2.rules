@@ -36,56 +36,16 @@ rule "Chiudi tapparelle ad orario"
 when
     Time cron "0 00 23 ? * * *"
 then
-    if(Prodino0_optoIn0.state == "DISINSERITO" && TapparellaLettoStatus.state == "stop" && TapparellaStudioStatus.state == "stop")  {
+    if(Prodino0_optoIn0.state == "DISINSERITO" )  {
         logInfo("Astro", "Chudi Tapparelle" )
         TapparellaLetto.sendCommand(DOWN)
         TapparellaStudio.sendCommand(DOWN)
+        TapparellaSoggiorno.sendCommand(DOWN)
+        TapparellaCameretta.sendCommand(DOWN)
     }
 end
 
-// rule "Apri tapparelle ad orario 1"
-// when
-//     Time cron "0 30 07 ? * MON,TUE,WED,THU,FRI *"
-// then
-//     if(Prodino0_optoIn0.state == "DISINSERITO" && isBankHoliday == false && isWeekend == false && TapparellaLettoStatus.state == "stop" && TapparellaStudioStatus.state == "stop" && VoglioDormire.state == OFF)  {
-//         logInfo("Astro", "PrimoIF orario1" )
-//         if(TapparellaLettoPosition.state == 0) {
-//             TapparellaLettoPosition.sendCommand(10)
-//             logInfo("Astro", "orario 1 Letto" )
-//         }
-//        if(TapparellaStudioPosition.state == 0) {
-//             TapparellaStudioPosition.sendCommand(10)
-//             logInfo("Astro", "orario 1 Studio" )
-//         }
-//         createTimer(now.plusMinutes(15), [ |
-//             logInfo("FILE", "Timer scaduto, apro 2") 
-//             if(TapparellaLettoPosition.state == 10) {
-//                 TapparellaLettoPosition.sendCommand(30)
-//             }
-//             if(TapparellaStudioPosition.state == 10) {
-//                 TapparellaStudioPosition.sendCommand(30)
-//             }
-//             createTimer(now.plusMinutes(15), [ |
-//                 logInfo("FILE", "Timer scaduto, apro 3") 
-//                 if(TapparellaLettoPosition.state == 30) {
-//                     TapparellaLettoPosition.sendCommand(60)
-//                 }
-//                 if(TapparellaStudioPosition.state == 30) {
-//                     TapparellaStudioPosition.sendCommand(60)
-//                 }
-//                 createTimer(now.plusMinutes(15), [ |
-//                     logInfo("FILE", "Timer scaduto, apro 4") 
-//                     if(TapparellaLettoPosition.state == 60) {
-//                         TapparellaLettoPosition.sendCommand(100)
-//                     }
-//                     if(TapparellaStudioPosition.state == 60) {
-//                         TapparellaStudioPosition.sendCommand(100)
-//                     }
-//                 ])
-//             ])
-//         ]) 
-//  }
-// end
+
 rule "Apri tapparelle ad orario"
 when
     Time cron "00 30 07 ? * MON,TUE,WED,THU,FRI *"
@@ -126,7 +86,7 @@ then
                 return;
             }
         }
-        tAutoOff.reschedule(now.plusSeconds(15))
+        tAutoOff.reschedule(now.plusMinutes(15))
     ])
 }
 end

@@ -8,7 +8,8 @@ end
 
 rule "Chiusura Acqua in caso di allagamento"
 when 
-    Member of gWaterSensors changed from OFF to ON
+    Member of gWaterSensor1 changed from OFF to ON or
+    Member of gWaterSensor2 changed from OFF to ON 
 then
     val pushoverActions = getActions("pushover", "pushover:pushover-account:account")
     logInfo("WaterSensor", "Cambio rilevato sul gruppo gWaterSensor")
@@ -33,7 +34,8 @@ end
 
 rule "Fine allagamento"
 when 
-    Member of gWaterSensors changed from ON to OFF
+    Member of gWaterSensor1 changed from ON to OFF or
+    Member of gWaterSensor2 changed from ON to OFF
 then
     val pushoverActions = getActions("pushover", "pushover:pushover-account:account")
     logInfo("WaterSensor", "Cambio rilevato sul gruppo gWaterSensor")

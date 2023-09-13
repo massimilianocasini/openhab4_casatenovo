@@ -10,6 +10,7 @@
 //     }
 // end
 var Number aprichiudi = 0
+var Number stop = 0
 // rule "Dash button pressed chiudi/apri/ferma tapparelle"
 //     when
 //         Channel "amazondashbutton:dashbutton:finish:press" triggered
@@ -46,21 +47,30 @@ rule "Apri/Chiudi Tapparelle"
         when
                 Channel "amazondashbutton:dashbutton:finish:press" triggered
         then
-                if (TapparellaLettoStatus.state == "close" || TapparellaLettoStatus.state == "open" || TapparellaStudioStatus.state == "close" || TapparellaStudioStatus.state == "open") {
-                 TapparellaLetto.sendCommand(STOP)
-                 TapparellaStudio.sendCommand(STOP)
+                if (stop == 0) {
+                        TapparellaLetto.sendCommand(STOP)
+                        TapparellaStudio.sendCommand(STOP)
+                        TapparellaSoggiorno.sendCommand(STOP)
+                        TapparellaCameretta.sendCommand(STOP)
+                        stop = 1
                  logInfo("amazondashbutton", "STOP command")
                 }
                 else if (aprichiudi == 0) {
                         TapparellaLetto.sendCommand(UP)
                         TapparellaStudio.sendCommand(UP)
+                        TapparellaSoggiorno.sendCommand(UP)
+                        TapparellaCameretta.sendCommand(UP)
                         aprichiudi = 1
+                        stop = 0
                         logInfo("amazondashbutton", "UP command")
                 }
                 else if (aprichiudi == 1) {
                         TapparellaLetto.sendCommand(DOWN)
                         TapparellaStudio.sendCommand(DOWN)
+                        TapparellaSoggiorno.sendCommand(DOWN)
+                        TapparellaCameretta.sendCommand(DOWN)
                         aprichiudi = 0
+                        stop = 0
                         logInfo("amazondashbutton", "DOWN command")
                 }
 end

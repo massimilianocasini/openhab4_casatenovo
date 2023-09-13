@@ -24,7 +24,7 @@ Switch FGS222_006_SwitchBinary2 "Luce Garage" <light> (gGarageLight) ["Switch", 
 Number  FGBS001_007_SceneNumber "Scene" {channel="zwave:device:77c679d29e:node7:scene_number"}
 Switch  FGBS001_007_SensorBinary1 "Stato Serranda Garage[MAP(serrande.map):%s]"  <blinds> (gGarageDoor) ["OpenState", "Opening"] {channel="zwave:device:77c679d29e:node7:sensor_binary1", stateDescription="" [options="OFF=Chiusa, ON=Aperta"]}
 Switch  FGBS001_007_AlarmGeneral1 "Alarm1" {channel="zwave:device:77c679d29e:node7:alarm_general1"}
-Switch  FGBS001_007_SensorBinary2  "IR Garage [MAP(ir.map):%s]" <motion> (gGarageMotionDetector) ["Status"] {channel="zwave:device:77c679d29e:node7:sensor_binary2"}
+Switch  FGBS001_007_SensorBinary2  "IR Garage [MAP(ir.map):%s]" <motion> (gGarageMotionDetector) ["Alarm", "Presence"] {channel="zwave:device:77c679d29e:node7:sensor_binary2"}
 Switch  FGBS001_007_AlarmGeneral2 "Alarm2" {channel="zwave:device:77c679d29e:node7:alarm_general2"}
 //Number:Temperature  FGBS001_007_SensorTemperature3_DS1820  "Temperatura Universal Bynary Garage[%.1f °C]" <temperature> (gGarageSensor, gInfluxdb) ["Measurement", "Temperature"] {channel="zwave:device:77c679d29e:node7:sensor_temperature3"} 
 
@@ -54,9 +54,9 @@ Switch FGS221_011_SwitchBinary2 "Lumetti Caneretta " {channel="zwave:device:77c6
 
 //FGBS001 Universal Binary Sensor, Cameretta
 Number FGBS001_012_SceneNumber ""  {channel="zwave:device:77c679d29e:node12:scene_number"}
-Switch FGBS001_012_SensorBinary1 "IR Cameretta [MAP(ir.map):%s]" <motion> (gBedroom2MotionDetector) ["Status"] {channel="zwave:device:77c679d29e:node12:sensor_binary1"}
+Switch FGBS001_012_SensorBinary1 "IR Cameretta [MAP(ir.map):%s]" <motion> (gBedroom2MotionDetector) ["Alarm", "Presence"] {channel="zwave:device:77c679d29e:node12:sensor_binary1"}
 Switch FGBS001_012_AlarmGeneral1 "" {channel="zwave:device:77c679d29e:node12:alarm_general1"}
-Switch FGBS001_012_SensorBinary2 "Tamper [MAP(tamper.map):%s]" <shield>  {channel="zwave:device:77c679d29e:node12:sensor_binary2"}
+Switch FGBS001_012_SensorBinary2 "Tamper [MAP(tamper.map):%s]" <shield> ["Tampered"] {channel="zwave:device:77c679d29e:node12:sensor_binary2"}
 Switch FGBS001_012_AlarmGeneral2 "" {channel="zwave:device:77c679d29e:node12:alarm_general2"}
 Number:Temperature SensorTemperature3_DS1820 "Temperatura Cameretta [%.1f °C]" <temperature> {channel="zwave:device:77c679d29e:node12:sensor_temperature3"}
 Number:Temperature OffSetTemperature3_DS1820 "Temperatura Cameretta [%.1f °C]" <temperature> 
@@ -67,7 +67,7 @@ Switch FGBS222_013_Input1 "IR Tamper [MAP(tamper.map):%s]" <shield> {channel="zw
 Switch FGBS222_013_Input2 "IR Corridoio [MAP(ir.map):%s]" <motion> (gCorridorMotionDetector) ["Status"] {channel="zwave:device:77c679d29e:node13:alarm_burglar2"}
 
 //FGR223 Roller Shutter, Pergotenda
-Rollershutter FGR223_014_BlindsControl "Pergotenda [%d %%]" <rollershutter> (gGardenBlind) ["Blinds", "OpenLevel"] {channel="zwave:device:77c679d29e:node14:blinds_control1"}
+Rollershutter FGR223_014_BlindsControl "Pergotenda [%d %%]" <rollershutter> (gGardenBlind) ["OpenState", "Opening"] {channel="zwave:device:77c679d29e:node14:blinds_control1"}
 Number:Power FGR223_014_MeterWatts  "Potenza istantanea"{channel="zwave:device:77c679d29e:node14:meter_watts1"}
 Number:Energy FGR223_014_MeterKwh  "Energia consumata"  {channel="zwave:device:77c679d29e:node14:meter_kwh1"}
 

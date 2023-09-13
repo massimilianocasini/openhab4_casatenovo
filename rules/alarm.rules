@@ -7,7 +7,7 @@ val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
 switch(Prodino0_optoIn0.state) {
   case  "INSERITO" : {
     telegramActions.sendTelegram("Antifurto INSerito!")
-    logInfo("Alarm.rules", "INSERITO")
+    logInfo("Alarm.rules", "Antifurto INSERITO")
     if (DaikinACUnit_Mode_Studio.state == "HEAT" && DaikinACUnit_Power_Studio.state == ON) {
         DaikinACUnit_Power_Studio.sendCommand(OFF)
         telegramActions.sendTelegram("Condizionatore Studio spento")
@@ -24,19 +24,31 @@ switch(Prodino0_optoIn0.state) {
         DaikinACUnit_Power_Letto.sendCommand(OFF)
         telegramActions.sendTelegram("Condizionatore Letto spento")
     }
-    if (TapparellaLettoPosition.state > 0) {
-        TapparellaLettoPosition.sendCommand(0)
+    if (TapparellaLetto.state < 100) {
+        TapparellaLetto.sendCommand(DOWN)
+        logInfo("Alarm.rules", "Tapparella letto DOWN")
     }
-    if (TapparellaStudioPosition.state > 0) {
-        TapparellaStudioPosition.sendCommand(0)
+    if (TapparellaStudio.state < 100) {
+        TapparellaStudio.sendCommand(DOWN)
+        logInfo("Alarm.rules", "Tapparella studio DOWN")
+    }
+    if (TapparellaSoggiorno.state < 100) {
+        TapparellaSoggiorno.sendCommand(DOWN)
+        logInfo("Alarm.rules", "Tapparella soggiorno DOWN")
+    }
+    if (TapparellaCameretta.state < 100) {
+        TapparellaCameretta.sendCommand(DOWN)
+        logInfo("Alarm.rules", "Tapparella cameretta DOWN")
     }
   }
   case "DISINSERITO": {
     telegramActions.sendTelegram("Antifurto DIsInserito!")
-    logInfo("Alarm.rules", "INSERITO")
+    logInfo("Alarm.rules", "Antifurto DISINSERITO")
     if (SunElevation.state > -3 && now.getHour > 8) {
-        TapparellaLettoPosition.sendCommand(100)
-        TapparellaStudioPosition.sendCommand(100)
+        TapparellaLetto.sendCommand(UP)
+        TapparellaStudio.sendCommand(UP)
+        TapparellaSoggiorno.sendCommand(UP)
+        TapparellaCameretta.sendCommand(UP)
     }
   }
 }

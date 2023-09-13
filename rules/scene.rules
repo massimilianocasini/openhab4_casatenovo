@@ -35,7 +35,7 @@ rule "Luce corridoio 22:30 ON invia un comando ogni 10 minuti dalle 22 alle 8"
 when
     Time cron "0 30/10 22-8 * * ? *" 
 then
-    FGD211_003_SwitchDimmer.sendCommand(10)
+    FGD211_003_SwitchDimmer.sendCommand(8)
 end
 
 rule "Luce corridoio 09:00 OFF "
