@@ -1,2 +1,6 @@
-Dimmer Sonos_Volume       "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Beam:RINCON_542A1BD8C3C601400:volume"}
-String Sonos_NotificationSound       "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Beam:RINCON_542A1BD8C3C601400:notificationsound"} 
+Dimmer SonosBeam_Volume                  "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Beam:RINCON_542A1BD8C3C601400:volume"}
+String SonosBeam_NotificationSound       "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Beam:RINCON_542A1BD8C3C601400:notificationsound"}
+Dimmer SonosEraStudio_Volume                  "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:volume"}
+String SonosEraStudio_NotificationSound       "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:notificationsound"} 
+Dimmer SonosEraLetto_Volume                  "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Era100:RINCON_C43875933BE401400:volume"}
+String SonosEraLetto_NotificationSound       "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Era100:RINCON_C43875933BE401400:notificationsound"}  

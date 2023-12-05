@@ -48,7 +48,7 @@ end
 
 rule "Apri tapparelle ad orario"
 when
-    Time cron "00 30 07 ? * MON,TUE,WED,THU,FRI *"
+    Time cron "00 00 07 ? * MON,TUE,WED,THU,FRI *"
 then
     if(Prodino0_optoIn0.state == "DISINSERITO" && isBankHoliday == false && isWeekend == false && TapparellaLettoStatus.state == "stop" && TapparellaStudioStatus.state == "stop" && VoglioDormire.state == OFF)  {
         logInfo("Astro", "Inizio procedura apertura serrande" )
@@ -59,26 +59,48 @@ then
         iAutoOff ++
         switch(iAutoOff) {
             case  1 : { 
-                        TapparellaLettoPosition.sendCommand(10)
-                        TapparellaStudioPosition.sendCommand(10)
+                        if(TapparellaLetto.state == 100) {
+                            TapparellaLetto.sendCommand(90) }
+                        if(TapparellaStudio.state == 100) {
+                            TapparellaStudio.sendCommand(90) }
+                        if(TapparellaSoggiorno.state == 100) {
+                            TapparellaSoggiorno.sendCommand(90) }
+                        if(TapparellaCameretta.state == 100) {
+                            TapparellaCameretta.sendCommand(90) }
+                        logInfo("Astro", "Procedura apertura serrande caso 1" )
                         }
             case  2 : {
-                        if(TapparellaLettoPosition.state == 10) { 
-                            TapparellaLettoPosition.sendCommand(30) }
-                        if(TapparellaStudioPosition.state == 10) {
-                            TapparellaStudioPosition.sendCommand(30) }
+                        if(TapparellaLetto.state == 90) { 
+                            TapparellaLetto.sendCommand(70) }
+                        if(TapparellaStudio.state == 90) {
+                            TapparellaStudio.sendCommand(70) }
+                        if(TapparellaSoggiorno.state == 90) {
+                            TapparellaSoggiorno.sendCommand(70) }
+                        if(TapparellaCameretta.state == 90) {
+                            TapparellaCameretta.sendCommand(70) }
+                        logInfo("Astro", "Procedura apertura serrande caso 2" )
                         }
             case  3 : {
-                        if(TapparellaLettoPosition.state == 30) { 
-                            TapparellaLettoPosition.sendCommand(60) }
-                        if(TapparellaStudioPosition.state == 30) {
-                            TapparellaStudioPosition.sendCommand(60) }
+                        if(TapparellaLetto.state == 70) { 
+                            TapparellaLetto.sendCommand(40) }
+                        if(TapparellaStudio.state == 70) {
+                            TapparellaStudio.sendCommand(40) }
+                        if(TapparellaSoggiorno.state == 70) {
+                            TapparellaSoggiorno.sendCommand(40) }
+                        if(TapparellaCameretta.state == 70) {
+                            TapparellaCameretta.sendCommand(40) }
+                        logInfo("Astro", "Procedura apertura serrande caso 3" )
                         }
             case  4 : {
-                        if(TapparellaLettoPosition.state == 60) { 
-                            TapparellaLettoPosition.sendCommand(100) }
-                        if(TapparellaStudioPosition.state == 60) {
-                            TapparellaStudioPosition.sendCommand(100) }
+                        if(TapparellaLetto.state == 40) { 
+                            TapparellaLetto.sendCommand(0) }
+                        if(TapparellaStudio.state == 40) {
+                            TapparellaStudio.sendCommand(0) }
+                        if(TapparellaSoggiorno.state == 40) {
+                            TapparellaSoggiorno.sendCommand(0) }
+                        if(TapparellaCameretta.state == 40) {
+                            TapparellaCameretta.sendCommand(0) }
+                        logInfo("Astro", "Procedura apertura serrande caso 4" )
                         }
             default : {
                 tAutoOff = null
@@ -87,6 +109,7 @@ then
             }
         }
         tAutoOff.reschedule(now.plusMinutes(15))
+        logInfo("Astro", "Procedura apertura serrande timer reschedule" )
     ])
 }
 end

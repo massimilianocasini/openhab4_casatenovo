@@ -1,3 +1,7 @@
+var Timer isteresiTimer = null
+val int timeoutMinutes = 5 // choose an appropriate value
+
+
 rule "Antifurto cambio stato swicth case"
 when 
     Item Prodino0_optoIn0 changed
@@ -6,6 +10,14 @@ val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
 
 switch(Prodino0_optoIn0.state) {
   case  "INSERITO" : {
+    if(isteresiTimer === null) {
+      isteresiTimer = createTimer(now.plusMinutes(timeoutMinutes ), [|
+      isteresiTimer = null
+      ])
+    }
+    else {
+        isteresiTimer.reschedule(now.plusMinutes(timeoutMinutes ))
+    }
     telegramActions.sendTelegram("Antifurto INSerito!")
     logInfo("Alarm.rules", "Antifurto INSERITO")
     if (DaikinACUnit_Mode_Studio.state == "HEAT" && DaikinACUnit_Power_Studio.state == ON) {
@@ -24,27 +36,36 @@ switch(Prodino0_optoIn0.state) {
         DaikinACUnit_Power_Letto.sendCommand(OFF)
         telegramActions.sendTelegram("Condizionatore Letto spento")
     }
-    if (TapparellaLetto.state < 100) {
-        TapparellaLetto.sendCommand(DOWN)
+    TapparellaLetto.sendCommand(DOWN)
         logInfo("Alarm.rules", "Tapparella letto DOWN")
-    }
-    if (TapparellaStudio.state < 100) {
-        TapparellaStudio.sendCommand(DOWN)
+    TapparellaStudio.sendCommand(DOWN)
         logInfo("Alarm.rules", "Tapparella studio DOWN")
-    }
-    if (TapparellaSoggiorno.state < 100) {
-        TapparellaSoggiorno.sendCommand(DOWN)
+    TapparellaSoggiorno.sendCommand(DOWN)
         logInfo("Alarm.rules", "Tapparella soggiorno DOWN")
-    }
-    if (TapparellaCameretta.state < 100) {
-        TapparellaCameretta.sendCommand(DOWN)
+    TapparellaCameretta.sendCommand(DOWN)
         logInfo("Alarm.rules", "Tapparella cameretta DOWN")
-    }
+
+    // if (TapparellaLetto.state < 100) {
+    //     TapparellaLetto.sendCommand(DOWN)
+    //     logInfo("Alarm.rules", "Tapparella letto DOWN")
+    // }
+    // if (TapparellaStudio.state < 100) {
+    //     TapparellaStudio.sendCommand(DOWN)
+    //     logInfo("Alarm.rules", "Tapparella studio DOWN")
+    // }
+    // if (TapparellaSoggiorno.state < 100) {
+    //     TapparellaSoggiorno.sendCommand(DOWN)
+    //     logInfo("Alarm.rules", "Tapparella soggiorno DOWN")
+    // }
+    // if (TapparellaCameretta.state < 100) {
+    //     TapparellaCameretta.sendCommand(DOWN)
+    //     logInfo("Alarm.rules", "Tapparella cameretta DOWN")
+    // }
   }
   case "DISINSERITO": {
     telegramActions.sendTelegram("Antifurto DIsInserito!")
     logInfo("Alarm.rules", "Antifurto DISINSERITO")
-    if (SunElevation.state > -3 && now.getHour > 8) {
+    if (SunElevation.state > -3 && now.getHour > 8 && isteresiTimer === null) {
         TapparellaLetto.sendCommand(UP)
         TapparellaStudio.sendCommand(UP)
         TapparellaSoggiorno.sendCommand(UP)

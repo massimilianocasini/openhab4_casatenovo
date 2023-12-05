@@ -20,7 +20,7 @@ Number TapparellaSoggiornoSignal "Tapparella Soggiorno Segnale" (gLivingRoomBlin
 String TapparellaSoggiornoStatus "Tapparella Soggiorno Stato" (gLivingRoomBlind)  ["Status"]                                {channel="shelly:shellyplus2pm-roller:c049ef87fafc:roller#state"}
 Number:Energy TapparellaSoggiornoEnergy "Tapparella Soggiorno Energia" (gLivingRoomBlind)  ["Measurement", "Energy"]                       {channel="shelly:shellyplus2pm-roller:c049ef87fafc:meter#totalKWH"}
 Switch TapparellaSoggiornoUpdate "Update disponibile" (gLivingRoomBlind)  ["Status"]                                 {channel="shelly:shellyplus2pm-roller:c049ef87fafc:device#updateAvailable"}
-Dimmer TapparellaSoggiornoPosition "Tapparella Soggiorno Posizione" (gLivingRoomBlind)  ["Blinds", "Status"]                {channel="shelly:shelly25-roller:c049ef87fafc:roller#rollerpos"}
+Dimmer TapparellaSoggiornoPosition "Tapparella Soggiorno Posizione" (gLivingRoomBlind)  ["Blinds", "Status"]                {channel="shelly:shellyplus2pm-roller:c049ef87fafc:roller#rollerpos"}
 
 Rollershutter TapparellaCameretta     "Tapparella Cameretta"     (gBedroom2Blind)  ["OpenState", "Opening"]                {channel="shelly:shellyplus2pm-roller:c049ef8cf010:roller#control"}
 Number:Power TapparellaCamerettaPower "Tapparella Cameretta Potenza"  (gBedroom2Blind)  ["Measurement", "Power"]               {channel="shelly:shellyplus2pm-roller:c049ef8cf010:meter#currentWatts"}

@@ -16,7 +16,6 @@ Group:Number:AVG gAvgPressione "Pressione media [%.1f mbar]" (gGroundFloor)
 Group:Switch:OR(ON,OFF) gSwCondPower "Power condizionatori [%d]" <switch>
 Group:String:EQUALITY gEqCondMode "Modo Lavoro ALL" <settings> (gMapDb)
 Group:Number:EQUALITY gEqCondSetPoint "SetPoint All [%.1f °C]" <temperature> (gMapDb)
-Number EqCondSetPoint "SetPoint ALL [%.1f °C]" <temperature> (gGroundFloor, gMapDb) 
 Group:Number:AVG gAvgCondTemp "Temperatura media Daikin [%.1f °C]" <temperature>
 Group:Switch:OR(ON,OFF)   gPresence     "gPresence" <icon_presence>
 //Group:Number EQUALITY gBlinds "Chiudi/Apri Tapperelle" <rollershutter>
@@ -51,11 +50,14 @@ Group gBuilding "Building" ["Building"]
             Group gBedroom2Blind "Tapparelle" (gBedroom2) ["Blinds"]
 
         Group gOffice "Studio" (gGroundFloor) ["Office"]
-            Group gFibaro1 "Termometro" (gOffice) ["HVAC"]
-            Group gFibaro2 "Presenza" (gOffice) ["MotionDetector"]
             Group gOfficeCondizionamento "Controllo condizionamento Studio" <climate> (gOffice) ["HVAC"]
             Group gOfficeSpeaker "Speaker Studio" (gOffice) ["Speaker"]
             Group gOfficeBlind "Tapparelle" (gOffice) ["Blinds"]
+            Group gOfficeTemp "Temperatura/Umidità" (gOffice) ["HVAC"]
+
+        Group gCorridor1 "Corridoio" (gGroundFloor) ["Corridor"]
+            Group gCorridorTemp "Termometro" (gCorridor1) ["HVAC"]
+            Group gCorridorMotionDetector "IR Corridoio" (gCorridor1) ["MotionDetector"]
         
         Group gBagnoVasca "Bagno" (gGroundFloor) ["Bathroom"]
         
@@ -84,6 +86,7 @@ Group gBuilding "Building" ["Building"]
         Group gValve    "Elettrovalvola" (gGarage) ["Valve"]
         Group gInverter "Inverter" (gGarage) ["Inverter"]
         Group gMeter "Meter"(gGarage) ["Inverter"]
+        Group gFibaro3 "Termometro" (gGarage) ["HVAC"]
     Group gPortone "Portone" (gIndoor) ["Entry"]
         Group gPortoneLight "Luce Portone" <lightbulb> (gPortone) ["Lightbulb"]
         Group gPortoneLock "Apriportoni" <keyring> (gPortone) ["Lock"]

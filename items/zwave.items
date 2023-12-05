@@ -26,13 +26,13 @@ Switch  FGBS001_007_SensorBinary1 "Stato Serranda Garage[MAP(serrande.map):%s]" 
 Switch  FGBS001_007_AlarmGeneral1 "Alarm1" {channel="zwave:device:77c679d29e:node7:alarm_general1"}
 Switch  FGBS001_007_SensorBinary2  "IR Garage [MAP(ir.map):%s]" <motion> (gGarageMotionDetector) ["Alarm", "Presence"] {channel="zwave:device:77c679d29e:node7:sensor_binary2"}
 Switch  FGBS001_007_AlarmGeneral2 "Alarm2" {channel="zwave:device:77c679d29e:node7:alarm_general2"}
-//Number:Temperature  FGBS001_007_SensorTemperature3_DS1820  "Temperatura Universal Bynary Garage[%.1f °C]" <temperature> (gGarageSensor, gInfluxdb) ["Measurement", "Temperature"] {channel="zwave:device:77c679d29e:node7:sensor_temperature3"} 
+Number:Temperature  FGBS001_007_SensorTemperature3_DS1820  "Temperatura Universal Bynary Garage[%.1f °C]" <temperature> (gFibaro3, gInfluxdb) ["Measurement", "Temperature"] {channel="zwave:device:77c679d29e:node7:sensor_temperature3"} 
 
-//FGMS001 Motion Sensor, Studio
-Number:Temperature FGMS001_008_Temp "Temperatura Studio [%.1f °C]" <temperature> (gFibaro1, gAvgTemperatura) ["Measurement", "Temperature"] {channel="zwave:device:77c679d29e:node8:sensor_temperature"}
-Number:Illuminance FGMS001_008_Lum "Luminosità Studio [%.1f Lx]" <rgb> (gFibaro1) ["Measurement", "Light"] {channel="zwave:device:77c679d29e:node8:sensor_luminance"}
-Switch FGMS001_008_All "IR Studio [MAP(ir.map):%s]" <motion> (gFibaro2) ["Status"] {channel="zwave:device:77c679d29e:node8:alarm_motion"}
-Number FGMS001_008_Batt "Livello batteria Motion Studio [%s %%]" <battery> (gFibaro1, gBattery) ["Status", "Energy"] {channel="zwave:device:77c679d29e:node8:battery-level"}
+//FGMS001 Motion Sensor, Corridoio
+Number:Temperature FGMS001_008_Temp "Temperatura Corridoio [%.1f °C]" <temperature> (gCorridorTemp, gAvgTemperatura) ["Measurement", "Temperature"] {channel="zwave:device:77c679d29e:node8:sensor_temperature"}
+Number:Illuminance FGMS001_008_Lum "Luminosità Corridoio [%.1f Lx]" <rgb> (gCorridorTemp) ["Measurement", "Light"] {channel="zwave:device:77c679d29e:node8:sensor_luminance"}
+Switch FGMS001_008_All "IR Corridoio [MAP(ir.map):%s]" <motion> (gCorridorMotionDetector) ["Status"] {channel="zwave:device:77c679d29e:node8:alarm_motion"}
+Number FGMS001_008_Batt "Livello batteria Motion Corridoio [%s %%]" <battery> (gCorridorTemp, gBattery) ["Status", "Energy"] {channel="zwave:device:77c679d29e:node8:battery-level"}
 
 // // //FGWP102 Metered Wall Plug Switch
 // Number:Energy FGWP102_009_MeterKwh "Energia consumata presa Fibaro[%.1f KWh]" <energy> (gKitchenSensor, gInfluxdb) ["Measurement", "Energy"] {channel="zwave:device:77c679d29e:node9:meter_kwh"}

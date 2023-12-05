@@ -8,7 +8,7 @@ when
 then
     FGS221_002_SwitchBinary2_N.postUpdate(1)
     var riscaldamentomodo = Riscaldamento_Modo.state
-    var tempint = Lumi4T.state as Number
+    var tempint = FGMS001_008_Temp.state as Number
     var setpointauto = Riscaldamento_Auto_SP.state
     var setpointmanu = Riscaldamento_Man_SP.state
     val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
@@ -23,7 +23,7 @@ when
 then
     FGS221_002_SwitchBinary2_N.postUpdate(0)
     var riscaldamentomodo = Riscaldamento_Modo.state
-    var tempint = Lumi4T.state as Number
+    var tempint = FGMS001_008_Temp.state as Number
     var setpointauto = Riscaldamento_Auto_SP.state
     var setpointmanu = Riscaldamento_Man_SP.state
     val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")

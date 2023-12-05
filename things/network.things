@@ -12,4 +12,4 @@ network:pingdevice:tasmota_acqua [ hostname="192.168.188.33", retry=3, timeout=1
 network:servicedevice:nginx_443 [ hostname="misipino.duckdns.org", port=443]
 network:pingdevice:alice [ hostname="192.168.188.170", retry=5, timeout=1000, refreshInterval=60000 ]
 network:pingdevice:graziella [ hostname="192.168.188.115", retry=5, timeout=1000, refreshInterval=60000 ]
-network:pingdevice:massimiliano [ hostname="192.168.188.117", retry=5, timeout=1000, refreshInterval=60000 ]
+network:pingdevice:massimiliano [ hostname="192.168.188.179", retry=5, timeout=1000, refreshInterval=60000 ]

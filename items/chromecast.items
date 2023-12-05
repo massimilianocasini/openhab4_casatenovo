@@ -1,25 +1,25 @@
 //Dimmer MiniStudio (gOfficeSpeaker) ["Control", "SoundVolume"] { ga="Speaker" [ volumeDefaultPercentage="50", levelStepSize="10", volumeMaxLevel="90" ] }
-Player MiniStudioControl "Control Mini Studio" (gOfficeSpeaker) ["Status"] {channel="chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f:control"}
-Dimmer MiniStudioVolume "Volume Mini Studio" (gOfficeSpeaker) ["Control", "SoundVolume"] {channel="chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f:volume"}
-String MiniStudioTitle "Titolo Mini Studio" (gOfficeSpeaker) ["Status"] {channel="chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f:title"}
-String MiniStudioArtist "Artista Mini Studio" (gOfficeSpeaker) ["Status"] {channel="chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f:artist"}
-Switch MiniStudioMute "Mute Mini Studio" (gOfficeSpeaker) ["Status"] {channel="chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f:mute"}
-Location MiniStudioLocation "Posizione" (gOfficeSpeaker) ["Status"] {channel="chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f:location"}
+// Player MiniStudioControl "Control Mini Studio" (gOfficeSpeaker) ["Status"] {channel="chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f:control"}
+// Dimmer MiniStudioVolume "Volume Mini Studio" (gOfficeSpeaker) ["Control", "SoundVolume"] {channel="chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f:volume"}
+// String MiniStudioTitle "Titolo Mini Studio" (gOfficeSpeaker) ["Status"] {channel="chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f:title"}
+// String MiniStudioArtist "Artista Mini Studio" (gOfficeSpeaker) ["Status"] {channel="chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f:artist"}
+// Switch MiniStudioMute "Mute Mini Studio" (gOfficeSpeaker) ["Status"] {channel="chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f:mute"}
+// Location MiniStudioLocation "Posizione" (gOfficeSpeaker) ["Status"] {channel="chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f:location"}
 
-Player MiniKitchenControl "Control Mini Cucina" (gKitchenSpeaker) ["Status"] {channel="chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec:control"}
-Dimmer MiniKitchenVolume "Volume Mini Cucina" (gKitchenSpeaker) ["Control", "SoundVolume"] {channel="chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec:volume"}
-String MiniKitchenTitle "Titolo Mini Cucina" (gKitchenSpeaker) ["Status"] {channel="chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec:title"}
-String MiniKitchenArtist "Artista Mini Cucina" (gKitchenSpeaker) ["Status"] {channel="chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec:artist"}
-Switch MiniKitchenMute "Mute Mini Cucina" (gKitchenSpeaker) ["Status"] {channel="chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec:mute"}
+// Player MiniKitchenControl "Control Mini Cucina" (gKitchenSpeaker) ["Status"] {channel="chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec:control"}
+// Dimmer MiniKitchenVolume "Volume Mini Cucina" (gKitchenSpeaker) ["Control", "SoundVolume"] {channel="chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec:volume"}
+// String MiniKitchenTitle "Titolo Mini Cucina" (gKitchenSpeaker) ["Status"] {channel="chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec:title"}
+// String MiniKitchenArtist "Artista Mini Cucina" (gKitchenSpeaker) ["Status"] {channel="chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec:artist"}
+// Switch MiniKitchenMute "Mute Mini Cucina" (gKitchenSpeaker) ["Status"] {channel="chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec:mute"}
 
-Player MiniBedroom2Control "Control Mini Cameretta" (gBedroom2Speaker) ["Status"] {channel="chromecast:chromecast:9b55f1ed89e3305085bcdb2b99f6c06e:control"}
-Dimmer MiniBedroom2Volume "Volume Mini Cameretta" (gBedroom2Speaker) ["Control", "SoundVolume"] {channel="chromecast:chromecast:9b55f1ed89e3305085bcdb2b99f6c06e:volume"}
-String MiniBedroom2Title "Titolo Mini Cameretta" (gBedroom2Speaker) ["Status"] {channel="chromecast:chromecast:9b55f1ed89e3305085bcdb2b99f6c06e:title"}
-String MiniBedroom2Artist "Artista Mini Cameretta" (gBedroom2Speaker) ["Status"] {channel="chromecast:chromecast:9b55f1ed89e3305085bcdb2b99f6c06e:artist"}
-Switch MiniBedroom2Mute "Mute Mini Cameretta" (gBedroom2Speaker) ["Status"] {channel="chromecast:chromecast:9b55f1ed89e3305085bcdb2b99f6c06e:mute"}
+// Player MiniBedroom2Control "Control Mini Cameretta" (gBedroom2Speaker) ["Status"] {channel="chromecast:chromecast:9b55f1ed89e3305085bcdb2b99f6c06e:control"}
+// Dimmer MiniBedroom2Volume "Volume Mini Cameretta" (gBedroom2Speaker) ["Control", "SoundVolume"] {channel="chromecast:chromecast:9b55f1ed89e3305085bcdb2b99f6c06e:volume"}
+// String MiniBedroom2Title "Titolo Mini Cameretta" (gBedroom2Speaker) ["Status"] {channel="chromecast:chromecast:9b55f1ed89e3305085bcdb2b99f6c06e:title"}
+// String MiniBedroom2Artist "Artista Mini Cameretta" (gBedroom2Speaker) ["Status"] {channel="chromecast:chromecast:9b55f1ed89e3305085bcdb2b99f6c06e:artist"}
+// Switch MiniBedroom2Mute "Mute Mini Cameretta" (gBedroom2Speaker) ["Status"] {channel="chromecast:chromecast:9b55f1ed89e3305085bcdb2b99f6c06e:mute"}
 
-Player MiniDappertuttoControl "Control Dappertutto" (gGroundFloorSpeaker) ["Status"] {channel="chromecast:audiogroup:e62520b9-9160-4e00-bc71-ea1683e24e54:control"}
-Dimmer MiniDappertuttoVolume "Volume Dappertutto" (gGroundFloorSpeaker) ["Control", "SoundVolume"] {channel="chromecast:audiogroup:e62520b9-9160-4e00-bc71-ea1683e24e54:volume"}
-String MiniDappertuttoTitle "Titolo Dappertutto" (gGroundFloorSpeaker) ["Status"] {channel="chromecast:audiogroup:e62520b9-9160-4e00-bc71-ea1683e24e54:title"}
-String MiniDappertuttoArtist "Artista Dappertutto" (gGroundFloorSpeaker) ["Status"] {channel="chromecast:audiogroup:e62520b9-9160-4e00-bc71-ea1683e24e54:artist"}
-Switch MiniDappertuttoMute "Mute Mini Dappertutto" (gGroundFloorSpeaker) ["Status"] {channel="chromecast:audiogroup:e62520b9-9160-4e00-bc71-ea1683e24e54:mute"}
+// Player MiniDappertuttoControl "Control Dappertutto" (gGroundFloorSpeaker) ["Status"] {channel="chromecast:audiogroup:e62520b9-9160-4e00-bc71-ea1683e24e54:control"}
+// Dimmer MiniDappertuttoVolume "Volume Dappertutto" (gGroundFloorSpeaker) ["Control", "SoundVolume"] {channel="chromecast:audiogroup:e62520b9-9160-4e00-bc71-ea1683e24e54:volume"}
+// String MiniDappertuttoTitle "Titolo Dappertutto" (gGroundFloorSpeaker) ["Status"] {channel="chromecast:audiogroup:e62520b9-9160-4e00-bc71-ea1683e24e54:title"}
+// String MiniDappertuttoArtist "Artista Dappertutto" (gGroundFloorSpeaker) ["Status"] {channel="chromecast:audiogroup:e62520b9-9160-4e00-bc71-ea1683e24e54:artist"}
+// Switch MiniDappertuttoMute "Mute Mini Dappertutto" (gGroundFloorSpeaker) ["Status"] {channel="chromecast:audiogroup:e62520b9-9160-4e00-bc71-ea1683e24e54:mute"}

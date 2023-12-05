@@ -1,5 +1,5 @@
 
-rule "Forzatura setpoint sui condizionatori"
+rule "Forzatura setpoint sui condizionatori al cambio di Modalità"
 when
         Member of gEqCondMode changed
 then
@@ -34,9 +34,9 @@ then
           logInfo("CondMode", "Creato Timer")
           controllo = 1
           createTimer(now.plusSeconds(15), [|
-            gEqCondSetPoint.sendCommand(21)
+            gEqCondSetPoint.sendCommand(21.5)
             gEqCondMode.sendCommand("HEAT")
-            logInfo("CondMode", "Forzato passaggio a HEAT a 21° di tutti i condizionatori" )
+            logInfo("CondMode", "Forzato passaggio a HEAT a 21.5° di tutti i condizionatori" )
             createTimer(now.plusSeconds(15), [| 
               controllo = 0
             ])
@@ -80,4 +80,13 @@ then
   if (DaikinACUnit_Mode_Letto.state=="HEAT"){
      DaikinACUnit_Power_Letto.sendCommand(OFF)
  }
+end
+rule "Allinea gEqCondSetPoint"
+when 
+  Member of gEqCondSetPoint changed
+then
+  val item = triggeringItem
+  var int setpoint
+  setpoint = item.state
+  gEqCondSetPoint.postUpdate(setpoint)
 end

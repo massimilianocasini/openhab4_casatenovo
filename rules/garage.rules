@@ -9,10 +9,14 @@ then
     lgwebosActions.showToast("Garage Serranda Aperta")
   //  Sonos_Volume.sendCommand(30)
 //	playSound("sonos:Beam:RINCON_542A1BD8C3C601400","doorbell.mp3") 
-    MiniStudioVolume.sendCommand(30)
-    MiniKitchenVolume.sendCommand(30)
-    playSound("chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f", "doorbell.mp3")
-    playSound("chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec", "doorbell.mp3")
+  //  MiniStudioVolume.sendCommand(30)
+  //  MiniKitchenVolume.sendCommand(30)
+   // playSound("chromecast:chromecast:cc25fe1915b7c21d6172f95b88e8a10f", "doorbell.mp3")
+   // playSound("chromecast:chromecast:787ead6c61b2b7b065a993a4805dabec", "doorbell.mp3")
+    //Set URI to play
+    playSound("sonos:Era100:RINCON_F0F6C1A32C0E01400","doorbell.mp3")
+    //Set the Volume
+   // SonosEraStudio_Volume.sendCommand(20)
 }
   //  playSound("chromecast:audiogroup:e62520b9-9160-4e00-bc71-ea1683e24e54","doorbell.mp3")
 else {
