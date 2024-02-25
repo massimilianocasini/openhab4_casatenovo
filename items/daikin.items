@@ -1,3 +1,13 @@
+Number HvACMode  "HVAC Inverno/Estate"    <temperature>  (gMapDb, gCorridoio)
+String HvACWinterMode    "HVAC Modo condizionamento Invernale"    <temperature>  (gMapDb, gCorridoio) 	//Condizionamento automatico o manuale o disabilitato
+String HvACSummerMode    "HVAC Modo condizionamento Estate"    <temperature>  (gMapDb, gCorridoio) 
+
+Number:Temperature HvACSetPointWinterAuto "HVAC SetPoint automatico Invernale" <temperature>
+Number:Temperature HvACSetPointWinterManual "HVAC SetPoint manuale Invernale" <temperature>
+
+Number:Temperature HvACSetPointSummerAuto "HVAC SetPoint automatico Estate" <temperature>
+Number:Temperature HvACSetPointSummerManual "HVAC SetPoint manuale Estate" <temperature>
+
 Switch DaikinACUnit_Power_Studio "ON/OFF Condizionatore Studio" <switch> (gOfficeCondizionamento, gSwCondPower) ["Control"] {synonyms="Condizionatore Studio", ga="Switch", channel="daikin:ac_unit:Studio:power"}
 Number:Temperature DaikinACUnit_SetPoint_Studio "SetPoint Condizionatore Studio" <temperature> (gOfficeCondizionamento, gEqCondSetPoint) ["Setpoint", "Temperature"] {channel="daikin:ac_unit:Studio:settemp", stateDescription="" [pattern="%.1f °C"], listWidget="oh-stepper-item" [step=1, min=20, max=29, raised=true, visible="=items['DaikinACUnit_Power_Studio'].state === 'ON' && items['DaikinACUnit_Mode_Studio'].state != 'DEHUMIDIFIER' && items['DaikinACUnit_Mode_Studio'].state != 'FAN' "]}
 String DaikinACUnit_Mode_Studio "Modalità Condizionatore Studio" <settings> (gOfficeCondizionamento, gEqCondMode) ["Control"] { channel="daikin:ac_unit:Studio:mode" }

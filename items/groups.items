@@ -6,6 +6,7 @@ Group gWeather "Che tempo che fa" ["WeatherService"]
 Group gMapDb
 Group gSystemInfo
 Group gGroundFloorSpeaker "Sonoro" ["Speaker"]
+Group gSonos
 
 Group gBattery "Batterie" 
 Group gCleaningRobot "Roomba" ["CleaningRobot"]
@@ -27,7 +28,7 @@ Group gBuilding "Building" ["Building"]
     Group gIndoor "Indoor" (gBuilding) ["Indoor"] 
         Group gGroundFloor "Piano terra" (gIndoor) ["GroundFloor"]     
         Group gCorridor "Corridoio" (gGroundFloor) ["Corridor"]
-            Group gLumi4 "Termometro" (gCorridor) ["HVAC"]
+            Group gCorridorTemp "Termometro" (gCorridor) ["HVAC"]
             Group gCorridorLight "Luce Corridoio" <lightbulb> (gCorridor)  ["Lightbulb"]
             Group gCorridorMotionDetector "IR Corridoio" (gCorridor) ["MotionDetector"]
             Group gCorridorCaldaia "Stato caldaia" (gCorridor) ["Boiler"]
@@ -35,6 +36,7 @@ Group gBuilding "Building" ["Building"]
         Group gCorridor2 "Ingresso" (gGroundFloor) ["Corridor"]
             Group:Dimmer:EQUALITY gIkeaEqualityCorridorB "Ingresso Intesità [%d %%]" <light> (gCorridor2) ["Lightbulb"]
             Group:Number:EQUALITY gIkeaEqualityCorridorCT "Ingresso Temperatura [%.0f K]" <light> (gCorridor2) ["Lightbulb"]
+            Group gCorridor2PowerOutlet "Prese Ingresso" (gCorridor2)  ["PowerOutlet"]
         
         Group gBedroom1 "Camera da letto" <bedroom> (gGroundFloor) ["Bedroom"]
             Group gLumi5 "Termometro" (gBedroom1) ["HVAC"]
@@ -54,10 +56,6 @@ Group gBuilding "Building" ["Building"]
             Group gOfficeSpeaker "Speaker Studio" (gOffice) ["Speaker"]
             Group gOfficeBlind "Tapparelle" (gOffice) ["Blinds"]
             Group gOfficeTemp "Temperatura/Umidità" (gOffice) ["HVAC"]
-
-        Group gCorridor1 "Corridoio" (gGroundFloor) ["Corridor"]
-            Group gCorridorTemp "Termometro" (gCorridor1) ["HVAC"]
-            Group gCorridorMotionDetector "IR Corridoio" (gCorridor1) ["MotionDetector"]
         
         Group gBagnoVasca "Bagno" (gGroundFloor) ["Bathroom"]
         

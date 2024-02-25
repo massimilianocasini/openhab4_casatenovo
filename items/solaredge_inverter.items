@@ -7,5 +7,5 @@ Number:ElectricCurrent I_AC_Current  "Corrente prodotta [%.0f %unit%]" (gInverte
 //Number:Power I_AC_Power_Value "Produzione [%.1f kW]" <solarplant> (gInverter, gInfluxdb) ["Measurement", "Power"] {channel="modbus:inverter-single-phase:bridge:40069:acGeneral#ac-power" [profile="transform:JS", function="potenzaEsportata.js"]}
 Number:Power I_AC_Power_Value "Potenza prodotta [%.1f kW]" <solarplant> (gInverter, gInfluxdb) ["Measurement", "Power"] {channel="modbus:inverter-single-phase:bridge:40069:acGeneral#ac-power", unit="kW"}
 Number:Frequency I_AC_Frequency_Value "Frequenza [%.1f %unit%]" (gInverter, gInfluxdb1)  ["Measurement", "Frequency"] {channel="modbus:inverter-single-phase:bridge:40069:acGeneral#ac-frequency"}
-Number:Dimensionless I_AC_Power_Factor "Fattore di potenza [%.1f]"  {channel="modbus:inverter-single-phase:bridge:40069:acGeneral#ac-power-factor"}
+Number:Dimensionless I_AC_Power_Factor "Fattore di potenza [%.1f]" (gInverter, gInfluxdb) ["Measurement"] {channel="modbus:inverter-single-phase:bridge:40069:acGeneral#ac-power-factor"}
 Number:Energy I_AC_Lifetime_Energy_Production "Energia prodotta in vita [%.1f %unit%]" (gInverter) ["Measurement", "Enery"] {channel="modbus:inverter-single-phase:bridge:40069:acGeneral#ac-lifetime-energy"}

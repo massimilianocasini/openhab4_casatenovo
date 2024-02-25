@@ -34,9 +34,9 @@ then
           logInfo("CondMode", "Creato Timer")
           controllo = 1
           createTimer(now.plusSeconds(15), [|
-            gEqCondSetPoint.sendCommand(21.5)
+            gEqCondSetPoint.sendCommand(22)
             gEqCondMode.sendCommand("HEAT")
-            logInfo("CondMode", "Forzato passaggio a HEAT a 21.5° di tutti i condizionatori" )
+            logInfo("CondMode", "Forzato passaggio a HEAT a 22° di tutti i condizionatori" )
             createTimer(now.plusSeconds(15), [| 
               controllo = 0
             ])

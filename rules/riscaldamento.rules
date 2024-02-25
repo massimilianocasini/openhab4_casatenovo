@@ -13,8 +13,8 @@ then
     var setpointmanu = Riscaldamento_Man_SP.state
     val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
     val lgwebosActions = getActions("lgwebos","lgwebos:WebOSTV:d19b82c8-a123-40fe-c940-70169a605dc6")
-    telegramActions.sendTelegram("Modo: " + riscaldamentomodo + " Termosifoni ON Temp Attuale: " + tempint + " SetPointAuto:" + setpointauto + " SetPointManu:" + setpointmanu )
-    lgwebosActions.showToast("Caldaia ON")
+  //  telegramActions.sendTelegram("Modo: " + riscaldamentomodo + " Termosifoni ON Temp Attuale: " + tempint + " SetPointAuto:" + setpointauto + " SetPointManu:" + setpointmanu ) // INvia messaggio Telegram
+  //  lgwebosActions.showToast("Caldaia ON") // INvia messaggio a TV
 end 
 
 rule "invia a telegram lo stato caldaia OFF"
@@ -28,16 +28,17 @@ then
     var setpointmanu = Riscaldamento_Man_SP.state
     val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
     val lgwebosActions = getActions("lgwebos","lgwebos:WebOSTV:d19b82c8-a123-40fe-c940-70169a605dc6")
-    telegramActions.sendTelegram("Modo: " + riscaldamentomodo + " Termosifoni OFF Temp Attuale: " + tempint + " SetPointAuto:" + setpointauto + " SetPointManu:  " + setpointmanu )
-    lgwebosActions.showToast("Caldaia OFF")
+ //   telegramActions.sendTelegram("Modo: " + riscaldamentomodo + " Termosifoni OFF Temp Attuale: " + tempint + " SetPointAuto:" + setpointauto + " SetPointManu:  " + setpointmanu )
+ //   lgwebosActions.showToast("Caldaia OFF")
 end 
 
 rule "Manda in automatico (1) il cronotermostato alle 00:00"
 when 
 Time cron "0 00 00 ? * * *"
 then
+      if(Riscaldamento_Modo.state != 2) {
       Riscaldamento_Modo.sendCommand(1)
-
+      }
 end
 
 

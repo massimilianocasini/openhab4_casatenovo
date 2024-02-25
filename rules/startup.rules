@@ -16,15 +16,16 @@ when
 then
     Riscaldamento_Modo.sendCommand(1) //[0="Manuale", 1="Automatico", 2="Disattivato"]
     Riscaldamento_Man_SP.postUpdate(20.5)
+    Condizionamento_Modo.sendCommand(1) //[0="Manuale", 1="Automatico", 2="Disattivato"]
     Presence.sendCommand(OFF)
     gPresence_Sensors.sendCommand(OFF)
     Presence_Auto.sendCommand(OFF)
     Presence_Timer.sendCommand(OFF)
     if (gEqCondMode.state=="HEAT") {
-    DaikinACUnit_SetPoint_Studio.sendCommand(21)
-    DaikinACUnit_SetPoint_Soggiorno.sendCommand(21)
-    DaikinACUnit_SetPoint_Cameretta.sendCommand(21)
-    DaikinACUnit_SetPoint_Letto.sendCommand(21)
+    DaikinACUnit_SetPoint_Studio.sendCommand(22)
+    DaikinACUnit_SetPoint_Soggiorno.sendCommand(22)
+    DaikinACUnit_SetPoint_Cameretta.sendCommand(22)
+    DaikinACUnit_SetPoint_Letto.sendCommand(22)
     }
     else if (gEqCondMode.state == "COLD") {
     DaikinACUnit_SetPoint_Studio.sendCommand(29)

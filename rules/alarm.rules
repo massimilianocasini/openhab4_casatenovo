@@ -44,27 +44,13 @@ switch(Prodino0_optoIn0.state) {
         logInfo("Alarm.rules", "Tapparella soggiorno DOWN")
     TapparellaCameretta.sendCommand(DOWN)
         logInfo("Alarm.rules", "Tapparella cameretta DOWN")
+    Osram01S.sendCommand(OFF) //Spegni luce natale
 
-    // if (TapparellaLetto.state < 100) {
-    //     TapparellaLetto.sendCommand(DOWN)
-    //     logInfo("Alarm.rules", "Tapparella letto DOWN")
-    // }
-    // if (TapparellaStudio.state < 100) {
-    //     TapparellaStudio.sendCommand(DOWN)
-    //     logInfo("Alarm.rules", "Tapparella studio DOWN")
-    // }
-    // if (TapparellaSoggiorno.state < 100) {
-    //     TapparellaSoggiorno.sendCommand(DOWN)
-    //     logInfo("Alarm.rules", "Tapparella soggiorno DOWN")
-    // }
-    // if (TapparellaCameretta.state < 100) {
-    //     TapparellaCameretta.sendCommand(DOWN)
-    //     logInfo("Alarm.rules", "Tapparella cameretta DOWN")
-    // }
   }
   case "DISINSERITO": {
     telegramActions.sendTelegram("Antifurto DIsInserito!")
     logInfo("Alarm.rules", "Antifurto DISINSERITO")
+    Osram01S.sendCommand(ON) //Accendi luce natale
     if (SunElevation.state > -3 && now.getHour > 8 && isteresiTimer === null) {
         TapparellaLetto.sendCommand(UP)
         TapparellaStudio.sendCommand(UP)

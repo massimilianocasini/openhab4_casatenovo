@@ -1,6 +1,23 @@
-Dimmer SonosBeam_Volume                  "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Beam:RINCON_542A1BD8C3C601400:volume"}
-String SonosBeam_NotificationSound       "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Beam:RINCON_542A1BD8C3C601400:notificationsound"}
-Dimmer SonosEraStudio_Volume                  "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:volume"}
-String SonosEraStudio_NotificationSound       "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:notificationsound"} 
-Dimmer SonosEraLetto_Volume                  "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Era100:RINCON_C43875933BE401400:volume"}
-String SonosEraLetto_NotificationSound       "Volume [%.1f %%]" <soundvolume>      (Sonos) {channel="sonos:Era100:RINCON_C43875933BE401400:notificationsound"}  
+Dimmer SonosBeam_Volume                  "Volume [%.1f %%]" <soundvolume>      (gSonos) {channel="sonos:Beam:RINCON_542A1BD8C3C601400:volume"}
+String SonosBeam_NotificationSound       "Volume [%.1f %%]" <soundvolume>      (gSonos) {channel="sonos:Beam:RINCON_542A1BD8C3C601400:notificationsound"}
+
+Dimmer SonosEraStudio_Volume                  "Volume [%.1f %%]" <soundvolume>      (gSonos,gOfficeSpeaker)["Status"] {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:volume"}
+String SonosEraStudio_NotificationSound       "Volume [%.1f %%]" <soundvolume>      (gSonos, gOfficeSpeaker) {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:notificationsound"} 
+Player SonosEraStudio_Controller   "Controller"                          (gSonos, gOfficeSpeaker) ["Status"] {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:control"}
+Switch SonosEraStudio_Mute         "Mute"             <soundvolume_mute> (gSonos, gOfficeSpeaker) ["Status"] {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:mute"}
+Switch SonosEraStudio_LED          "LED"              <switch>           (gSonos, gOfficeSpeaker)["Status"] {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:led"}
+String SonosEraStudio_CurrentTitle "Now playing [%s]" <text>             (gSonos, gOfficeSpeaker)["Status"]{channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:currenttitle"}
+String SonosEraStudio_State        "Status [%s]"      <text>             (gSonos, gOfficeSpeaker) ["Status"]{channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:state"}
+String SonosEraStudio_PlayUri      "Playing URI [%s]" <text>             (gSonos, gOfficeSpeaker)["Status"] {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:playuri"}
+Switch PlayWebRadioUri
+Image  SonosEraStudio_CurrentAlbumArt "Copertina" (gSonos, gOfficeSpeaker) ["Status"] {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:currentalbumart"}
+String SonosEraStudio_CurrentAlbum  "Album [%s]" <text>             (gSonos, gOfficeSpeaker)["Status"]{channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:currentalbum"}
+String SonosEraStudio_CurrentArtist "Artista [%s]" <text>             (gSonos, gOfficeSpeaker)["Status"]{channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:currentartist"}
+String SonosEraStudio_Add "Aggiungi a gruppo" <text>             (gSonos, gOfficeSpeaker)["Status"]{channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:add"}
+String SonosEraStudio_Remove "Rimuovi da gruppo" <text>             (gSonos, gOfficeSpeaker)["Status"]{channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:remove"}
+Switch SonosEraStudio_Standalone         "Rendi indipendente"             (gSonos, gOfficeSpeaker) ["Status"] {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:standalone"}
+Switch SonosEraStudio_Cordinator         "Rendi coordinator"              (gSonos, gOfficeSpeaker) ["Status"] {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:coordinator"}
+String SonosEraStudio_TuneStationID "TuneStationID" <text>             (gSonos, gOfficeSpeaker)["Status"]{channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:tuneinstationid"}
+
+Dimmer SonosEraLetto_Volume                  "Volume [%.1f %%]" <soundvolume>      (gSonos) {channel="sonos:Era100:RINCON_C43875933BE401400:volume"}
+String SonosEraLetto_NotificationSound       "Volume [%.1f %%]" <soundvolume>      (gSonos) {channel="sonos:Era100:RINCON_C43875933BE401400:notificationsound"}  

@@ -22,5 +22,5 @@ Number:Power Power_Used "Potenza richiesta [%.1f kW]" <poweroutlet_eu> (gInverte
 //Number:Power Power_Used_abs "Potenza richiesta [%.1f kW]" <poweroutlet_eu> (gInverter, gInfluxdb) ["Power"]
 Number:Power Power_Teoric_Available "Potenza teorica disponibile [%.1f kW]" <sun> (gInverter, gInfluxdb) ["Measurement", "Power"] {unit="kW"}
 
-Number:Power PotenzaAssorbitaDaRete "Potenza Assorbita da rete [%.1f kW]" {unit="kW" }
-Number:Power PotenzaImmessaInRete "Potenza Immessa in rete [%.1f kW]" {unit="kW"}
+Number:Power PotenzaAssorbitaDaRete "Potenza Assorbita da rete [%.1f kW]" ["Measurement"] {unit="kW"}
+Number PotenzaImmessaInRete "Potenza Immessa in rete [%.1f kW]" {unit="kW"}
