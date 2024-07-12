@@ -20,4 +20,10 @@ String  Cm3panel    "CM3Panel"  <settings>  {channel="mqtt:topic:mosquitto:cm3pa
 // Tasmota Garage
 Number ContatoreAcqua "Contatore acqua [%.0f]" (gGarageSensor, gInfluxdb) ["Measurement", "Water"] {channel="mqtt:topic:mosquitto:flussometro:flusso"}
 Switch ResetContatoreAcqua "Reset contatore acqua []" (gGarageSensor) ["Switch", "Water"] {channel="mqtt:topic:mosquitto:flussometro:resetFlusso", expire="1s,command=OFF"}
-Switch ElettrovalvolaAcqua "Elettrovalvola acqua []" (gValve) ["Switch", "Water"] {channel="mqtt:topic:mosquitto:flussometro:elettrovalvola", stateDescription="" [options="OFF=APERTA, ON=CHIUSA"]} 
+Switch ElettrovalvolaAcqua "Elettrovalvola acqua []" (gValve) ["Switch", "Water"] {channel="mqtt:topic:mosquitto:flussometro:elettrovalvola", stateDescription="" [options="OFF=APERTA, ON=CHIUSA"]}
+
+// Radar
+Number:Temperature RadarTemp "Radar Temperatura [%.1f °C]" (gRadar) ["Measurement"] {channel="mqtt:topic:marconi:Radar:temp"}
+Number RadarGas "Radar GAS [%.0f]" (gRadar) ["Measurement"] {channel="mqtt:topic:marconi:Radar:gas"}
+Number:Pressure RadarPress "Radar Pressione [%.1f %%]" (gRadar) ["Measurement"] {channel="mqtt:topic:marconi:Radar:press", unit="hPa"}
+Number RadarHum "Radar Umidità [%.0f %%]" (gRadar) ["Measurement"] {channel="mqtt:topic:marconi:Radar:hum"}

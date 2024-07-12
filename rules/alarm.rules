@@ -1,6 +1,6 @@
 var Timer isteresiTimer = null
 val int timeoutMinutes = 5 // choose an appropriate value
-
+var int alarmcount = 0 //Conteggio numero di allarmi
 
 rule "Antifurto cambio stato swicth case"
 when 
@@ -13,6 +13,7 @@ switch(Prodino0_optoIn0.state) {
     if(isteresiTimer === null) {
       isteresiTimer = createTimer(now.plusMinutes(timeoutMinutes ), [|
       isteresiTimer = null
+      logInfo("Alarm.rules", "Timer su inserimento scaduto" )
       ])
     }
     else {
@@ -23,6 +24,7 @@ switch(Prodino0_optoIn0.state) {
     if (DaikinACUnit_Mode_Studio.state == "HEAT" && DaikinACUnit_Power_Studio.state == ON) {
         DaikinACUnit_Power_Studio.sendCommand(OFF)
         telegramActions.sendTelegram("Condizionatore Studio spento")
+        logInfo("Alarm.rules", "Condizionatore Studio spento" )
     }
     if (DaikinACUnit_Mode_Soggiorno.state == "HEAT" && DaikinACUnit_Power_Soggiorno.state == ON) {
         DaikinACUnit_Power_Soggiorno.sendCommand(OFF)
@@ -44,13 +46,13 @@ switch(Prodino0_optoIn0.state) {
         logInfo("Alarm.rules", "Tapparella soggiorno DOWN")
     TapparellaCameretta.sendCommand(DOWN)
         logInfo("Alarm.rules", "Tapparella cameretta DOWN")
-    Osram01S.sendCommand(OFF) //Spegni luce natale
+    //Osram01S.sendCommand(OFF) //Spegni luce natale
 
   }
   case "DISINSERITO": {
     telegramActions.sendTelegram("Antifurto DIsInserito!")
     logInfo("Alarm.rules", "Antifurto DISINSERITO")
-    Osram01S.sendCommand(ON) //Accendi luce natale
+    //Osram01S.sendCommand(ON) //Accendi luce natale
     if (SunElevation.state > -3 && now.getHour > 8 && isteresiTimer === null) {
         TapparellaLetto.sendCommand(UP)
         TapparellaStudio.sendCommand(UP)
@@ -68,6 +70,7 @@ then
   val pushoverActions = getActions("pushover", "pushover:pushover-account:account")
   val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
   if(Prodino0_optoIn1.state == "ALLARME") {
+    alarmcount = 1
     var receipt = pushoverActions.sendPriorityMessage("Allarme antifurto", "openhab3", 2)
     telegramActions.sendTelegram("Allarme antifurto")
     // wait for your cancel condition
@@ -76,9 +79,10 @@ then
         receipt = null
       }
   }
-  else if (Prodino0_optoIn1.state == "RIPOSO") {
+  else if (Prodino0_optoIn1.state == "RIPOSO" && alarmcount == 1) {
     pushoverActions.sendMessage("FINE Allarme antifurto", "openhab3")
     telegramActions.sendTelegram("FINE Allarme antifurto")
+    alarmcount = 0
     // wait for your cancel condition
     if( receipt !== null ) {
       pushoverActions.cancelPriorityMessage(receipt)

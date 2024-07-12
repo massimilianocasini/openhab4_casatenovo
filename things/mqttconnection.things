@@ -22,3 +22,12 @@ Bridge mqtt:broker:mosquitto [ host="localhost", secure=false ]{
         Type switch : elettrovalvola "Elettrovalvola acqua" [commandTopic = "cmnd/tasmota_026BB3/POWER", on = "ON", off = "OFF"]
     } 
 }
+Bridge mqtt:broker:marconi [ host="proxy.marconicloud.it", secure=false ]{
+    Thing topic Radar "Radar" @ "Marconi" {
+      Channels:
+        Type number : temp "Radar temp" [ stateTopic = "radar/misure", transformationPattern = "JSONPATH:$.tempSensor.temp"]
+        Type number : gas "Radar gas" [ stateTopic = "radar/misure", transformationPattern = "JSONPATH:$.tempSensor.gas"]
+        Type number : press "Radar temp" [ stateTopic = "radar/misure", transformationPattern = "JSONPATH:$.tempSensor.press"]
+        Type number : hum "Radar temp" [ stateTopic = "radar/misure", transformationPattern = "JSONPATH:$.tempSensor.hum"]
+    }
+}

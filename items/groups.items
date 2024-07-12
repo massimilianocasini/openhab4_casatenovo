@@ -10,6 +10,8 @@ Group gSonos
 
 Group gBattery "Batterie" 
 Group gCleaningRobot "Roomba" ["CleaningRobot"]
+Group gRadar
+
 
 Group:Number:AVG gAvgUmidita "Umidità media interna [%.0f %%]" <humidity> (gGroundFloor)
 

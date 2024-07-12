@@ -4,7 +4,7 @@ network:pingdevice:CondSalottoIP [ hostname="DaikinAP12911-1-Salotto", retry=3, 
 network:pingdevice:CondCamerettaIP [ hostname="192.168.188.29", retry=3, timeout=1000, refreshInterval=60000 ]
 network:pingdevice:CondStudioIP [ hostname="192.168.188.31", retry=3, timeout=1000, refreshInterval=60000 ]
 network:pingdevice:CondLettoIP [ hostname="192.168.188.30", retry=3, timeout=1000, refreshInterval=60000 ]
-network:pingdevice:repeater1750E [ hostname="192.168.188.35", retry=3, timeout=1000, refreshInterval=60000 ]
+network:pingdevice:repeater1750E [ hostname="fritzrepeater1750", retry=3, timeout=1000, refreshInterval=60000 ]
 network:pingdevice:repeater1160 [ hostname="fritzrepeater1160", retry=3, timeout=1000, refreshInterval=60000 ]
 network:pingdevice:solaredgeinverter [ hostname="192.168.188.6", retry=3, timeout=1000, refreshInterval=60000 ]
 network:pingdevice:cm3panel [ hostname="192.168.188.51", retry=3, timeout=1000, refreshInterval=60000 ]

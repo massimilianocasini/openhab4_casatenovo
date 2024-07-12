@@ -26,4 +26,5 @@ Items
 	//gAvgPressione : strategy = everyMinute, restoreOnStartup
 	//gAVGDaikinTemp : strategy = everyMinute, restoreOnStartup
 	gSpeedtest* : strategy = everyChange, restoreOnStartup
+	gRadar*: strategy =  everyChange, restoreOnStartup
 }

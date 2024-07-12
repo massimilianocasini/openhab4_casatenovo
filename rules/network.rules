@@ -1,4 +1,5 @@
-var Number counter
+var Number counter1
+var Number counter2
 var Number check
 rule "Check presenza hosts su IP"
 when
@@ -13,24 +14,40 @@ then
                 telegramActions.sendTelegram("Host " + host.name + " connesso in rete < 3")
             }
         }
-        else 
-            if (host.name != "Alice" && host.name != "Graziella" && host.name != "Massimiliano" ) {
+        if (host.name == "Alice") {
+            counter2 = 0
+        }
+        if (host.name != "Alice" && host.name != "Graziella" && host.name != "Massimiliano" ) {
                 telegramActions.sendTelegram("Host " + host.name + " connesso in rete")
             }
     }
     else {
         val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
         if (host.name=="Ngnix_443"){
-            counter = counter + 1
-            if (counter > 3) {
+            counter1 = counter1 + 1
+            if (counter1 > 3) {
                 check = 1
                 telegramActions.sendTelegram("Host " + host.name + " perso dalla rete > 3 !!!!")  
             }
         }
-        else {
-            if (host.name != "Alice" && host.name != "Graziella" && host.name != "Massimiliano" ) {
-                telegramActions.sendTelegram("Host " + host.name + " perso dalla rete!!!!")
-            }
+        else if (host.name != "Alice" && host.name != "Graziella" && host.name != "Massimiliano" ) {
+              telegramActions.sendTelegram("Host " + host.name + " perso dalla rete!!!!")
+        }
+        else if (host.name == "Graziella") { //Dopo che Graziella esce la mattina spegni condizionatore soggiorno
+                if (now.getHour < 9) {
+                    DaikinACUnit_Power_Soggiorno.sendCommand(OFF)
+                    logInfo("Network", "Cond Soggiorno Spento perchè Graziella è andata a lavoro" )
+                }
+        }
+        else if (host.name == "Alice") { //Dopo che Alice esce la mattina spegni condizionatore soggiorno
+                count2 = counter2 + 1
+                if (counter2 > 3) {
+                    check2 = 1
+                    if (now.getHour < 9 || now.getHour > 7 || DaikinACUnit_Mode_Cameretta.state=="HEAT"|| isBankHoliday == false && isWeekend == false) {
+                        DaikinACUnit_Power_Cameretta.sendCommand(OFF)
+                        logInfo("Network", "Cond Cameretta Spento perchè Alice è aassente, il modo è HEAT e siamo tra le 7 e le 9 e non è festa e non è fine settimana" )
+                    }
+                }
         }
     }
 end

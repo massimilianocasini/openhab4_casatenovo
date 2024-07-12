@@ -7,12 +7,11 @@ when
     Item FGS221_010_SwitchBinary1 received update ON
 then
     if(occupancyTimer === null) {
-        logInfo("PresenceCameretta", "StartTimer")
+        logInfo("PresenceCameretta", "Timer start")
         occupancyTimer = createTimer(now.plusMinutes(timeoutMinutes ), [|
-            FGBS001_012_SensorBinary1.sendCommand(OFF)
             FGS221_010_SwitchBinary1.sendCommand(OFF)
             occupancyTimer = null
-            logInfo("PresenceCameretta", "StopTimer")
+            logInfo("PresenceCameretta", "Timer concluso luce spenta")
         ])
     }
     else {

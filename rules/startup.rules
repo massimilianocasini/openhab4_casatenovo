@@ -16,7 +16,7 @@ when
 then
     Riscaldamento_Modo.sendCommand(1) //[0="Manuale", 1="Automatico", 2="Disattivato"]
     Riscaldamento_Man_SP.postUpdate(20.5)
-    Condizionamento_Modo.sendCommand(1) //[0="Manuale", 1="Automatico", 2="Disattivato"]
+    HvACWinterMode.sendCommand(1) //[0="Manuale", 1="Automatico", 2="Disattivato"]
     Presence.sendCommand(OFF)
     gPresence_Sensors.sendCommand(OFF)
     Presence_Auto.sendCommand(OFF)

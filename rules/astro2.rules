@@ -76,32 +76,32 @@ then
                             TapparellaStudio.sendCommand(70) }
                         if(TapparellaSoggiorno.state == 90) {
                             TapparellaSoggiorno.sendCommand(70) }
-                        if(TapparellaCameretta.state == 90) {
-                            TapparellaCameretta.sendCommand(70) }
+                    //    if(TapparellaCameretta.state == 90) {
+                    //        TapparellaCameretta.sendCommand(70) }
                         logInfo("Astro", "Procedura apertura serrande caso 2" )
                         }
-            case  3 : {
+             case  3 : {
                         if(TapparellaLetto.state == 70) { 
                             TapparellaLetto.sendCommand(40) }
                         if(TapparellaStudio.state == 70) {
                             TapparellaStudio.sendCommand(40) }
                         if(TapparellaSoggiorno.state == 70) {
                             TapparellaSoggiorno.sendCommand(40) }
-                        if(TapparellaCameretta.state == 70) {
-                            TapparellaCameretta.sendCommand(40) }
+                     //   if(TapparellaCameretta.state == 70) {
+                     //       TapparellaCameretta.sendCommand(40) }
                         logInfo("Astro", "Procedura apertura serrande caso 3" )
                         }
-            case  4 : {
+         /*   case  4 : {
                         if(TapparellaLetto.state == 40) { 
                             TapparellaLetto.sendCommand(0) }
                         if(TapparellaStudio.state == 40) {
                             TapparellaStudio.sendCommand(0) }
                         if(TapparellaSoggiorno.state == 40) {
                             TapparellaSoggiorno.sendCommand(0) }
-                        if(TapparellaCameretta.state == 40) {
-                            TapparellaCameretta.sendCommand(0) }
+                    //    if(TapparellaCameretta.state == 40) {
+                    //        TapparellaCameretta.sendCommand(0) }
                         logInfo("Astro", "Procedura apertura serrande caso 4" )
-                        }
+                        } */
             default : {
                 tAutoOff = null
                 logInfo("Astro", "Fine procedura apertura serrande" )

@@ -17,11 +17,9 @@ sitemap Casatenovo label="Benvenuto a Casa"
 		Text label="Temperature/Umidità/Pressione Interna" icon=temperature {
 			Default item=Aqara1T
 			Default item=Aqara2T
-			Default item=Lumi1T
 			Default item=FGMS001_008_Temp
 			Default item=Aqara1H
 			Default item=Aqara2H
-			Default item=Lumi1H
 			Default item=Aqara1P
 			Default item=Aqara3P
 		}
@@ -116,7 +114,7 @@ sitemap Casatenovo label="Benvenuto a Casa"
 		}
 	}
 	Frame label="Riscaldamento"	{
-		Text item=Lumi1T labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
+	//	Text item=Lumi1T labelcolor=[>25="orange",>15="green",>5="orange",<=5="blue"] valuecolor=[>25="orange",>15="green",>5="orange",<=5="blue"] icon="temperature"
 		Text item=FGS221_002_SwitchBinary2 valuecolor=[ON="green", OFF="red"]
 		Switch item=Riscaldamento_Modo mappings=[3="Manuale", 1="Automatico", 2="Disattivato"]
 		Default item=Riscaldamento_Auto_SP visibility=[Riscaldamento_Modo==1]
@@ -173,7 +171,7 @@ sitemap Casatenovo label="Benvenuto a Casa"
 		Text label="Corridoio" icon="corridor" {
 			Slider item=FGD211_003_SwitchDimmer
 			Text item=FGBS222_013_Input2
-			Default item=Lumi1T
+			//Default item=Lumi1T
 		}
 		Text label="Studio" icon="office" {
 			Default item=FGMS001_008_Temp 
@@ -334,11 +332,11 @@ sitemap Casatenovo label="Benvenuto a Casa"
 				Text item=Aqara2H
 				Text item=Aqara2B
 			}
-			Text label="Lumi1 Corridoio" icon="cellar" {
-				Text item=Lumi1T
-				Text item=Lumi1H
-				Text item=Lumi1B
-			}
+		//	Text label="Lumi1 Corridoio" icon="cellar" {
+		//		Text item=Lumi1T
+		//		Text item=Lumi1H
+		//		Text item=Lumi1B
+		//	}
 		}
 	}
 

@@ -1,1 +1,5 @@
 Switch Test "Pulsante per test" 
+
+Number PressioneArteriosaMinima "[%.1f]" (gSpeedtest)
+Number PressioneArteriosaMassima "[%.1f]" (gSpeedtest)
+Number Pulsazioni "[%.1f]" (gSpeedtest)

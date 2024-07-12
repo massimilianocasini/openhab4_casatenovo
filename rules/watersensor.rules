@@ -17,6 +17,7 @@ then
     logInfo("WaterSensor", host.name + " " + host.state + " Cambio rilevato sul gruppo gWaterSensor")
 if (host.state==ON) {
         var receipt = pushoverActions.sendPriorityMessage("Rilevato allagamento dal sensore "+ host.name, "openhab3", 2)
+      //  var receipt = pushoverActions.sendMessage("Rilevato allagamento dal sensore "+ host.name, "openhab3", 2)
         // wait for your cancel condition
         if( receipt !== null ) {
             pushoverActions.cancelPriorityMessage(receipt)

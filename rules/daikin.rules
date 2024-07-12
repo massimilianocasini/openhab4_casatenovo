@@ -8,7 +8,7 @@ then
         logInfo("CondMode", "Item che ha cambiato stato " + item.name + " " + item.state)
         if (item.state == "COLD" && controllo == 0) {
           controllo = 1
-          logInfo("CondMode", "Creato Timer")
+          logInfo("CondMode", "Creato Timer 15 sec per passaggio a COLD a 29° di tutti i Condizionatori")
           createTimer(now.plusSeconds(15), [|
             gEqCondSetPoint.sendCommand(29)
             gEqCondMode.sendCommand("COLD")
@@ -18,20 +18,20 @@ then
             ])
           ])
         }
-        if (item.state == "DEHUMIDIFIER" && controllo == 0) {
-          logInfo("CondMode", "Creato Timer")
-          controllo = 1
-          createTimer(now.plusSeconds(15), [|
-        //   gEqCondSetPoint.sendCommand(29)
-            gEqCondMode.sendCommand("DEHUMIDIFIER")
-            logInfo("CondMode", "Forzato passaggio a DEHUMIDIFIER  di tutti i condizionatori" )
-            createTimer(now.plusSeconds(15), [| 
-              controllo = 0
-            ])
-        ])
-           }
+        // if (item.state == "DEHUMIDIFIER" && controllo == 0) {
+        //   logInfo("CondMode", "Creato Timer 15 sec per passaggio a DEUMIDIFICATORE di tutti i Condizionatori")
+        //   controllo = 1
+        //   createTimer(now.plusSeconds(15), [|
+        // //   gEqCondSetPoint.sendCommand(29)
+        //     gEqCondMode.sendCommand("DEHUMIDIFIER")
+        //     logInfo("CondMode", "Forzato passaggio a DEUMIDIFICATORE  di tutti i condizionatori" )
+        //     createTimer(now.plusSeconds(15), [| 
+        //       controllo = 0
+        //     ])
+        // ])
+        //   }
         if (item.state == "HEAT" && controllo == 0) {
-          logInfo("CondMode", "Creato Timer")
+          logInfo("CondMode", "Creato Timer 15 sec per passaggio a HEAT a 22° di tutti i Condizionatori")
           controllo = 1
           createTimer(now.plusSeconds(15), [|
             gEqCondSetPoint.sendCommand(22)
@@ -81,12 +81,17 @@ then
      DaikinACUnit_Power_Letto.sendCommand(OFF)
  }
 end
-rule "Allinea gEqCondSetPoint"
-when 
-  Member of gEqCondSetPoint changed
-then
-  val item = triggeringItem
-  var int setpoint
-  setpoint = item.state
-  gEqCondSetPoint.postUpdate(setpoint)
-end
+
+// rule "Allinea gEqCondSetPoint"
+// when 
+//   Member of gEqCondSetPoint changed
+// then
+//   val item = triggeringItem
+//   var int setpoint
+//   if (setpoint = item.state > 0) {
+//     setpoint = (item.state as QuantityType<Number>).toBigDecimal
+//     logInfo("gEqCondSetPoint", "setpoint " + setpoint)
+//     gEqCondSetPoint.postUpdate(setpoint) // uso posUpdate invece di sendCommand perchè voglio che le temperetaure 
+//                                         //vengano allineate solo quando uso il setpoint generale. Se cambio la temperature su un singolo condizionatore non deve cambiare set point anche sugli altri
+//   }
+// end

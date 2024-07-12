@@ -13,3 +13,4 @@ Switch Presence_Timer { expire="15m,command=OFF" } // anti-flapping timer
 Switch Presence_Auto <switch>  //Presenza automatica o manuale
 
 Switch VoglioDormire <switch>
+
