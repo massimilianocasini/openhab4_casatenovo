@@ -47,9 +47,9 @@ Switch FGS221_010_SwitchBinary1 "Luce centrale Cameretta" <light> (gBedroom2Ligh
 Switch FGS221_010_SwitchBinary2 "Lumetti Cameretta" <light> (gBedroom2Light) ["Switch", "Light"] { ga="Light" [roomHint="Cameretta"],channel="zwave:device:77c679d29e:node10:switch_binary2"}
 
 //FGS221 Double relay Switch 2x1.5kW Cameretta lato letti
-Switch FGS221_011_SwitchBinary "" {channel="zwave:device:77c679d29e:node15:switch_binary"}
-Switch FGS221_011_SwitchBinary1 "Luce centrale Cameretta"  {channel="zwave:device:77c679d29e:node15:switch_binary1"}
-Switch FGS221_011_SwitchBinary2 "Lumetti Caneretta " {channel="zwave:device:77c679d29e:node15:switch_binary2"}
+Switch FGS221_011_SwitchBinary "" {channel="zwave:device:77c679d29e:node11:switch_binary"}
+Switch FGS221_011_SwitchBinary1 "Luce centrale Cameretta"  {channel="zwave:device:77c679d29e:node11:switch_binary1"}
+Switch FGS221_011_SwitchBinary2 "Lumetti Caneretta " {channel="zwave:device:77c679d29e:node11:switch_binary2"}
 
 
 //FGBS001 Universal Binary Sensor, Cameretta

@@ -36,7 +36,7 @@ rule "Manda in automatico (1) il cronotermostato alle 00:00"
 when 
 Time cron "0 00 00 ? * * *"
 then
-      if(Riscaldamento_Modo.state != 2) {
+      if(Riscaldamento_Modo.state != 2) {   // Stato = 2 quando disabilitato
       Riscaldamento_Modo.sendCommand(1)
       }
 end

@@ -70,8 +70,8 @@ then
                         logInfo("Astro", "Procedura apertura serrande caso 1" )
                         }
             case  2 : {
-                        if(TapparellaLetto.state == 90) { 
-                            TapparellaLetto.sendCommand(70) }
+                     //   if(TapparellaLetto.state == 90) { 
+                     //       TapparellaLetto.sendCommand(70) }
                         if(TapparellaStudio.state == 90) {
                             TapparellaStudio.sendCommand(70) }
                         if(TapparellaSoggiorno.state == 90) {
@@ -81,8 +81,8 @@ then
                         logInfo("Astro", "Procedura apertura serrande caso 2" )
                         }
              case  3 : {
-                        if(TapparellaLetto.state == 70) { 
-                            TapparellaLetto.sendCommand(40) }
+                     //   if(TapparellaLetto.state == 70) { 
+                     //       TapparellaLetto.sendCommand(40) }
                         if(TapparellaStudio.state == 70) {
                             TapparellaStudio.sendCommand(40) }
                         if(TapparellaSoggiorno.state == 70) {

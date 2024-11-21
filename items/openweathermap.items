@@ -1,5 +1,5 @@
 // Local weather and forecast Thing
-String                  OneCallAPIweatherandforecast_StationName                              "Station Name"                               (gWeather) ["Status"]  { channel="openweathermap:weather-and-forecast:bridge:local:station#name" }       
+//String                  OneCallAPIweatherandforecast_StationName                              "Station Name"                               (gWeather) ["Status"]  { channel="openweathermap:weather-and-forecast:bridge:local:station#name" }       
 
 // OneCall API Thing
 DateTime                OneCallAPIweatherandforecast_ObservationTime                     "Observation Time"             <Time>      (gWeather) ["Status"]  { channel="openweathermap:onecall:bridge:local:current#time-stamp" }                   

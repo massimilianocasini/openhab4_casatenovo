@@ -1,6 +1,6 @@
 network:pingdevice:GoogleIP [ hostname="8.8.8.8", retry=3, timeout=1000, refreshInterval=60000 ]
 network:pingdevice:Prodino [ hostname="192.168.188.33", retry=3, timeout=1000, refreshInterval=60000 ]
-network:pingdevice:CondSalottoIP [ hostname="DaikinAP12911-1-Salotto", retry=3, timeout=1000, refreshInterval=60000 ]
+network:pingdevice:CondSalottoIP [ hostname="192.168.188.32", retry=3, timeout=1000, refreshInterval=60000 ]
 network:pingdevice:CondCamerettaIP [ hostname="192.168.188.29", retry=3, timeout=1000, refreshInterval=60000 ]
 network:pingdevice:CondStudioIP [ hostname="192.168.188.31", retry=3, timeout=1000, refreshInterval=60000 ]
 network:pingdevice:CondLettoIP [ hostname="192.168.188.30", retry=3, timeout=1000, refreshInterval=60000 ]

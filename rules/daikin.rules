@@ -8,11 +8,11 @@ then
         logInfo("CondMode", "Item che ha cambiato stato " + item.name + " " + item.state)
         if (item.state == "COLD" && controllo == 0) {
           controllo = 1
-          logInfo("CondMode", "Creato Timer 15 sec per passaggio a COLD a 29° di tutti i Condizionatori")
+          logInfo("CondMode", "Creato Timer 15 sec per passaggio a COLD a 27° di tutti i Condizionatori")
           createTimer(now.plusSeconds(15), [|
-            gEqCondSetPoint.sendCommand(29)
+            gEqCondSetPoint.sendCommand(27)
             gEqCondMode.sendCommand("COLD")
-            logInfo("CondMode", "Forzato passaggio a COLD a 29° di tutti i condizionatori" )
+            logInfo("CondMode", "Forzato passaggio a COLD a 27° di tutti i condizionatori" )
             createTimer(now.plusSeconds(15), [| 
               controllo = 0
             ])
