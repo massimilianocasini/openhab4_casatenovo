@@ -1,7 +1,7 @@
 var Timer isteresiTimer = null
 val int timeoutMinutes = 5 // choose an appropriate value
 var int alarmcount = 0 //Conteggio numero di allarmi
-
+var int receipt = null
 rule "Antifurto cambio stato swicth case"
 when 
     Item Prodino0_optoIn0 changed
@@ -38,21 +38,19 @@ switch(Prodino0_optoIn0.state) {
         DaikinACUnit_Power_Letto.sendCommand(OFF)
         telegramActions.sendTelegram("Condizionatore Letto spento")
     }
+    if (now.getHour < 01 && now.getHour > 3) {
     TapparellaLetto.sendCommand(DOWN)
-        logInfo("Alarm.rules", "Tapparella letto DOWN")
     TapparellaStudio.sendCommand(DOWN)
-        logInfo("Alarm.rules", "Tapparella studio DOWN")
     TapparellaSoggiorno.sendCommand(DOWN)
-        logInfo("Alarm.rules", "Tapparella soggiorno DOWN")
     TapparellaCameretta.sendCommand(DOWN)
-        logInfo("Alarm.rules", "Tapparella cameretta DOWN")
-    //Osram01S.sendCommand(OFF) //Spegni luce natale
-
+        logInfo("Alarm.rules", "Tapparelle DOWN perchè INSERITO ad orario: " + now.getHour )
+    Osram01S.sendCommand(OFF) //Spegni luce natale
+    }
   }
   case "DISINSERITO": {
     telegramActions.sendTelegram("Antifurto DIsInserito!")
     logInfo("Alarm.rules", "Antifurto DISINSERITO")
-    //Osram01S.sendCommand(ON) //Accendi luce natale
+    Osram01S.sendCommand(ON) //Accendi luce natale
     if (SunElevation.state > -3 && now.getHour > 8 && isteresiTimer === null) {
         TapparellaLetto.sendCommand(UP)
         TapparellaStudio.sendCommand(UP)

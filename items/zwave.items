@@ -29,10 +29,10 @@ Switch  FGBS001_007_AlarmGeneral2 "Alarm2" {channel="zwave:device:77c679d29e:nod
 Number:Temperature  FGBS001_007_SensorTemperature3_DS1820  "Temperatura Universal Bynary Garage[%.1f °C]" <temperature> (gFibaro3, gInfluxdb) ["Measurement", "Temperature"] {channel="zwave:device:77c679d29e:node7:sensor_temperature3"} 
 
 //FGMS001 Motion Sensor, Corridoio
-Number:Temperature FGMS001_008_Temp "Temperatura Corridoio [%.1f °C]" <temperature> (gCorridorTemp, gAvgTemperatura) ["Measurement", "Temperature"] {channel="zwave:device:77c679d29e:node8:sensor_temperature"}
-Number:Illuminance FGMS001_008_Lum "Luminosità Corridoio [%.1f Lx]" <rgb> (gCorridorTemp) ["Measurement", "Light"] {channel="zwave:device:77c679d29e:node8:sensor_luminance"}
-Switch FGMS001_008_All "IR Corridoio [MAP(ir.map):%s]" <motion> (gCorridorMotionDetector) ["Status"] {channel="zwave:device:77c679d29e:node8:alarm_motion"}
-Number FGMS001_008_Batt "Livello batteria Motion Corridoio [%s %%]" <battery> (gCorridorTemp, gBattery) ["Status", "Energy"] {channel="zwave:device:77c679d29e:node8:battery-level"}
+Number:Temperature FGMS001_008_Temp "Temperatura Occhio[%.1f °C]" <temperature> (gLivingroomTemp, gAvgTemperatura) ["Measurement", "Temperature"] {channel="zwave:device:77c679d29e:node8:sensor_temperature"}
+Number:Illuminance FGMS001_008_Lum "Luminosità Occhio [%.1f Lx]" <rgb> (gLivingroomTemp) ["Measurement", "Light"] {channel="zwave:device:77c679d29e:node8:sensor_luminance"}
+Switch FGMS001_008_All "IR Occhio [MAP(ir.map):%s]" <motion> (gLivingroomMotion) ["Status"] {channel="zwave:device:77c679d29e:node8:alarm_motion"}
+Number FGMS001_008_Batt "Livello batteria Motion Occhio [%s %%]" <battery> (gLivingroomTemp, gBattery) ["Status", "Energy"] {channel="zwave:device:77c679d29e:node8:battery-level"}
 
 // // //FGWP102 Metered Wall Plug Switch
 // Number:Energy FGWP102_009_MeterKwh "Energia consumata presa Fibaro[%.1f KWh]" <energy> (gKitchenSensor, gInfluxdb) ["Measurement", "Energy"] {channel="zwave:device:77c679d29e:node9:meter_kwh"}

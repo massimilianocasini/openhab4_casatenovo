@@ -18,6 +18,8 @@ String SonosEraStudio_Remove "Rimuovi da gruppo" <text>             (gSonos, gOf
 Switch SonosEraStudio_Standalone         "Rendi indipendente"             (gSonos, gOfficeSpeaker) ["Status"] {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:standalone"}
 Switch SonosEraStudio_Cordinator         "Rendi coordinator"              (gSonos, gOfficeSpeaker) ["Status"] {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:coordinator"}
 String SonosEraStudio_TuneStationID "TuneStationID" <text>             (gSonos, gOfficeSpeaker)["Status"]{channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:tuneinstationid"}
+String SonosEraStudio_Favorite "Preferito" <text> (gSonos, gOfficeSpeaker) ["Status"]   {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:favorite"}
+String SonosEraStudio_CurrentTrack "Preferito" <text> (gSonos, gOfficeSpeaker) ["Status"]   {channel="sonos:Era100:RINCON_F0F6C1A32C0E01400:currenttrack"}
 
 Dimmer SonosEraLetto_Volume                  "Volume [%.1f %%]" <soundvolume>      (gSonos) {channel="sonos:Era100:RINCON_C43875933BE401400:volume"}
 String SonosEraLetto_NotificationSound       "Volume [%.1f %%]" <soundvolume>      (gSonos) {channel="sonos:Era100:RINCON_C43875933BE401400:notificationsound"}  

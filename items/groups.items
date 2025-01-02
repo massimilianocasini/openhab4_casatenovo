@@ -72,6 +72,7 @@ Group gBuilding "Building" ["Building"]
             Group gQuadroElettrico "Quadro Elettrico" (gLivingroom) ["Sensor"]
             Group gLivingRoomBlind "Tapparelle" (gLivingroom) ["Blinds"]
             Group gLivingroomTemp "Temperatura/Umidità" (gLivingroom) ["HVAC"]
+            Group gLivingroomMotion "IR Occhio" (gLivingroom) ["MotionDetector"]
        
         Group gKitchen "Cucina" (gGroundFloor) ["Kitchen"]
             Group gKitchenSpeaker "Speaker Cucina" (gKitchen) ["Speaker"]

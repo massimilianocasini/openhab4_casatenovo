@@ -1,6 +1,8 @@
 //Gestione Riscaldamento
-String Riscaldamento_Modo    "Modo riscaldamento"    <temperature>  (gMapDb, gCorridoio) 	//Riscaldamento automatico o manuale o disabilitato
+Number Riscaldamento_Modo    "Modo riscaldamento"  (gMapDb, gCorridoio) 	//Riscaldamento automatico o manuale o disabilitato
 Number Riscaldamento_Man_SP "SetPoint Manuale [%.1f °C]" <temperature>  (gMapDb, gCorridoio)  //SetPoint manuale riscaldamento
 Number Riscaldamento_Auto_SP "SetPoint Auto [%.1f °C]" <temperature> (gMapDb, gCorridoio)
-
+Number Riscaldamento_HvAC "Riscadamento GAS/GAS+ENE" <switch> (gCorridoio) {stateDescription="" [options="0=GAS ONLY, 1=GAS+ENE"]} //Riscaldamento con o senza condizionatori
 DateTime RiscaldamentoStart
+Number Riscaldamento_AwayTimer "Away Timer per Riscaldamento"
+Switch Away_check "Controllo se away è attivo"

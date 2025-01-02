@@ -1,36 +1,36 @@
 //https://www.freeformatter.com/cron-expression-generator-quartz.html
 //Seconds	Minutes	    Hours	Day Of Month	Month	Day Of Week	            Year
 //  0	        30	      1	        ?	          *	    MON,TUE,WED,THU,FRI	    *
+var Timer awayTimer = null
+// rule "invia a telegram lo stato caldaia ON"
+// when
+//     Item FGS221_002_SwitchBinary2 changed from OFF to ON
+// then
+//     FGS221_002_SwitchBinary2_N.postUpdate(1)
+//     var riscaldamentomodo = Riscaldamento_Modo.state
+//     var tempint = FGMS001_008_Temp.state as Number
+//     var setpointauto = Riscaldamento_Auto_SP.state
+//     var setpointmanu = Riscaldamento_Man_SP.state
+//     val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+//     val lgwebosActions = getActions("lgwebos","lgwebos:WebOSTV:d19b82c8-a123-40fe-c940-70169a605dc6")
+//   //  telegramActions.sendTelegram("Modo: " + riscaldamentomodo + " Termosifoni ON Temp Attuale: " + tempint + " SetPointAuto:" + setpointauto + " SetPointManu:" + setpointmanu ) // INvia messaggio Telegram
+//   //  lgwebosActions.showToast("Caldaia ON") // INvia messaggio a TV
+// end 
 
-rule "invia a telegram lo stato caldaia ON"
-when
-    Item FGS221_002_SwitchBinary2 changed from OFF to ON
-then
-    FGS221_002_SwitchBinary2_N.postUpdate(1)
-    var riscaldamentomodo = Riscaldamento_Modo.state
-    var tempint = FGMS001_008_Temp.state as Number
-    var setpointauto = Riscaldamento_Auto_SP.state
-    var setpointmanu = Riscaldamento_Man_SP.state
-    val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
-    val lgwebosActions = getActions("lgwebos","lgwebos:WebOSTV:d19b82c8-a123-40fe-c940-70169a605dc6")
-  //  telegramActions.sendTelegram("Modo: " + riscaldamentomodo + " Termosifoni ON Temp Attuale: " + tempint + " SetPointAuto:" + setpointauto + " SetPointManu:" + setpointmanu ) // INvia messaggio Telegram
-  //  lgwebosActions.showToast("Caldaia ON") // INvia messaggio a TV
-end 
-
-rule "invia a telegram lo stato caldaia OFF"
-when
-    Item FGS221_002_SwitchBinary2 changed from ON to OFF
-then
-    FGS221_002_SwitchBinary2_N.postUpdate(0)
-    var riscaldamentomodo = Riscaldamento_Modo.state
-    var tempint = FGMS001_008_Temp.state as Number
-    var setpointauto = Riscaldamento_Auto_SP.state
-    var setpointmanu = Riscaldamento_Man_SP.state
-    val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
-    val lgwebosActions = getActions("lgwebos","lgwebos:WebOSTV:d19b82c8-a123-40fe-c940-70169a605dc6")
- //   telegramActions.sendTelegram("Modo: " + riscaldamentomodo + " Termosifoni OFF Temp Attuale: " + tempint + " SetPointAuto:" + setpointauto + " SetPointManu:  " + setpointmanu )
- //   lgwebosActions.showToast("Caldaia OFF")
-end 
+// rule "invia a telegram lo stato caldaia OFF"
+// when
+//     Item FGS221_002_SwitchBinary2 changed from ON to OFF
+// then
+//     FGS221_002_SwitchBinary2_N.postUpdate(0)
+//     var riscaldamentomodo = Riscaldamento_Modo.state
+//     var tempint = FGMS001_008_Temp.state as Number
+//     var setpointauto = Riscaldamento_Auto_SP.state
+//     var setpointmanu = Riscaldamento_Man_SP.state
+//     val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+//     val lgwebosActions = getActions("lgwebos","lgwebos:WebOSTV:d19b82c8-a123-40fe-c940-70169a605dc6")
+//  //   telegramActions.sendTelegram("Modo: " + riscaldamentomodo + " Termosifoni OFF Temp Attuale: " + tempint + " SetPointAuto:" + setpointauto + " SetPointManu:  " + setpointmanu )
+//  //   lgwebosActions.showToast("Caldaia OFF")
+// end 
 
 rule "Manda in automatico (1) il cronotermostato alle 00:00"
 when 
@@ -42,7 +42,26 @@ then
 end
 
 
-
+rule "timer per disabilitazione temporanea riscaldamento"
+//val int awaytimeouts = 30 // choose an appropriate value
+when
+    Item Riscaldamento_AwayTimer received update
+then
+    awayTimerTimeouts = Riscaldamento_AwayTimer.state
+    Away_check.sendCommand(ON)
+    
+    if(awayTimer === null) {
+        logInfo("Timer Riscaldamento away", "Timer start")
+            awayTimer = createTimer(now.plusMinutes(awayTimerTimeouts), [|
+            awayTimer = null
+            Away_check.sendCommand(OFF)
+            logInfo("Timer Riscaldamento away", "Timer concluso luce spenta")
+        ])
+    }
+    else {
+        awayTimer.reschedule(now.plusMinutes(awayTimerTimeouts))
+    }
+end
 
 // rule "Set temperatura default condizionamento"
 // when
