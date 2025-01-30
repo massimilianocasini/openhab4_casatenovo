@@ -1,4 +1,4 @@
-var Timer isteresiTimer = null
+var Timer isteresiTimer = 0
 val int timeoutMinutes = 5 // choose an appropriate value
 var int alarmcount = 0 //Conteggio numero di allarmi
 var int receipt = null
@@ -10,9 +10,9 @@ val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
 
 switch(Prodino0_optoIn0.state) {
   case  "INSERITO" : {
-    if(isteresiTimer === null) {
+    if(isteresiTimer == 0) {
       isteresiTimer = createTimer(now.plusMinutes(timeoutMinutes ), [|
-      isteresiTimer = null
+      isteresiTimer = 0
       logInfo("Alarm.rules", "Timer su inserimento scaduto" )
       ])
     }
@@ -38,7 +38,7 @@ switch(Prodino0_optoIn0.state) {
         DaikinACUnit_Power_Letto.sendCommand(OFF)
         telegramActions.sendTelegram("Condizionatore Letto spento")
     }
-    if (now.getHour < 01 && now.getHour > 3) {
+    if (now.getHour() < 1 || now.getHour() >=3  ) {
     TapparellaLetto.sendCommand(DOWN)
     TapparellaStudio.sendCommand(DOWN)
     TapparellaSoggiorno.sendCommand(DOWN)
@@ -46,12 +46,14 @@ switch(Prodino0_optoIn0.state) {
         logInfo("Alarm.rules", "Tapparelle DOWN perchè INSERITO ad orario: " + now.getHour )
     Osram01S.sendCommand(OFF) //Spegni luce natale
     }
+    else
+        logInfo("Alarm.rules", "Tapparelle NON chiuse perchè INSERITO ad orario: " + now.getHour )
   }
   case "DISINSERITO": {
     telegramActions.sendTelegram("Antifurto DIsInserito!")
     logInfo("Alarm.rules", "Antifurto DISINSERITO")
-    Osram01S.sendCommand(ON) //Accendi luce natale
-    if (SunElevation.state > -3 && now.getHour > 8 && isteresiTimer === null) {
+   // Osram01S.sendCommand(ON) //Accendi luce natale
+    if (SunElevation.state > -3 && now.getHour > 8 && isteresiTimer == 0) {
         TapparellaLetto.sendCommand(UP)
         TapparellaStudio.sendCommand(UP)
         TapparellaSoggiorno.sendCommand(UP)

@@ -12,6 +12,8 @@ Group gBattery "Batterie"
 Group gCleaningRobot "Roomba" ["CleaningRobot"]
 Group gRadar
 
+Group  thermostatGroup { ga="Thermostat" [ thermostatModes="1=AUTO:WINDOW_OPEN,2=DIS:BOOST,3=MAN", thermostatTemperatureRange="10,30", useFahrenheit=false ] }
+Group  gHouseAlarm "House Alarm" { ga="SecuritySystem" [ pinNeeded="1234", armLevels="L1=Level 1,L2=Level 2" ] }
 
 Group:Number:AVG gAvgUmidita "Umidità media interna [%.0f %%]" <humidity> (gGroundFloor)
 

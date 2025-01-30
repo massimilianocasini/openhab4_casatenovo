@@ -4,7 +4,7 @@ String  Prodino0_optoIn1 "Allarme [%s]"         <alarm>         (gAlarmSystem)  
 String  Prodino0_optoIn2 "Stato 220V [%s]" 	                    (gAlarmSystem)              ["Status"]              {channel="mqtt:topic:mosquitto:prodino:optoIn2"}
 String  Prodino0_optoIn3 "Anomalia [%s]"  	                    (gAlarmSystem, gMapDb)      ["Status"]              {channel="mqtt:topic:mosquitto:prodino:optoIn3"}
 //Number prodino0_out1 "Key gAntifurto"    <switch>  {mqtt=">[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:ON:rel-0-1], >[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:OFF:rel-0-0], <[myUnsecureBroker:/KMP/ProDinoWiFi/nInfo:state:MAP(prodino.map):optoIn-0.*]"}
-Switch  Prodino0_ReleOut1  "Chiave"              <switch>       (gAlarmSystem, gMapDb) ["Switch", "Status"] {channel="mqtt:topic:mosquitto:prodino:ReleOut1", expire="1s,command=OFF"}
+Switch  Prodino0_ReleOut1  "Chiave"              <switch>       (gAlarmSystem, gMapDb, gHouseAlarm) ["Switch", "Status"] {ga="securitySystemArmed", channel="mqtt:topic:mosquitto:prodino:ReleOut1", expire="1s,command=OFF"}
 //Switch prodino0_out2 "Out 2"           (gAll, gAntifurto)      {mqtt=">[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:ON:rel-1-1], >[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:OFF:rel-1-0]"}
 //Switch prodino0_out3 "Out 3"           (gAll, gAntifurto)     {mqtt=">[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:ON:rel-2-1], >[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:OFF:rel-2-0]"}
 //Switch prodino0_out4 "Out 4"           (gAll, gAntifurto)     {mqtt=">[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:ON:rel-3-1], >[myUnsecureBroker:/KMP/ProDinoWiFi/Cmd:command:OFF:rel-3-0]"}

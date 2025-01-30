@@ -63,6 +63,6 @@ DateTime WaterSensorCucinaLastUpdate "Ultimo invio [%1$td.%1$tm.%1$tY, %1$tH:%1$
 // Number CameraDelSoleTemp "Temperatura [%.0f K]"  <light>  (gBedroom2Light) ["Lightbulb", "Setpoint", "ColorTemperature"] {channel="deconz:lightgroup:00212E065BD2:5:color_temperature", stateDescription="" [options="1000=CALDA, 2702=TIEPIDA, 6000=FREDDA"]}
 //Switch CameraDelSoleSwitch "Accendi/Spegni tutto nella camera del sole" (gBedroom2Light) ["Lightbulb", "Switch", "Light"] {channel="deconz:lightgroup:00212E065BD2:5:all_on"}
 
-Number:Temperature SonoOffT "Temperatura SONOFF [%.1f °C]" <temperature> (gOfficeTemp, gAvgTemperatura) ["Measurement", "Temperature"] {channel="deconz:temperaturesensor:00212E065BD2:048727fffeb07804010402:temperature"}
-Number SonoOffH "Umidità SONOFF [%.1f %%]" <humidity> (gOfficeTemp, gAvgUmidita) ["Measurement", "Humidity"] {channel="deconz:humiditysensor:00212E065BD2:048727fffeb07804010405:humidity"}
+Number:Temperature SonoOffT "Temperatura SONOFF [%.1f °C]" <temperature> (gOfficeTemp, gAvgTemperatura, thermostatGroup) ["Measurement", "Temperature"] {ga="thermostatTemperatureAmbient" [roomHint="Corridoio"], channel="deconz:temperaturesensor:00212E065BD2:048727fffeb07804010402:temperature"}
+Number SonoOffH "Umidità SONOFF [%.1f %%]" <humidity> (gOfficeTemp, gAvgUmidita, thermostatGroup) ["Measurement", "Humidity"] {ga="thermostatHumidityAmbient" [roomHint="Corridoio"], channel="deconz:humiditysensor:00212E065BD2:048727fffeb07804010405:humidity"}
 Number:Dimensionless SonoOffBatt "Livello batteria SONOFF [%d %%]" <batterylevel> (gOfficeTemp, gBattery) ["Status", "Energy"] {channel="deconz:humiditysensor:00212E065BD2:048727fffeb07804010405:battery_level", unit="%"}

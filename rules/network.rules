@@ -1,58 +1,5 @@
-// var Number counter1
-// var Number counter_alice
-// var Number counter_ngnix
-// var Number check
-// rule "Check presenza hosts su IP"
-// when
-//    Member of gIP changed
-// then
-//     val host = triggeringItem
-//     val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot") 
-//     if (host.state==ON) {
-//         if (host.name=="Ngnix_443") {
-//             counter_ngnix = 0
-//             if (check==1) {
-//                 telegramActions.sendTelegram("Host " + host.name + " connesso in rete < 3")
-//             }
-//         }
-//         if (host.name == "Alice") {
-//             counter_alice = 0
-//         }
-//         if (host.name != "Alice" && host.name != "Graziella" && host.name != "Massimiliano" ) {
-//                 telegramActions.sendTelegram("Host " + host.name + " connesso in rete")
-//         }
-//     }
-//     else { 
-//         val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
-//         if (host.name == "Ngnix_443"){
-//             counter_ngnix = counter_ngnix + 1
-//             if (counter_ngnix > 3) {
-//                check = 1
-//                telegramActions.sendTelegram("Host " + host.name + " perso dalla rete > 3 !!!!")  
-//             }
-//         }
-//         else if (host.name != "Alice" && host.name != "Graziella" && host.name != "Massimiliano" ) {
-//             telegramActions.sendTelegram("Host " + host.name + " perso dalla rete!!!!")
-//         }
-//         else if (host.name == "Graziella") { //Dopo che Graziella esce la mattina spegni condizionatore soggiorno
-//             if (now.getHour < 9) {
-//                 DaikinACUnit_Power_Soggiorno.sendCommand(OFF)
-//                 logInfo("Network", "Cond Soggiorno Spento perchè Graziella è andata a lavoro" )
-//             }
-//         }
-//         else if (host.name == "Alice") { //Dopo che Alice esce la mattina spegni condizionatore cameretta
-//             counter_alice = counter_alice + 1
-//                 if (counter_alice > 3) {
-//                     //check2 = 1
-//                     if (now.getHour < 9 || now.getHour > 7 || DaikinACUnit_Mode_Cameretta.state=="HEAT"|| isBankHoliday == false && isWeekend == false) {
-//                         DaikinACUnit_Power_Cameretta.sendCommand(OFF)
-//                         logInfo("Network", "Cond Cameretta Spento perchè Alice è assente, il modo è HEAT e siamo tra le 7 e le 9 e non è festa e non è fine settimana" )
-//                     }
-//                 }
-//         }
-//    }
-// end
-
+var Timer timer_ritardo_nginx = null
+var int stato_nginx = 1
 rule "Network case"
     when
         Member of gIP changed
@@ -63,25 +10,34 @@ rule "Network case"
             val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot") 
             //logInfo("Network-case", "Host in ON " + host.name)
             logInfo("Network case ON", "Valore di host.name: " + host.name + " (Tipo: " + host.name.getClass() + ")")
-            if (host.name == "Ngnix_443") {
-                    telegramActions.sendTelegram("Host " + host.name + " connesso in rete")
-            }    
-
-            else if (host.name != "Alice" && host.name != "Graziella" && host.name != "Massimiliano" ) {
+            if (host.name != "Alice" && host.name != "Graziella" && host.name != "Massimiliano" && host.name != "Nginx_443") {
                 telegramActions.sendTelegram("Host " + host.name + " connesso in rete")
             }
-            else {
-                logInfo("Network case ON", "Case ON, else " + host.name)
+            else if (host.name == "Nginx_443") { //Se l'host che è andato ON è nginx spegni il timer_ritardo_nginx
+                    timer_ritardo_nginx?.cancel()
+                    timer_ritardo_nginx = null
+                    logInfo("Network case ON", "timer_ritardo_nginx spento")
+                    if (stato_nginx == 0) { //invia l'evento solo se il timer_ritardo_nginx era terminato con esecuzione
+                        telegramActions.sendTelegram("Host " + host.name + " connesso in rete")
+                        stato_nginx = 1
+                    }
             }
         }
         case OFF: {
             val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
             logInfo("Network case OFF", "Valore di host.name: " + host.name + " (Tipo: " + host.name.getClass() + ")")
-            if (host.name == "Ngnix_443"){
-                telegramActions.sendTelegram("Host " + host.name + " perso dalla rete > 3 !!!!")  
-            }
-            else if (host.name != "Alice" && host.name != "Graziella" && host.name != "Massimiliano" ) {
+            if (host.name != "Alice" && host.name != "Graziella" && host.name != "Massimiliano" && host.name != "Nginx_443") {
                 telegramActions.sendTelegram("Host " + host.name + " perso dalla rete!!!!")
+            }
+            else if (host.name == "Nginx_443") {
+                logInfo("Network case OFF", "nginx a OFF, Parte timer_ritardo_nginx")
+                if (timer_ritardo_nginx === null) {
+                    timer_ritardo_nginx = createTimer(now.plusMinutes(15), [| //timer per ritardare l'invio della segnalazione
+                        logInfo("Network case OFF", "nginx a OFF, timer_ritardo_nginx di 15 minuti terminato")
+                        telegramActions.sendTelegram("Host " + host.name + " perso dalla rete da oltre 15 minuti!")  
+                        stato_nginx = 0
+                    ])
+                }
             }
             else if (host.name == "Graziella") { //Dopo che Graziella esce la mattina spegni condizionatore soggiorno
                 if (now.getHour >= 7 && now.getHour <= 9 && DaikinACUnit_Mode_Soggiorno.state == "HEAT" && DaikinACUnit_Power_Soggiorno.state == ON && (isBankHoliday == false || isWeekend == false)) {

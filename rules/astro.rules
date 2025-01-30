@@ -70,10 +70,10 @@ then
     if (triggeringChannel.toString().contains("rise")) {
         logInfo("AlbaTramonto", "Condizione trigger rise scattato (ALBA)")
         // Programma un timer per spegnere la luce esattamente a offsetSunrise
-        createTimer(now.plusMinutes(60), [|
+        createTimer(now.plusMinutes(1), [|
             if (FGS222_004_SwitchBinary1.state != OFF) {
                 FGS222_004_SwitchBinary1.sendCommand(OFF)
-                logInfo("AlbaTramonto", "Luce spenta (esattamente un'ora dopo l'alba).")
+                logInfo("AlbaTramonto", "Luce spenta (esattamente un minuto dopo l'alba).")
             }
         ])
     }

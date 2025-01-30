@@ -377,7 +377,7 @@ sitemap Casatenovo label="Benvenuto a Casa"
 				Frame label="Statistiche"
 				{
 					Text item=Speedtest_ResultURL
-					Image label="Letzte Messung" item=Speedtest_ResultURL
+					Image label="Ultima misurazione" url="https://www.speedtest.net/result/c/f3e54622-c815-4441-a9ac-bfd2f27cb70f"
                     Webview url="/static/chart.html" height=12 icon="speedtest_summary"
 				}
 			}
