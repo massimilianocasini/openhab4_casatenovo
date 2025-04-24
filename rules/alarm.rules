@@ -74,9 +74,9 @@ then
     var receipt = pushoverActions.sendPriorityMessage("Allarme antifurto", "openhab3", 2)
     telegramActions.sendTelegram("Allarme antifurto")
     // wait for your cancel condition
-      if( receipt !== null ) {
+      if( receipt !== NULL ) {
         pushoverActions.cancelPriorityMessage(receipt)
-        receipt = null
+        receipt = NULL
       }
   }
   else if (Prodino0_optoIn1.state == "RIPOSO" && alarmcount == 1) {
@@ -84,9 +84,9 @@ then
     telegramActions.sendTelegram("FINE Allarme antifurto")
     alarmcount = 0
     // wait for your cancel condition
-    if( receipt !== null ) {
+    if( receipt !== NULL ) {
       pushoverActions.cancelPriorityMessage(receipt)
-      receipt = null
+      receipt = NULL
     }
   }
 end
@@ -100,18 +100,18 @@ then
     var receipt = pushoverActions.sendPriorityMessage("Ripristino 220V", "openhab3", 2)
     telegramActions.sendTelegram("Ripristino 220V")
     // wait for your cancel condition
-    if( receipt !== null ) {
+    if( receipt !== NULL ) {
       pushoverActions.cancelPriorityMessage(receipt)
-      receipt = null
+      receipt = NULL
         }
   }
   else if (Prodino0_optoIn2.state == "NO220V") {
     var receipt = pushoverActions.sendPriorityMessage("Mancanza 220V", "openhab3", 2)
     telegramActions.sendTelegram("Mancanza 220V")
     // wait for your cancel condition
-    if( receipt !== null ) {
+    if( receipt !== NULL ) {
       pushoverActions.cancelPriorityMessage(receipt)
-      receipt = null
+      receipt = NULL
         }
   }
 end

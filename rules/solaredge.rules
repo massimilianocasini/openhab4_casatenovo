@@ -13,17 +13,25 @@ end
 rule "Calcolo potenza assorbita"
 // Calcolo facendo la differenza tra produzione e immessa/prelevata. Il valore di M_Total_real_Power è positivo se la potenza è immessa mentre è negativo se prelevata.
 when
-    Item I_AC_Power_Value changed or //Produzione KW
-    Item M_Total_Real_Power_Value changed //Potenza immessa se positiva, negativa se prelevata KW
+    Item I_AC_Power_Value changed or //Produzione energia in tempo reale KW
+    Item M_Total_Real_Power_Value changed //Potenza immessa se positiva, prelevata se negativa KW
 then
     val v_i_ac_power_value = (I_AC_Power_Value.state as Number).floatValue
     val v_m_total_real_power_value = (M_Total_Real_Power_Value.state as Number).floatValue
     val v_m_total_real_power_valueabs = Math::abs((M_Total_Real_Power_Value.state as Number).floatValue)
     M_Total_Real_Power_Value_abs.postUpdate(v_m_total_real_power_valueabs)
-    Power_Used.postUpdate(v_i_ac_power_value-v_m_total_real_power_value)
+    Power_Used.postUpdate(v_i_ac_power_value - v_m_total_real_power_value) // Quello che produco meno quello che immetto in rete è quello che richiedo. Se produco zero il valore è quello che richiedo
+    if (v_i_ac_power_value > 0) {
+        if (v_i_ac_power_value >= v_m_total_real_power_valueabs) { //Se c'è produzione di energia ed è maggiore di quella richiesta
+            PotenzaAutoconsumo.postUpdate(v_i_ac_power_value - v_m_total_real_power_value) //Autoconsumo è uguale alla potenza richiesta
+        }
+        else if (v_i_ac_power_value < v_m_total_real_power_valueabs) { //Se c'è produzione di energia ma è minore di quella richiesta
+            PotenzaAutoconsumo.postUpdate(v_i_ac_power_value)  // Autoconsumo è uguale alla produzione di energia
+        }
+    }
+    PotenzaRealTime.postUpdate(v_m_total_real_power_valueabs - v_i_ac_power_value)
+
 end
-
-
 
 rule "Calcolo potenza assorbita da rete e immessa in rete con avviso di superamento soglia massima di prelievo"
 when

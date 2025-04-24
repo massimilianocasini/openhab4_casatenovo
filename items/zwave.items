@@ -86,5 +86,5 @@ Switch  WPS104_015_ResetMeter "Reset contatori" (gQuadroElettrico) {channel="zwa
 
 //FGS221 Double Relay Switch 2x1.5kW, Soggiorno
 Switch FGS221_016_SwitchBinary ""  {channel="zwave:device:77c679d29e:node16:switch_binary"}
-Switch FGS221_016_SwitchBinary1 "TV" <cinema> (gLivingroomPowerOutlet) ["Switch"] { ga="Outlet" [roomHint="Soggiorno"], channel="zwave:device:77c679d29e:node16:switch_binary1"}
-Switch FGS221_016_SwitchBinary2 "Ciabatta" <cinema> (gLivingroomPowerOutlet) ["Switch"] { ga="Outlet" [roomHint="Soggiorno"], channel="zwave:device:77c679d29e:node16:switch_binary2"}
+Switch FGS221_016_SwitchBinary1 "TV - Presa Siemens" <cinema> (gLivingroomPowerOutlet) ["Switch"] { ga="Outlet" [roomHint="Soggiorno"], channel="zwave:device:77c679d29e:node16:switch_binary1"}
+Switch FGS221_016_SwitchBinary2 "Deodorante" <cinema> (gLivingroomPowerOutlet) ["Switch"] { ga="Outlet" [roomHint="Soggiorno"], channel="zwave:device:77c679d29e:node16:switch_binary2"}

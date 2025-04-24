@@ -1,5 +1,5 @@
 var Timer occupancyTimer = null
-val int timeoutMinutes = 30 // choose an appropriate value
+val int timeoutMinutes = 120 // choose an appropriate value
 
 rule "Spegni luce se non rilevi presenza"
 when

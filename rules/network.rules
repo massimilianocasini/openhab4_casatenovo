@@ -32,14 +32,14 @@ rule "Network case"
             else if (host.name == "Nginx_443") {
                 logInfo("Network case OFF", "nginx a OFF, Parte timer_ritardo_nginx")
                 if (timer_ritardo_nginx === null) {
-                    timer_ritardo_nginx = createTimer(now.plusMinutes(15), [| //timer per ritardare l'invio della segnalazione
-                        logInfo("Network case OFF", "nginx a OFF, timer_ritardo_nginx di 15 minuti terminato")
+                    timer_ritardo_nginx = createTimer(now.plusMinutes(30), [| //timer per ritardare l'invio della segnalazione
+                        logInfo("Network case OFF", "nginx a OFF, timer_ritardo_nginx di 30 minuti terminato")
                         telegramActions.sendTelegram("Host " + host.name + " perso dalla rete da oltre 15 minuti!")  
                         stato_nginx = 0
                     ])
                 }
             }
-            else if (host.name == "Graziella") { //Dopo che Graziella esce la mattina spegni condizionatore soggiorno
+            else if (host.name == "Graziella") { //Dopo che Graziella esce la mattina spegni condizionatore soggiorno & letto
                 if (now.getHour >= 7 && now.getHour <= 9 && DaikinACUnit_Mode_Soggiorno.state == "HEAT" && DaikinACUnit_Power_Soggiorno.state == ON && (isBankHoliday == false || isWeekend == false)) {
                     DaikinACUnit_Power_Soggiorno.sendCommand(OFF)
                     DaikinACUnit_Power_Letto.sendCommand(OFF)
@@ -50,9 +50,10 @@ rule "Network case"
                 logInfo("Network case OFF", "Modalità Condizionatore soggiorno: " + DaikinACUnit_Mode_Soggiorno.state)
                 logInfo("Network case OFF", "È festa: " + isBankHoliday + ", È weekend: " + isWeekend)
             }
-            else if (host.name == "Alice") { //Dopo che Alice esce la mattina spegni condizionatore cameretta
+            else if (host.name == "Alice") { //Dopo che Alice esce la mattina spegni condizionatore cameretta e studio
                 if (now.getHour >= 7 && now.getHour <= 9 && DaikinACUnit_Mode_Cameretta.state == "HEAT" && DaikinACUnit_Power_Cameretta.state == ON && (isBankHoliday == false || isWeekend == false)) {
                     DaikinACUnit_Power_Cameretta.sendCommand(OFF)
+                    DaikinACUnit_Power_Studio.sendCommand(OFF)
                     logInfo("Network case OFF", "Cond Cameretta Spento perchè Alice è assente, il modo è HEAT e siamo tra le 7 e le 9 e non è festa e non è fine settimana")
                     }            
                 }

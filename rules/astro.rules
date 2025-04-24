@@ -61,7 +61,7 @@ In sintesi, isNighttime ci permette di esprimere in modo conciso la condizione p
 //import java.time.OffsetDateTime
 //import java.time.Duration
 
-rule "Accensione_Spegnimento_Alba_Tramonto"
+rule "Accensione_Spegnimento_Alba_Tramonto luce portone"
 when
     Channel 'astro:sun:home:rise#event' triggered START or
     Channel 'astro:sun:home:set#event' triggered START 

@@ -16,7 +16,7 @@ Number:Power M_AC_Real_Power_Value_Fase_A "Potenza reale fase A [%.1f kW]"   {un
 //Number:Power M_AC_Real_Power_Value_Fase_B "Potenza reale fase B [%.2f]"(gMeter) ["Power"]  {channel="modbus:meter-wye-phase:bridge:40188:acPhaseB#ac-real-power"}
 //Number:Power M_AC_Real_Power_Value_Fase_C "Potenza reale fase C [%.2f]" (gMeter) ["Power"] {channel="modbus:meter-wye-phase:bridge:40188:acPhaseC#ac-real-power"}
 
-Number:Power M_Total_Real_Power_Value_abs "Assorbimento [%.1f kW]" <softener>   {unit="kW"}
+Number:Power M_Total_Real_Power_Value_abs "Potenza richiesta [%.1f kW]" <softener>   {unit="kW"}
 
 Number:Power Power_Used "Potenza richiesta [%.1f kW]" <poweroutlet_eu> (gInverter, gInfluxdb) ["Measurement", "Power"] {unit="kW"}
 //Number:Power Power_Used_abs "Potenza richiesta [%.1f kW]" <poweroutlet_eu> (gInverter, gInfluxdb) ["Power"]
@@ -24,3 +24,5 @@ Number:Power Power_Teoric_Available "Potenza teorica disponibile [%.1f kW]" <sun
 
 Number:Power PotenzaAssorbitaDaRete "Potenza Assorbita da rete [%.1f kW]" ["Measurement"] {unit="kW"}
 Number PotenzaImmessaInRete "Potenza Immessa in rete [%.1f kW]" {unit="kW"}
+Number:Power PotenzaAutoconsumo "Potenza autoconsumo [%.1f kW]" {unit="kW"}
+Number:Power PotenzaRealTime "Potenza realmente assorbita [%.1f kW]" {unit="kW"}

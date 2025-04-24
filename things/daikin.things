@@ -1,5 +1,6 @@
 // for BRP069B41, BRP072A42 or BRP072C42
+// miei adattatori BRP069B41
 daikin:ac_unit:Cameretta "Daikin AC Unit (Cameretta)" @ "Cameretta" [ host="192.168.188.29" ]
 daikin:ac_unit:Letto "Daikin AC Unit (Letto)" @ "Letto" [ host="192.168.188.30" ]
-daikin:ac_unit:Studio "Daikin AC Unit (Studio)" @ "Studio" [ host="192.168.188.31" ]
+daikin:ac_unit:Studio "Daikin AC Unit (Studio)" @ "Studio" [ host="192.168.188.31"]
 daikin:ac_unit:Soggiorno "Daikin AC Unit (Soggiorno)" @ "Soggiorno" [ host="192.168.188.32" ]

@@ -35,8 +35,8 @@ rule "Luce corridoio 22:30 ON invia un comando ogni 10 minuti dalle 22 alle 8"
 when
     Time cron "0 30/10 22-8 * * ? *" 
 then
-    if (FGD211_003_SwitchDimmer.state != 5) {
-    FGD211_003_SwitchDimmer.sendCommand(5) //Portato a 5 da 10 per far vedere le luci dell'albero di Natale
+    if (FGD211_003_SwitchDimmer.state != 10) {
+    FGD211_003_SwitchDimmer.sendCommand(10) //Portato a 5 da 10 per far vedere le luci dell'albero di Natale
     }
 end
 
