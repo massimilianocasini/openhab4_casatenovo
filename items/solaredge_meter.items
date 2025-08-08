@@ -5,7 +5,9 @@ Number:Frequency M_AC_Frequency_Value "Frequenza [%.1f %unit%]" (gMeter, gInflux
 Number:Power M_Total_Real_Power_Value "Potenza totale immessa(+)/prelevata(-) [%.1f kW]" <poweroutlet_eu> (gMeter, gInfluxdb) ["Measurement", "Power"] {unit="kW", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-real-power"}
 Number:Power M_Total_Apparent_Power_Value "Potenza richiesta [%.1f kW]" (gMeter) ["Measurement", "Power"] {unit="kW", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-apparent-power"}
 Number:Power M_Total_Reactive_Power_Value "Potenza totale reattiva [%.0f kW]"  {unit="kW", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-reactive-power"}
-Number:Dimensionless M_Average_AC_Power_Factor "Fattore di potenza [%.0f]" (gInfluxdb) {channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-average-power-factor"}
+Number:Dimensionless M_Average_AC_Power_Factor "Fattore di potenza contatore [%.0f]" (gInfluxdb) {channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-average-power-factor"}
+Number:Dimensionless M_AC_PF_A "Fattore di potenza fase A [%.2f]" (gInfluxdb) {channel="modbus:meter-wye-phase:bridge:40188:acPhaseA#ac-power-factor"}
+Number:Dimensionless M_AC_PF_B "Fattore di potenza fase B [%.2f]" (gInfluxdb) {channel="modbus:meter-wye-phase:bridge:40188:acPhaseB#ac-power-factor"}
 Number:Energy M_Total_Real_Energy_Exported "Energia esportata reale [%.0f MWh]" (gInfluxdb)  {unit="MWh", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-exported-real-energy"}
 Number:Energy M_Total_Real_Energy_Imported "Energia importata reale [%.0f MWh]" (gInfluxdb)  {unit="MWh", channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-imported-real-energy"}
 //Number:Energy M_Total_Apparent_Energy_Exported "Energia esportata apparente [%.2f]" (gMeter) ["Measurement", "Energy"]  {channel="modbus:meter-wye-phase:bridge:40188:acGeneral#ac-total-exported-apparent-energy"}

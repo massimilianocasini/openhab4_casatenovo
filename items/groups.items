@@ -75,7 +75,8 @@ Group gBuilding "Building" ["Building"]
             Group gLivingRoomBlind "Tapparelle" (gLivingroom) ["Blinds"]
             Group gLivingroomTemp "Temperatura/Umidità" (gLivingroom) ["HVAC"]
             Group gLivingroomMotion "IR Occhio" (gLivingroom) ["MotionDetector"]
-       
+            Group gLivingroomTV "TV" (gLivingroom) ["Projector"]
+
         Group gKitchen "Cucina" (gGroundFloor) ["Kitchen"]
             Group gKitchenSpeaker "Speaker Cucina" (gKitchen) ["Speaker"]
             Group gWaterSensor2 "Presenza acqua" (gKitchen) ["Sensor"]

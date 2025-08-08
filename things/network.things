@@ -13,3 +13,7 @@ network:servicedevice:nginx_443 [ hostname="misipino.duckdns.org", retry=1, port
 network:pingdevice:alice [ hostname="192.168.188.169", retry=10, timeout=1000, refreshInterval=60000 ]
 network:pingdevice:graziella [ hostname="192.168.188.115", retry=5, timeout=1000, refreshInterval=60000 ]
 network:pingdevice:massimiliano [ hostname="192.168.188.179", retry=5, timeout=1000, refreshInterval=60000 ]
+//Lorenzo
+network:servicedevice:termostati [ hostname="45.131.237.41", retry=10, port=8088]
+network:servicedevice:pdc [ hostname="45.131.237.41", retry=10, port=8087]
+network:servicedevice:openhab [ hostname="45.131.237.41", retry=10, port=61000]

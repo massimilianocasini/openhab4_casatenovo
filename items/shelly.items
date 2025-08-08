@@ -29,3 +29,7 @@ String TapparellaCamerettaStatus "Tapparella Cameretta Stato" (gBedroom2Blind)  
 Number:Energy TapparellaCamerettaEnergy "Tapparella Cameretta Energia" (gBedroom2Blind)  ["Measurement", "Energy"]                       {channel="shelly:shellyplus2pm-roller:c049ef8cf010:meter#totalKWH"}
 Switch TapparellaCamerettaUpdate "Update disponibile" (gBedroom2Blind)  ["Status"]                                         {channel="shelly:shellyplus2pm-roller:c049ef8cf010:device#updateAvailable"}
 Dimmer TapparellaCamerettaPosition "Tapparella Cameretta posizione" (gBedroom2Blind)  ["Status"]                                    {channel="shelly:shellyplus2pm-roller:c049ef8cf010:roller#rollerpos"}
+
+Switch Presa1GarageSwitch "Presa Garage 1" (gGarage) ["Switch"] {channel="shelly:shelly1mini:5432046b4d7c:relay#output"}
+Number:Dimensionless Presa1GarageSignal "Presa Garage 1 Segnale" (gGarage) ["Measurement", "Level"] {channel="shelly:shelly1mini:5432046b4d7c:device#wifiSignal"}
+Number:Temperature Presa1GarageTemperature "Presa Garage 1 Temperatura" (gGarage) ["Measurement", "Temperature"] {channel="shelly:shelly1mini:5432046b4d7c:device#internalTemp"}

@@ -1,1 +1,1 @@
-Thing   speedtest:speedtest:myspeedtest   "Ookla Speedtest"    [ execPath="/usr/bin/speedtest", refreshInterval=15 ]
+Thing   speedtest:speedtest:myspeedtest   "Ookla Speedtest"    [ execPath="/usr/bin/speedtest", refreshInterval=60 ]

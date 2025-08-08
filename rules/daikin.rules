@@ -1,36 +1,30 @@
 
+var int controllo = 0 // Variabile di controllo per evitare che il timer venga creato più volte
+var int controllo_1 = 0 //Variabile per evitare che nel log vengano loggati tutti i condizionatori che cambiano stato
 rule "Forzatura setpoint sui condizionatori al cambio di Modalità"
 when
         Member of gEqCondMode changed
 then
+        if (controllo_1 == 1) {
+          logInfo("CondMode", "Controllo in corso, non posso cambiare modalità condizionatori")
+          return // Esce dalla regola se il controllo è già in corso
+        }
         val item = triggeringItem
-        var int controllo //Il controllo al momento non funziona perchè la variabile torna a zero 
-        logInfo("CondMode", "Item che ha cambiato stato " + item.name + " " + item.state)
-        if (item.state == "COLD" && controllo == 0) {
+        controllo_1 = 1
+        logInfo("CondMode", "Item che ha cambiato stato " + item.name + " " + item.state + " " + controllo) 
+        if (item.state == "COLD" && controllo == 0) { //Modalità estate
           controllo = 1
-          logInfo("CondMode", "Creato Timer 15 sec per passaggio a COLD a 27° di tutti i Condizionatori")
+          logInfo("CondMode", "Creato Timer 15 sec per passaggio a COLD a 27° di tutti i Condizionatori " + controllo)
           createTimer(now.plusSeconds(15), [|
             gEqCondSetPoint.sendCommand(27)
             gEqCondMode.sendCommand("COLD")
-            logInfo("CondMode", "Forzato passaggio a COLD a 27° di tutti i condizionatori" )
-            createTimer(now.plusSeconds(15), [| 
-              controllo = 0
-            ])
+            controllo = 0
+            controllo_1 = 0
+            logInfo("CondMode", "Forzato passaggio a COLD a 27° di tutti i condizionatori " + controllo )
           ])
         }
-        // if (item.state == "DEHUMIDIFIER" && controllo == 0) {
-        //   logInfo("CondMode", "Creato Timer 15 sec per passaggio a DEUMIDIFICATORE di tutti i Condizionatori")
-        //   controllo = 1
-        //   createTimer(now.plusSeconds(15), [|
-        // //   gEqCondSetPoint.sendCommand(29)
-        //     gEqCondMode.sendCommand("DEHUMIDIFIER")
-        //     logInfo("CondMode", "Forzato passaggio a DEUMIDIFICATORE  di tutti i condizionatori" )
-        //     createTimer(now.plusSeconds(15), [| 
-        //       controllo = 0
-        //     ])
-        // ])
-        //   }
-        if (item.state == "HEAT" && controllo == 0) {
+
+        if (item.state == "HEAT" && controllo == 0) {  //Modalità inverno
           logInfo("CondMode", "Creato Timer 15 sec per passaggio a HEAT a 22° di tutti i Condizionatori")
           controllo = 1
           createTimer(now.plusSeconds(15), [|
@@ -39,6 +33,7 @@ then
             logInfo("CondMode", "Forzato passaggio a HEAT a 22° di tutti i condizionatori" )
             createTimer(now.plusSeconds(15), [| 
               controllo = 0
+              controllo_1 = 0
             ])
         ])
            }  
@@ -82,6 +77,14 @@ then
  }
 end
 
+rule "Imposta condizionamento a Umidificatore nel caso sia Raffrescamento di notte"
+when 
+Time cron "0 00 23 ? * * *"
+then
+ if (gEqCondMode.state=="COLD"){
+     gEqCondMode.sendCommand("DEHUMIDIFIER")
+ }
+end
 // rule "Allinea gEqCondSetPoint"
 // when 
 //   Member of gEqCondSetPoint changed

@@ -1,1 +1,2 @@
 String LG_TV0_Toast         { channel="lgwebos:WebOSTV:e5c3388e-eedd-6cf2-613a-a1110b1765ce:toast"}
+Switch LG_TV0_Power  "TV Power" (gLivingroomTV) ["Control", "Switch"]      {channel="lgwebos:WebOSTV:e5c3388e-eedd-6cf2-613a-a1110b1765ce:power"}

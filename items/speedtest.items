@@ -5,6 +5,7 @@ String SpeedtestCharts
 
 
 String              	    Speedtest_Server  	            "Server"                (gSpeedtest)                  { channel="speedtest:speedtest:myspeedtest:server" }
+DateTime                    Speedtest_Timestamp             "Data [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"             { channel="speedtest:speedtest:myspeedtest:timestamp" }
 Number:Time              	Speedtest_Ping_Jitter         	"Ping Jitter"     <speedtest_ping>      (gSpeedtest, gSpeedChart)     { channel="speedtest:speedtest:myspeedtest:pingJitter" }
 Number:Time              	Speedtest_Ping_Latency	        "Ping Latency"    <speedtest_ping> 	(gSpeedtest, gSpeedChart)     { channel="speedtest:speedtest:myspeedtest:pingLatency" }
 Number:DataTransferRate     Speedtest_Download_Bandwith	    "Download Bandwith"   <speedtest_download>  (gSpeedtest, gSpeedChart)     { channel="speedtest:speedtest:myspeedtest:downloadBandwidth" }
@@ -17,4 +18,5 @@ String              	    Speedtest_ISP         	        "ISP"      	            
 String              	    Speedtest_Interface_InternalIP  "Internal IP Address"   { channel="speedtest:speedtest:myspeedtest:interfaceInternalIp" }
 String              	    Speedtest_Interface_ExternalIP  "External IP Address"	{ channel="speedtest:speedtest:myspeedtest:interfaceExternalIp" }
 String              	    Speedtest_ResultURL    	        "Result URL"	        { channel="speedtest:speedtest:myspeedtest:resultUrl" }
+Image                       Speedtest_ResultImage           "Result Image"          { channel="speedtest:speedtest:myspeedtest:resultImage" }
 Switch              	    Speedtest_TriggerTest    	    "Trigger Test"	        { channel="speedtest:speedtest:myspeedtest:triggerTest" }

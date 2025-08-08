@@ -1,0 +1,28 @@
+//https://www.freeformatter.com/cron-expression-generator-quartz.html
+//Seconds	Minutes	    Hours	Day Of Month	Month	Day Of Week	            Year
+//  0	        30	      1	        ?	          *	    MON,TUE,WED,THU,FRI	    *
+//var Timer myTimer = null
+rule "Presa Garage 1 accendi alle 8"
+when
+    Time cron "0 0 8 ? * * *" //Ogni giorno alle 8 del mattino accendi la presa
+then
+   Presa1GarageSwitch.sendCommand(ON)
+    val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+    telegramAction.sendTelegram("Presa Garage 1 accesa alle 8 del mattino")
+    // if (myTimer !== null) {
+    //     myTimer.reschedule(now.plusMinutes(720)) //Reschedule the timer to 12 ore
+    // } else {
+    //     myTimer(now.plusMinutes(720), [| // Dopo 12 ore spegni la presa
+    //     Presa1GarageSwitch.sendCommand(OFF)
+    //     telegramAction.sendTelegram("Presa Garage 1 spenta dopo 12 ore")
+    //     ])
+    // }
+end
+rule "Presa Garage 1 Spegni alle 20"
+when
+    Time cron "0 0 20 ? * * *" //Ogni giorno alle 20 del pomeriggio spegni la presa
+then
+    Presa1GarageSwitch.sendCommand(OFF)
+    val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
+    telegramAction.sendTelegram("Presa Garage 1 spenta alle 20 del pomeriggio")
+end
