@@ -60,28 +60,47 @@ In sintesi, isNighttime ci permette di esprimere in modo conciso la condizione p
  */
 //import java.time.OffsetDateTime
 //import java.time.Duration
-
+var Timer myTimer_astro = null
+var Timer myTimer_astro1 = null
 rule "Accensione_Spegnimento_Alba_Tramonto luce portone"
 when
-    Channel 'astro:sun:home:rise#event' triggered START or
-    Channel 'astro:sun:home:set#event' triggered START 
+    Channel 'astro:sun:home:rise#event' triggered START or //Alba
+    Channel 'astro:sun:home:set#event' triggered START      //Tramonto
 
 then
     if (triggeringChannel.toString().contains("rise")) {
         logInfo("AlbaTramonto", "Condizione trigger rise scattato (ALBA)")
         // Programma un timer per spegnere la luce esattamente a offsetSunrise
-        createTimer(now.plusMinutes(1), [|
+        if (myTimer_astro !== null) {
+            logInfo("rules astro", "Timer rescheduled")
+            myTimer_astro.reschedule(now.plusMinutes(1))
+        } else {
+        myTimer_astro = createTimer(now.plusMinutes(1), [|
             if (FGS222_004_SwitchBinary1.state != OFF) {
                 FGS222_004_SwitchBinary1.sendCommand(OFF)
                 logInfo("AlbaTramonto", "Luce spenta (esattamente un minuto dopo l'alba).")
             }
+        myTimer_astro = null
         ])
+        }
     }
     else {
         logInfo("AlbaTramonto", "Condizione trigger sunset scattato (TRAMONTO)")
         if (FGS222_004_SwitchBinary1.state != ON) {
             FGS222_004_SwitchBinary1.sendCommand(ON)
             logInfo("AlbaTramonto", "Luce accesa al tramonto")
+        }
+        if (myTimer_astro1 !== null) {
+            logInfo("rules astro", "Timer rescheduled")
+            myTimer_astro1.reschedule(now.plusMinutes(60))
+        } else {
+        myTimer_astro1 = createTimer(now.plusMinutes(60), [|
+            TapparellaLetto.sendCommand(DOWN) // Chiude la tapparella al tramonto 
+            TapparellaStudio.sendCommand(DOWN) // Chiude la tapparella al tramonto
+            TapparellaSoggiorno.sendCommand(DOWN) // Chiude la tapparella al tramonto
+            TapparellaCameretta.sendCommand(DOWN) // Chiude la tapparela al tramonto 
+        myTimer_astro1 = null
+        ])
         }
     }
 end

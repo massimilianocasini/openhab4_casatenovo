@@ -18,6 +18,7 @@ then
     //     ])
     // }
 end
+
 rule "Presa Garage 1 Spegni alle 20"
 when
     Time cron "0 0 20 ? * * *" //Ogni giorno alle 20 del pomeriggio spegni la presa
@@ -25,4 +26,22 @@ then
     Presa1GarageSwitch.sendCommand(OFF)
     val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
     telegramAction.sendTelegram("Presa Garage 1 spenta alle 20 del pomeriggio")
+end
+
+rule "Presa soggiorno1 ON"
+when
+    Time cron "0 0 14 ? * * *" //Ogni giorno alle 14 del mattino accendi la presa
+then
+    if (Prodino0_optoIn0 == "DISINSERITO") {
+        FGS221_016_SwitchBinary2.sendCommand(ON)
+    }
+end
+
+rule "Presa soggiorno1 OFF"
+when
+    Time cron "0 0 23 ? * * *" //Ogni giorno alle 23 del pomeriggio spegni la presa
+then
+    if (Prodino0_optoIn0 == "DISINSERITO") {
+        FGS221_016_SwitchBinary2.sendCommand(OFF)
+    }
 end

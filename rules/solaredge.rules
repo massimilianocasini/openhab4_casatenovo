@@ -1,5 +1,5 @@
-var Timer myTimer = null
-// var Timer2 MyTimer2 = null
+var Timer myTimer_solaredge = null
+// var Timer2 myTimer_solaredge2 = null
 
 rule "Calcolo potenza teorica disponibile"
 when 
@@ -30,7 +30,6 @@ then
         }
     }
     PotenzaRealTime.postUpdate(v_m_total_real_power_valueabs - v_i_ac_power_value)
-
 end
 
 rule "Calcolo potenza assorbita da rete e immessa in rete con avviso di superamento soglia massima di prelievo"
@@ -44,12 +43,12 @@ then
         PotenzaAssorbitaDaRete.postUpdate(realPowerAbs)
         PotenzaImmessaInRete.postUpdate(0)
         if (realPowerAbs > 4.5) {
-            if (myTimer !== null) {                                                         //se il timer è partito non fai nulla 
+            if (myTimer_solaredge !== null) {                                                         //se il timer è partito non fai nulla 
                 logInfo("rules solaredge", "Timer allarme assorbimento rescheduled. Assorbimento attuale:  " + realPowerAbs)
-                // myTimer.reschedule(now.plusMinutes(1))
+                // myTimer_solaredge.reschedule(now.plusMinutes(1))
             }
         else {                                                                          //se il timer non è partito lo fai partire
-            myTimer = createTimer(now.plusMinutes(3), [ |
+            myTimer_solaredge = createTimer(now.plusMinutes(3), [ |
             logInfo("rules solaredge", "Timer invio allarme assorbimento. Assorbimento attuale: " + realPowerAbs)
             MiniKitchenVolume.sendCommand(50)
             MiniStudioVolume.sendCommand(50)
@@ -61,16 +60,16 @@ then
             DaikinACUnit_Power_Cameretta.sendCommand(OFF)
             DaikinACUnit_Power_Letto.sendCommand(OFF)
             DaikinACUnit_Power_Soggiorno.sendCommand(OFF)
-            myTimer = null
+            myTimer_solaredge = null
             ] )
             logInfo("rules solaredge", "Timer allarme assorbimento creato, tra 3 minuti invierò allarme. Assorbimento attuale: " + realPowerAbs)
         }
         } 
         else {
-            if (myTimer !== null) {
+            if (myTimer_solaredge !== null) {
                 logInfo("rules solaredge", "Timer allarme assorbimento cancellato. Assorbimento attuale:  " + realPowerAbs)
-                myTimer.cancel()
-                myTimer = null
+                myTimer_solaredge.cancel()
+                myTimer_solaredge = null
             } 
         }
     } 

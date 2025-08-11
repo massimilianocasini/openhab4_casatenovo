@@ -94,9 +94,12 @@ Group gBuilding "Building" ["Building"]
         Group gInverter "Inverter" (gGarage) ["Inverter"]
         Group gMeter "Meter"(gGarage) ["Inverter"]
         Group gFibaro3 "Termometro" (gGarage) ["HVAC"]
+        Group gGaragePowerOut "Prese Garage" (gGarage)  ["PowerOutlet"]
+        
     Group gPortone "Portone" (gIndoor) ["Entry"]
         Group gPortoneLight "Luce Portone" <lightbulb> (gPortone) ["Lightbulb"]
         Group gPortoneLock "Apriportoni" <keyring> (gPortone) ["Lock"]
+
 
     Group gOutdoor "Outdoor" (gBuilding) ["Outdoor"]
         Group gGarden "Giardino" (gOutdoor) ["Garden"]

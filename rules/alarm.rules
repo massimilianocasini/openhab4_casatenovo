@@ -1,4 +1,4 @@
-var Timer isteresiTimer = 0
+var Timer myTimer_alarm = 0
 val int timeoutMinutes = 5 // choose an appropriate value
 var int alarmcount = 0 //Conteggio numero di allarmi
 var int receipt = null
@@ -10,14 +10,14 @@ val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
 
 switch(Prodino0_optoIn0.state) {
   case  "INSERITO" : {
-    if(isteresiTimer == 0) {
-      isteresiTimer = createTimer(now.plusMinutes(timeoutMinutes ), [|
-      isteresiTimer = 0
+    if(myTimer_alarm == 0) {
+      myTimer_alarm = createTimer(now.plusMinutes(timeoutMinutes ), [|
+      myTimer_alarm = 0
       logInfo("Alarm.rules", "Timer su inserimento scaduto" )
       ])
     }
     else {
-        isteresiTimer.reschedule(now.plusMinutes(timeoutMinutes ))
+        myTimer_alarm.reschedule(now.plusMinutes(timeoutMinutes ))
     }
     telegramActions.sendTelegram("Antifurto INSerito!")
     logInfo("Alarm.rules", "Antifurto INSERITO")
@@ -53,7 +53,7 @@ switch(Prodino0_optoIn0.state) {
     telegramActions.sendTelegram("Antifurto DIsInserito!")
     logInfo("Alarm.rules", "Antifurto DISINSERITO")
    // Osram01S.sendCommand(ON) //Accendi luce natale
-    if (SunElevation.state > -3 && now.getHour > 8 && isteresiTimer == 0) {
+    if (SunElevation.state > -3 && now.getHour > 8 && myTimer_alarm == 0) {
         TapparellaLetto.sendCommand(UP)
         TapparellaStudio.sendCommand(UP)
         TapparellaSoggiorno.sendCommand(UP)

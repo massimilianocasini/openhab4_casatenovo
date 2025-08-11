@@ -1,42 +1,51 @@
 
-var int controllo = 0 // Variabile di controllo per evitare che il timer venga creato più volte
-var int controllo_1 = 0 //Variabile per evitare che nel log vengano loggati tutti i condizionatori che cambiano stato
+var Timer myTimer_daikin = null // Timer per il controllo del cambio di modalità dei condizionatori
+
 rule "Forzatura setpoint sui condizionatori al cambio di Modalità"
 when
         Member of gEqCondMode changed
 then
-        if (controllo_1 == 1) {
-          logInfo("CondMode", "Controllo in corso, non posso cambiare modalità condizionatori")
-          return // Esce dalla regola se il controllo è già in corso
-        }
-        val item = triggeringItem
-        controllo_1 = 1
-        logInfo("CondMode", "Item che ha cambiato stato " + item.name + " " + item.state + " " + controllo) 
-        if (item.state == "COLD" && controllo == 0) { //Modalità estate
-          controllo = 1
-          logInfo("CondMode", "Creato Timer 15 sec per passaggio a COLD a 27° di tutti i Condizionatori " + controllo)
-          createTimer(now.plusSeconds(15), [|
-            gEqCondSetPoint.sendCommand(27)
-            gEqCondMode.sendCommand("COLD")
-            controllo = 0
-            controllo_1 = 0
-            logInfo("CondMode", "Forzato passaggio a COLD a 27° di tutti i condizionatori " + controllo )
-          ])
-        }
 
-        if (item.state == "HEAT" && controllo == 0) {  //Modalità inverno
-          logInfo("CondMode", "Creato Timer 15 sec per passaggio a HEAT a 22° di tutti i Condizionatori")
-          controllo = 1
-          createTimer(now.plusSeconds(15), [|
-            gEqCondSetPoint.sendCommand(22)
-            gEqCondMode.sendCommand("HEAT")
-            logInfo("CondMode", "Forzato passaggio a HEAT a 22° di tutti i condizionatori" )
-            createTimer(now.plusSeconds(15), [| 
-              controllo = 0
-              controllo_1 = 0
+        val item = triggeringItem
+
+        logInfo("CondMode", "Item che ha cambiato stato " + item.name + " " + item.state ) 
+        
+        if (item.state == "COLD") { //Modalità estate
+          if (myTimer_daikin !== null) {
+            logInfo("rules", "Timer COLD rescheduled")
+              myTimer_daikin.reschedule(now.plusSeconds(15))
+          } else {
+            logInfo("rules", "Timer COLD created")
+              myTimer_daikin = createTimer(now.plusSeconds(15), [|
+              gEqCondMode.sendCommand("COLD")
+              gEqCondSetPoint.sendCommand(28)
+              logInfo("CondMode", "Forzato passaggio a COLD a 28° di tutti i condizionatori " )
+              myTimer_daikin = null
             ])
-        ])
-           }  
+          }
+        return // Esce dalla regola dopo aver gestito la modalità COLD
+        }
+        if (item.state == "HEAT") {  //Modalità inverno
+          if (myTimer_daikin !== null) {
+            logInfo("rules", "Timer HEAT rescheduled")
+              myTimer_daikin.reschedule(now.plusSeconds(15))
+          } else {
+          myTimer_daikin(now.plusSeconds(15), [|
+            logInfo("rules", "Timer HEAT created")
+            gEqCondMode.sendCommand("HEAT")
+            gEqCondSetPoint.sendCommand(22)
+            logInfo("CondMode", "Forzato passaggio a HEAT a 22° di tutti i condizionatori")
+            myTimer_daikin = null
+          ])
+          }
+        return // Esce dalla regola dopo aver gestito la modalità HEAT
+        }
+        else {
+            logInfo("rules", "Timer OTHER canceled")
+            myTimer_daikin?.cancel()
+            myTimer_daikin = null
+        }
+        
 end
 
 rule "Timer Condizionamento DaikinACUnit_Power_Studio"
@@ -79,22 +88,9 @@ end
 
 rule "Imposta condizionamento a Umidificatore nel caso sia Raffrescamento di notte"
 when 
-Time cron "0 00 23 ? * * *"
+  Time cron "0 00 23 ? * * *"
 then
  if (gEqCondMode.state=="COLD"){
      gEqCondMode.sendCommand("DEHUMIDIFIER")
  }
 end
-// rule "Allinea gEqCondSetPoint"
-// when 
-//   Member of gEqCondSetPoint changed
-// then
-//   val item = triggeringItem
-//   var int setpoint
-//   if (setpoint = item.state > 0) {
-//     setpoint = (item.state as QuantityType<Number>).toBigDecimal
-//     logInfo("gEqCondSetPoint", "setpoint " + setpoint)
-//     gEqCondSetPoint.postUpdate(setpoint) // uso posUpdate invece di sendCommand perchè voglio che le temperetaure 
-//                                         //vengano allineate solo quando uso il setpoint generale. Se cambio la temperature su un singolo condizionatore non deve cambiare set point anche sugli altri
-//   }
-// end

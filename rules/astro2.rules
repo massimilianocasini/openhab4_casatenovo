@@ -1,51 +1,5 @@
-var Timer tAutoOff = null
+var Timer myTimer_astro2 = null
 var int iAutoOff = 0
-
-
-// rule "Accendo luci portone 30 min prima del tramonto e spengo al sorgere del sole" 
-// when
-//     Item SunElevation changed
-// then
-//     if(now.getHour > 12 && SunElevation.state < -3 && FGS222_004_SwitchBinary1.state != ON) {
-//        FGS222_004_SwitchBinary1.sendCommand(ON)
-//        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
-//      //  telegramAction.sendTelegram("Luce portone ACCESA!")
-
-// //       logInfo("Luce accesa")
-//     }
-//     if(now.getHour < 12 && \ > -3 && FGS222_004_SwitchBinary1.state != OFF) {
-//        FGS222_004_SwitchBinary1.sendCommand(OFF)
-//        val telegramAction = getActions("telegram","telegram:telegramBot:Telegram_Bot")
-//      //  telegramAction.sendTelegram("Luce portone SPENTA!")
-//     }
-    
-// end
-
-
-// rule "Accendi luce Garage dopo il tramonto se si apre il garage"
-// when
-//     Item FGBS001_007_SensorBinary1 changed from OFF to ON
-    
-// then
-//     if(SunElevation.state < 20 && FGS222_006_SwitchBinary2.state != ON) {
-//        FGS222_006_SwitchBinary2.sendCommand(ON)
-//     }
-// end 
-
-
-// rule "Chiudi tapparelle ad orario"
-// when
-//     Time cron "0 00 23 ? * * *"
-// then
-//     if(Prodino0_optoIn0.state == "DISINSERITO" )  {
-//         logInfo("Astro", "Chudi Tapparelle" )
-//         TapparellaLetto.sendCommand(DOWN)
-//         TapparellaStudio.sendCommand(DOWN)
-//         TapparellaSoggiorno.sendCommand(DOWN)
-//         TapparellaCameretta.sendCommand(DOWN)
-//     }
-// end
-
 
 rule "Apri tapparelle ad orario"
 when
@@ -53,10 +7,10 @@ when
 then
     if(Prodino0_optoIn0.state == "DISINSERITO" && isBankHoliday == false && isWeekend == false && TapparellaLettoStatus.state == "stop" && TapparellaStudioStatus.state == "stop" && VoglioDormire.state == OFF)  {
         logInfo("Astro", "Inizio procedura apertura serrande" )
-        if(tAutoOff !== null)                     // timer already scheduled, so leave rule
+        if(myTimer_astro2 !== null)                     // timer already scheduled, so leave rule
             return;
             iAutoOff = 0                              // initialize counter
-            tAutoOff = createTimer(now, [|
+            myTimer_astro2 = createTimer(now, [|
             iAutoOff ++
             switch(iAutoOff) {
                 case  1 : { 
@@ -105,12 +59,12 @@ then
                         logInfo("Astro", "Procedura apertura serrande caso 4" )
                         } */
                 default : {
-                tAutoOff = null
+                myTimer_astro2 = null
                 logInfo("Astro", "Fine procedura apertura serrande" )
                 return;
                 }
         }
-        tAutoOff.reschedule(now.plusMinutes(15))
+        myTimer_astro2.reschedule(now.plusMinutes(15))
         logInfo("Astro", "Procedura apertura serrande timer reschedule" )
     ])
 }

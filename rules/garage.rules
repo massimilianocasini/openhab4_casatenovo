@@ -6,7 +6,9 @@ then
     val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
     val lgwebosActions = getActions("lgwebos","lgwebos:WebOSTV:d19b82c8-a123-40fe-c940-70169a605dc6")
     telegramActions.sendTelegram("Garage Serranda Aperta")
-    lgwebosActions.showToast("Garage Serranda Aperta")
+    if (LG_TV0_Power==ON) {
+        lgwebosActions.showToast("Garage Serranda Aperta")
+    }
   //  Sonos_Volume.sendCommand(30)
 //	playSound("sonos:Beam:RINCON_542A1BD8C3C601400","doorbell.mp3") 
   //  MiniStudioVolume.sendCommand(30)
@@ -23,10 +25,11 @@ else {
     val telegramActions = getActions("telegram","telegram:telegramBot:Telegram_Bot")
     val lgwebosActions = getActions("lgwebos","lgwebos:WebOSTV:d19b82c8-a123-40fe-c940-70169a605dc6")
     telegramActions.sendTelegram("Garage Serranda Chiusa")
+    if (LG_TV0_Power==ON) {
     lgwebosActions.showToast("Garage Serranda Chiusa")  
     }
+}
 end
-
 /* rule "test"
 when
 Item Test changed
